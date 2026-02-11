@@ -173,7 +173,7 @@ const observer = new IntersectionObserver((entries) => {
 }, observerOptions);
 
 // Observe all animated elements
-document.querySelectorAll('.service-card, .about-content, .gallery-item, .contact-item').forEach(el => {
+document.querySelectorAll('.service-card, .about-content, .contact-item').forEach(el => {
     el.style.opacity = '0';
     el.style.transform = 'translateY(30px)';
     el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
