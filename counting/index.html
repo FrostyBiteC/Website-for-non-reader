@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Counting - Edulift</title>
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="game-header">
+        <div class="header-container">
+            <div class="logo">
+                <img src="../cropped_circle_image.png" alt="Edulift Logo" class="logo-image">
+                <span class="logo-text">EDULIFT</span>
+            </div>
+            <div class="game-info">
+                <div class="level-info">
+                    <span class="level-label">Level</span>
+                    <span class="level-number">1</span>
+                </div>
+                <div class="score-info">
+                    <span class="score-label">Score</span>
+                    <span class="score-number">0</span>
+                </div>
+                <div class="lives-info">
+                    <span class="lives-label">Lives</span>
+                    <span class="lives-number">❤️❤️❤️</span>
+                </div>
+            </div>
+            <div class="menu-controls">
+                <button class="btn-menu" id="pauseBtn">⏸️</button>
+                <button class="btn-menu" id="homeBtn">🏠</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Game Area -->
+    <main class="game-container">
+        <div class="game-wrapper">
+            <!-- Welcome Screen -->
+            <div class="welcome-screen" id="welcomeScreen">
+                <div class="welcome-content">
+                    <div class="welcome-icon">🔢</div>
+                    <h1>Counting Adventure!</h1>
+                    <p>Help the little learner count numbers and solve simple math problems!</p>
+                    <div class="welcome-stats">
+                        <div class="stat-item">
+                            <span class="stat-icon">🎯</span>
+                            <span class="stat-text">Learn numbers</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-icon">⭐</span>
+                            <span class="stat-text">Solve problems</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-icon">🎨</span>
+                            <span class="stat-text">Earn stars</span>
+                        </div>
+                    </div>
+                    <button class="btn-primary start-btn" id="startBtn">Start Counting</button>
+                </div>
+            </div>
+
+            <!-- Game Board -->
+            <div class="game-board" id="gameBoard">
+                <div class="level-title">
+                    <h2>Level 1: Counting Numbers</h2>
+                    <p class="level-description">Count the numbers and match them to the correct quantity</p>
+                </div>
+                
+                <!-- Number Cards Grid -->
+                <div class="game-grid">
+                    <div class="number-card" data-number="1">
+                        <div class="card-front">
+                            <div class="card-icon">❓</div>
+                            <div class="card-number">?</div>
+                        </div>
+                        <div class="card-back">
+                            <div class="card-icon">1️⃣</div>
+                            <div class="card-number">1</div>
+                        </div>
+                    </div>
+                    
+                    <div class="number-card" data-number="2">
+                        <div class="card-front">
+                            <div class="card-icon">❓</div>
+                            <div class="card-number">?</div>
+                        </div>
+                        <div class="card-back">
+                            <div class="card-icon">2️⃣</div>
+                            <div class="card-number">2</div>
+                        </div>
+                    </div>
+                    
+                    <div class="number-card" data-number="3">
+                        <div class="card-front">
+                            <div class="card-icon">❓</div>
+                            <div class="card-number">?</div>
+                        </div>
+                        <div class="card-back">
+                            <div class="card-icon">3️⃣</div>
+                            <div class="card-number">3</div>
+                        </div>
+                    </div>
+                    
+                    <div class="number-card" data-number="4">
+                        <div class="card-front">
+                            <div class="card-icon">❓</div>
+                            <div class="card-number">?</div>
+                        </div>
+                        <div class="card-back">
+                            <div class="card-icon">4️⃣</div>
+                            <div class="card-number">4</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Progress Bar -->
+                <div class="progress-container">
+                    <div class="progress-label">Progress</div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progressFill"></div>
+                    </div>
+                    <div class="progress-percentage">0%</div>
+                </div>
+
+                <!-- Hint Button -->
+                <div class="hint-container">
+                    <button class="btn-hint" id="hintBtn">
+                        <span class="hint-icon">💡</span>
+                        <span class="hint-text">Hint</span>
+                        <span class="hint-count">(3)</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Level Complete Screen -->
+            <div class="complete-screen" id="completeScreen">
+                <div class="complete-content">
+                    <div class="complete-icon">🎉</div>
+                    <h2>Level Complete!</h2>
+                    <div class="score-display">
+                        <div class="final-score">
+                            <span class="score-label">Your Score</span>
+                            <span class="score-value">100</span>
+                        </div>
+                        <div class="stars-display">
+                            <span class="star">⭐</span>
+                            <span class="star">⭐</span>
+                            <span class="star">⭐</span>
+                        </div>
+                    </div>
+                    <div class="complete-stats">
+                        <div class="stat-item">
+                            <span class="stat-label">Numbers Learned</span>
+                            <span class="stat-value">4</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">Time Taken</span>
+                            <span class="stat-value">2:30</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">Hints Used</span>
+                            <span class="stat-value">0</span>
+                        </div>
+                    </div>
+                    <div class="complete-buttons">
+                        <button class="btn-primary" id="nextLevelBtn">Next Level</button>
+                        <button class="btn-secondary" id="replayBtn">Replay Level</button>
+                        <button class="btn-secondary" id="menuBtn">Main Menu</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Game Over Screen -->
+            <div class="gameover-screen" id="gameoverScreen">
+                <div class="gameover-content">
+                    <div class="gameover-icon">💔</div>
+                    <h2>Game Over</h2>
+                    <p>Don't worry! Practice makes perfect. Try again!</p>
+                    <div class="score-display">
+                        <div class="final-score">
+                            <span class="score-label">Your Score</span>
+                            <span class="score-value">75</span>
+                        </div>
+                    </div>
+                    <div class="gameover-buttons">
+                        <button class="btn-primary" id="tryAgainBtn">Try Again</button>
+                        <button class="btn-secondary" id="quitGameBtn">Quit to Menu</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="game-footer">
+        <p>Level 1 - Counting Numbers</p>
+    </footer>
+
+    <script src="../script.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

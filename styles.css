@@ -153,6 +153,7 @@ body {
 .hero-buttons {
     display: flex;
     gap: 1rem;
+    flex-wrap: wrap;
     animation: fadeInUp 0.8s ease 0.4s backwards;
 }
 
