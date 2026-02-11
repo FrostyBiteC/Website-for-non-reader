@@ -157,6 +157,14 @@ body {
     animation: fadeInUp 0.8s ease 0.4s backwards;
 }
 
+.category-buttons {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-top: 2rem;
+    animation: fadeInUp 0.8s ease 0.6s backwards;
+}
+
 .btn {
     padding: 12px 30px;
     border: none;

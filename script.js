@@ -314,4 +314,17 @@ if ('IntersectionObserver' in window) {
     });
 }
 
+// Play button functionality
+document.addEventListener('DOMContentLoaded', function() {
+    const playBtn = document.getElementById('playBtn');
+    const categoryButtons = document.getElementById('categoryButtons');
+    
+    if (playBtn && categoryButtons) {
+        playBtn.addEventListener('click', function() {
+            categoryButtons.style.display = categoryButtons.style.display === 'flex' ? 'none' : 'flex';
+            playBtn.textContent = categoryButtons.style.display === 'flex' ? 'Hide Categories' : 'Play';
+        });
+    }
+});
+
 console.log('ChildCare website loaded successfully!');
