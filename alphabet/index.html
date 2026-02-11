@@ -3,205 +3,279 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Alphabet - Edulift</title>
-    <link rel="stylesheet" href="../styles.css">
-    <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <title>Alphabet - Kids Learning</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700&display=swap">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Nunito', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1200px;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.98);
+            border-radius: 30px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            margin-bottom: 20px;
+            backdrop-filter: blur(10px);
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .logo {
+            font-size: 3rem;
+            font-weight: 700;
+            color: #667eea;
+            margin-bottom: 10px;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            color: #333;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .header p {
+            font-size: 1.2rem;
+            color: #666;
+            font-weight: 300;
+        }
+
+        .alphabet-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .alphabet-card {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            border-radius: 20px;
+            padding: 30px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .alphabet-card:hover {
+            transform: translateY(-10px);
+            border-color: #667eea;
+            box-shadow: 0 15px 35px rgba(102, 126, 234, 0.3);
+        }
+
+        .alphabet-card:active {
+            transform: translateY(-5px);
+        }
+
+        .letter {
+            font-size: 3rem;
+            font-weight: 700;
+            color: #667eea;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+        }
+
+        .word {
+            font-size: 1.1rem;
+            color: #666;
+            font-weight: 600;
+        }
+
+        .category-link {
+            display: block;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-decoration: none;
+            padding: 15px 30px;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            text-align: center;
+            margin-top: 30px;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+        }
+
+        .category-link:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 40px rgba(102, 126, 234, 0.5);
+        }
+
+        .category-link:active {
+            transform: translateY(0);
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+
+            .header h1 {
+                font-size: 2rem;
+            }
+
+            .logo {
+                font-size: 2.5rem;
+            }
+
+            .alphabet-grid {
+                grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+                gap: 15px;
+            }
+
+            .alphabet-card {
+                padding: 20px;
+            }
+
+            .letter {
+                font-size: 2.5rem;
+            }
+
+            .word {
+                font-size: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 10px;
+            }
+
+            .container {
+                padding: 15px;
+                border-radius: 20px;
+            }
+
+            .header h1 {
+                font-size: 1.8rem;
+            }
+
+            .logo {
+                font-size: 2rem;
+            }
+
+            .alphabet-grid {
+                grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+                gap: 10px;
+            }
+
+            .alphabet-card {
+                padding: 15px;
+            }
+
+            .letter {
+                font-size: 2rem;
+            }
+
+            .word {
+                font-size: 0.9rem;
+            }
+
+            .category-link {
+                padding: 12px 20px;
+                font-size: 1rem;
+            }
+        }
+    </style>
 </head>
 <body>
-    <!-- Header -->
-    <header class="game-header">
-        <div class="header-container">
-            <div class="logo">
-                <img src="../cropped_circle_image.png" alt="Edulift Logo" class="logo-image">
-                <span class="logo-text">EDULIFT</span>
-            </div>
-            <div class="game-info">
-                <div class="level-info">
-                    <span class="level-label">Level</span>
-                    <span class="level-number">1</span>
-                </div>
-                <div class="score-info">
-                    <span class="score-label">Score</span>
-                    <span class="score-number">0</span>
-                </div>
-                <div class="lives-info">
-                    <span class="lives-label">Lives</span>
-                    <span class="lives-number">❤️❤️❤️</span>
-                </div>
-            </div>
-            <div class="menu-controls">
-                <button class="btn-menu" id="pauseBtn">⏸️</button>
-                <button class="btn-menu" id="homeBtn">🏠</button>
-            </div>
+    <div class="container">
+        <div class="header">
+            <div class="logo">🎓</div>
+            <h1>Alphabet Adventure</h1>
+            <p>Learn your ABCs with fun and interactive cards!</p>
         </div>
-    </header>
 
-    <!-- Game Area -->
-    <main class="game-container">
-        <div class="game-wrapper">
-            <!-- Welcome Screen -->
-            <div class="welcome-screen" id="welcomeScreen">
-                <div class="welcome-content">
-                    <div class="welcome-icon">📚</div>
-                    <h1>Alphabet Adventure!</h1>
-                    <p>Learn the ABCs through fun and interactive card matching!</p>
-                    <div class="welcome-stats">
-                        <div class="stat-item">
-                            <span class="stat-icon">🎨</span>
-                            <span class="stat-text">26 Letters</span>
-                        </div>
-                        <div class="stat-item">
-                            <span class="stat-icon">🎯</span>
-                            <span class="stat-text">Match Pairs</span>
-                        </div>
-                        <div class="stat-item">
-                            <span class="stat-icon">⭐</span>
-                            <span class="stat-text">Earn Stars</span>
-                        </div>
-                    </div>
-                    <button class="btn-primary start-btn" id="startBtn">Start Learning</button>
-                </div>
-            </div>
+        <div class="alphabet-grid" id="alphabetGrid">
+            <!-- Alphabet cards will be dynamically generated here -->
+        </div>
 
-            <!-- Game Board -->
-            <div class="game-board" id="gameBoard">
-                <div class="level-title">
-                    <h2>Level 1: Match the Letters</h2>
-                    <p class="level-description">Find pairs of matching uppercase and lowercase letters</p>
-                </div>
+        <a href="../main.html" class="category-link">← Back to Main Menu</a>
+    </div>
+
+    <script>
+        // Define alphabet data
+        const alphabetData = [
+            { letter: 'A', word: 'Apple', color: '#667eea' },
+            { letter: 'B', word: 'Ball', color: '#764ba2' },
+            { letter: 'C', word: 'Cat', color: '#f093fb' },
+            { letter: 'D', word: 'Dog', color: '#f5576c' },
+            { letter: 'E', word: 'Elephant', color: '#4facfe' },
+            { letter: 'F', word: 'Fish', color: '#43e97b' },
+            { letter: 'G', word: 'Grapes', color: '#fa709a' },
+            { letter: 'H', word: 'House', color: '#fee140' },
+            { letter: 'I', word: 'Ice Cream', color: '#30cfd0' },
+            { letter: 'J', word: 'Juice', color: '#330867' },
+            { letter: 'K', word: 'Kite', color: '#833ab4' },
+            { letter: 'L', word: 'Lion', color: '#fd1d1d' },
+            { letter: 'M', word: 'Monkey', color: '#fcb045' },
+            { letter: 'N', word: 'Nest', color: '#4facfe' },
+            { letter: 'O', word: 'Orange', color: '#00f2fe' },
+            { letter: 'P', word: 'Pizza', color: '#f77062' },
+            { letter: 'Q', word: 'Queen', color: '#11998e' },
+            { letter: 'R', word: 'Rainbow', color: '#38ef7d' },
+            { letter: 'S', word: 'Sun', color: '#2b13b7' },
+            { letter: 'T', word: 'Tree', color: '#357ebd' },
+            { letter: 'U', word: 'Umbrella', color: '#e892bd' },
+            { letter: 'V', word: 'Violin', color: '#008dd5' },
+            { letter: 'W', word: 'Watermelon', color: '#08c853' },
+            { letter: 'X', word: 'Xylophone', color: '#7957a5' },
+            { letter: 'Y', word: 'Yellow', color: '#ffd166' },
+            { letter: 'Z', word: 'Zebra', color: '#06d6a0' }
+        ];
+
+        // Create alphabet cards
+        const alphabetGrid = document.getElementById('alphabetGrid');
+        
+        alphabetData.forEach(item => {
+            const card = document.createElement('div');
+            card.className = 'alphabet-card';
+            
+            card.innerHTML = `
+                <div class="letter" style="color: ${item.color}">${item.letter}</div>
+                <div class="word">${item.word}</div>
+            `;
+            
+            card.addEventListener('click', () => {
+                card.style.transform = 'scale(0.95)';
+                setTimeout(() => {
+                    card.style.transform = '';
+                }, 200);
                 
-                <!-- Letter Cards Grid -->
-                <div class="game-grid">
-                    <div class="letter-card" data-letter="A">
-                        <div class="card-front">
-                            <div class="card-icon">❓</div>
-                            <div class="card-text">?</div>
-                        </div>
-                        <div class="card-back">
-                            <div class="card-icon">🇦</div>
-                            <div class="card-text">A</div>
-                        </div>
-                    </div>
-                    
-                    <div class="letter-card" data-letter="a">
-                        <div class="card-front">
-                            <div class="card-icon">❓</div>
-                            <div class="card-text">?</div>
-                        </div>
-                        <div class="card-back">
-                            <div class="card-icon">🇦</div>
-                            <div class="card-text">a</div>
-                        </div>
-                    </div>
-                    
-                    <div class="letter-card" data-letter="B">
-                        <div class="card-front">
-                            <div class="card-icon">❓</div>
-                            <div class="card-text">?</div>
-                        </div>
-                        <div class="card-back">
-                            <div class="card-icon">🇧</div>
-                            <div class="card-text">B</div>
-                        </div>
-                    </div>
-                    
-                    <div class="letter-card" data-letter="b">
-                        <div class="card-front">
-                            <div class="card-icon">❓</div>
-                            <div class="card-text">?</div>
-                        </div>
-                        <div class="card-back">
-                            <div class="card-icon">🇧</div>
-                            <div class="card-text">b</div>
-                        </div>
-                    </div>
-                </div>
+                // Add sound effect (in a real implementation)
+                // playSound(item.letter.toLowerCase());
+            });
+            
+            alphabetGrid.appendChild(card);
+        });
 
-                <!-- Progress Bar -->
-                <div class="progress-container">
-                    <div class="progress-label">Progress</div>
-                    <div class="progress-bar">
-                        <div class="progress-fill" id="progressFill"></div>
-                    </div>
-                    <div class="progress-percentage">0%</div>
-                </div>
-
-                <!-- Hint Button -->
-                <div class="hint-container">
-                    <button class="btn-hint" id="hintBtn">
-                        <span class="hint-icon">💡</span>
-                        <span class="hint-text">Hint</span>
-                        <span class="hint-count">(3)</span>
-                    </button>
-                </div>
-            </div>
-
-            <!-- Level Complete Screen -->
-            <div class="complete-screen" id="completeScreen">
-                <div class="complete-content">
-                    <div class="complete-icon">🎉</div>
-                    <h2>Level Complete!</h2>
-                    <div class="score-display">
-                        <div class="final-score">
-                            <span class="score-label">Your Score</span>
-                            <span class="score-value">100</span>
-                        </div>
-                        <div class="stars-display">
-                            <span class="star">⭐</span>
-                            <span class="star">⭐</span>
-                            <span class="star">⭐</span>
-                        </div>
-                    </div>
-                    <div class="complete-stats">
-                        <div class="stat-item">
-                            <span class="stat-label">Letters Matched</span>
-                            <span class="stat-value">4</span>
-                        </div>
-                        <div class="stat-item">
-                            <span class="stat-label">Time Taken</span>
-                            <span class="stat-value">2:30</span>
-                        </div>
-                        <div class="stat-item">
-                            <span class="stat-label">Hints Used</span>
-                            <span class="stat-value">0</span>
-                        </div>
-                    </div>
-                    <div class="complete-buttons">
-                        <button class="btn-primary" id="nextLevelBtn">Next Level</button>
-                        <button class="btn-secondary" id="replayBtn">Replay Level</button>
-                        <button class="btn-secondary" id="menuBtn">Main Menu</button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Game Over Screen -->
-            <div class="gameover-screen" id="gameoverScreen">
-                <div class="gameover-content">
-                    <div class="gameover-icon">💔</div>
-                    <h2>Game Over</h2>
-                    <p>Don't worry! Practice makes perfect. Try again!</p>
-                    <div class="score-display">
-                        <div class="final-score">
-                            <span class="score-label">Your Score</span>
-                            <span class="score-value">75</span>
-                        </div>
-                    </div>
-                    <div class="gameover-buttons">
-                        <button class="btn-primary" id="tryAgainBtn">Try Again</button>
-                        <button class="btn-secondary" id="quitGameBtn">Quit to Menu</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </main>
-
-    <!-- Footer -->
-    <footer class="game-footer">
-        <p>Level 1 - Alphabet Learning</p>
-    </footer>
-
-    <script src="../script.js"></script>
-    <script src="script.js"></script>
+        // Add simple sound effect function (placeholder)
+        function playSound(letter) {
+            const audio = new Audio(`sounds/${letter}.mp3`);
+            audio.play().catch(error => {
+                console.log('Sound file not available');
+            });
+        }
+    </script>
 </body>
 </html>

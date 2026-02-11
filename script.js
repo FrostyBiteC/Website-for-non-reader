@@ -316,14 +316,26 @@ if ('IntersectionObserver' in window) {
 
 // Play button functionality
 document.addEventListener('DOMContentLoaded', function() {
+    console.log('DOM content loaded');
     const playBtn = document.getElementById('playBtn');
     const categoryButtons = document.getElementById('categoryButtons');
     
+    console.log('Play button:', playBtn);
+    console.log('Category buttons:', categoryButtons);
+    
     if (playBtn && categoryButtons) {
         playBtn.addEventListener('click', function() {
-            categoryButtons.style.display = categoryButtons.style.display === 'flex' ? 'none' : 'flex';
-            playBtn.textContent = categoryButtons.style.display === 'flex' ? 'Hide Categories' : 'Play';
+            console.log('Play button clicked');
+            if (categoryButtons.style.display === 'flex') {
+                categoryButtons.style.display = 'none';
+                playBtn.textContent = 'Play';
+            } else {
+                categoryButtons.style.display = 'flex';
+                playBtn.textContent = 'Hide Categories';
+            }
         });
+    } else {
+        console.error('Elements not found');
     }
 });
 

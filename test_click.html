@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Click Event</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f0f0f0;
+            padding: 20px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .hero-buttons {
+            margin-bottom: 20px;
+        }
+        .category-buttons {
+            display: none;
+            gap: 10px;
+            margin-top: 20px;
+        }
+        .category-buttons.show {
+            display: flex;
+        }
+        .btn {
+            padding: 12px 30px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+        .btn-primary {
+            background: #ff6b6b;
+            color: white;
+            box-shadow: 0 4px 15px rgba(255, 107, 107, 0.3);
+        }
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 107, 107, 0.4);
+        }
+    </style>
+</head>
+<body>
+    <div class="hero-content">
+        <h1>Test Click Event</h1>
+        <div class="hero-buttons">
+            <button class="btn btn-primary" id="playBtn">Play</button>
+        </div>
+        <div class="category-buttons" id="categoryButtons">
+            <a href="counting/index.html" class="btn btn-primary">Counting</a>
+            <a href="alphabet/index.html" class="btn btn-primary">Alphabet</a>
+            <a href="reading/index.html" class="btn btn-primary">Reading</a>
+            <a href="knowing/index.html" class="btn btn-primary">Knowing</a>
+        </div>
+    </div>
+
+    <script>
+        // Simple script to test play button functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('DOM content loaded');
+            
+            const playBtn = document.getElementById('playBtn');
+            const categoryButtons = document.getElementById('categoryButtons');
+            
+            console.log('Play button:', playBtn);
+            console.log('Category buttons:', categoryButtons);
+            
+            if (playBtn && categoryButtons) {
+                playBtn.addEventListener('click', function() {
+                    console.log('Play button clicked');
+                    categoryButtons.classList.toggle('show');
+                    playBtn.textContent = categoryButtons.classList.contains('show') ? 'Hide Categories' : 'Play';
+                });
+                
+                // Simulate click for testing
+                setTimeout(function() {
+                    console.log('Simulating click');
+                    playBtn.click();
+                }, 1000);
+                
+                setTimeout(function() {
+                    console.log('Simulating click again');
+                    playBtn.click();
+                }, 3000);
+            } else {
+                console.error('Elements not found');
+            }
+        });
+    </script>
+</body>
+</html>

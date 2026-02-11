@@ -3,205 +3,373 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Reading - Edulift</title>
-    <link rel="stylesheet" href="../styles.css">
-    <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <title>Reading - Kids Learning</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700&display=swap">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Nunito', sans-serif;
+            background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1200px;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.98);
+            border-radius: 30px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            margin-bottom: 20px;
+            backdrop-filter: blur(10px);
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .logo {
+            font-size: 3rem;
+            font-weight: 700;
+            color: #11998e;
+            margin-bottom: 10px;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            color: #333;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .header p {
+            font-size: 1.2rem;
+            color: #666;
+            font-weight: 300;
+        }
+
+        .story-container {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .story-title {
+            font-size: 1.8rem;
+            color: #11998e;
+            margin-bottom: 20px;
+            font-weight: 700;
+            text-align: center;
+        }
+
+        .story-content {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        .story-characters {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 20px;
+            justify-content: center;
+        }
+
+        .character-card {
+            background: white;
+            border-radius: 15px;
+            padding: 15px;
+            text-align: center;
+            min-width: 120px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .character-emoji {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+        .character-name {
+            font-size: 1rem;
+            color: #333;
+            font-weight: 600;
+        }
+
+        .read-aloud-btn {
+            background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: block;
+            margin: 20px auto 0;
+            box-shadow: 0 10px 30px rgba(17, 153, 142, 0.4);
+        }
+
+        .read-aloud-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 40px rgba(17, 153, 142, 0.5);
+        }
+
+        .read-aloud-btn:active {
+            transform: translateY(0);
+        }
+
+        .word-highlight {
+            background: linear-gradient(120deg, #fef782 0%, #fef782 100%);
+            background-repeat: no-repeat;
+            background-size: 100% 30%;
+            background-position: 0 80%;
+            padding: 0 3px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .word-highlight:hover {
+            background-size: 100% 50%;
+            background-position: 0 70%;
+            color: #11998e;
+            font-weight: 600;
+        }
+
+        .category-link {
+            display: block;
+            background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+            color: white;
+            text-decoration: none;
+            padding: 15px 30px;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            text-align: center;
+            margin-top: 30px;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(17, 153, 142, 0.4);
+        }
+
+        .category-link:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 40px rgba(17, 153, 142, 0.5);
+        }
+
+        .category-link:active {
+            transform: translateY(0);
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+
+            .header h1 {
+                font-size: 2rem;
+            }
+
+            .logo {
+                font-size: 2.5rem;
+            }
+
+            .story-title {
+                font-size: 1.5rem;
+            }
+
+            .story-content {
+                font-size: 1rem;
+            }
+
+            .character-card {
+                min-width: 100px;
+                padding: 12px;
+            }
+
+            .character-emoji {
+                font-size: 1.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 10px;
+            }
+
+            .container {
+                padding: 15px;
+                border-radius: 20px;
+            }
+
+            .header h1 {
+                font-size: 1.8rem;
+            }
+
+            .logo {
+                font-size: 2rem;
+            }
+
+            .story-title {
+                font-size: 1.3rem;
+            }
+
+            .story-content {
+                font-size: 0.95rem;
+            }
+
+            .character-card {
+                min-width: 90px;
+                padding: 10px;
+            }
+
+            .character-emoji {
+                font-size: 1.3rem;
+            }
+
+            .character-name {
+                font-size: 0.9rem;
+            }
+
+            .read-aloud-btn {
+                padding: 12px 20px;
+                font-size: 1rem;
+            }
+
+            .category-link {
+                padding: 12px 20px;
+                font-size: 1rem;
+            }
+        }
+    </style>
 </head>
 <body>
-    <!-- Header -->
-    <header class="game-header">
-        <div class="header-container">
-            <div class="logo">
-                <img src="../cropped_circle_image.png" alt="Edulift Logo" class="logo-image">
-                <span class="logo-text">EDULIFT</span>
-            </div>
-            <div class="game-info">
-                <div class="level-info">
-                    <span class="level-label">Level</span>
-                    <span class="level-number">1</span>
-                </div>
-                <div class="score-info">
-                    <span class="score-label">Score</span>
-                    <span class="score-number">0</span>
-                </div>
-                <div class="lives-info">
-                    <span class="lives-label">Lives</span>
-                    <span class="lives-number">❤️❤️❤️</span>
-                </div>
-            </div>
-            <div class="menu-controls">
-                <button class="btn-menu" id="pauseBtn">⏸️</button>
-                <button class="btn-menu" id="homeBtn">🏠</button>
-            </div>
+    <div class="container">
+        <div class="header">
+            <div class="logo">📖</div>
+            <h1>Reading Fun</h1>
+            <p>Explore exciting stories and learn new words!</p>
         </div>
-    </header>
 
-    <!-- Game Area -->
-    <main class="game-container">
-        <div class="game-wrapper">
-            <!-- Welcome Screen -->
-            <div class="welcome-screen" id="welcomeScreen">
-                <div class="welcome-content">
-                    <div class="welcome-icon">📖</div>
-                    <h1>Reading Adventure!</h1>
-                    <p>Learn to read simple words through fun and interactive activities!</p>
-                    <div class="welcome-stats">
-                        <div class="stat-item">
-                            <span class="stat-icon">🎯</span>
-                            <span class="stat-text">Learn words</span>
-                        </div>
-                        <div class="stat-item">
-                            <span class="stat-icon">🎨</span>
-                            <span class="stat-text">Match meanings</span>
-                        </div>
-                        <div class="stat-item">
-                            <span class="stat-icon">⭐</span>
-                            <span class="stat-text">Earn stars</span>
-                        </div>
-                    </div>
-                    <button class="btn-primary start-btn" id="startBtn">Start Reading</button>
+        <div class="story-container">
+            <h2 class="story-title">The Animal Friends Adventure</h2>
+            
+            <div class="story-characters">
+                <div class="character-card">
+                    <div class="character-emoji">🐰</div>
+                    <div class="character-name">Bunny</div>
+                </div>
+                <div class="character-card">
+                    <div class="character-emoji">🦊</div>
+                    <div class="character-name">Fox</div>
+                </div>
+                <div class="character-card">
+                    <div class="character-emoji">🐻</div>
+                    <div class="character-name">Bear</div>
                 </div>
             </div>
 
-            <!-- Game Board -->
-            <div class="game-board" id="gameBoard">
-                <div class="level-title">
-                    <h2>Level 1: Word Matching</h2>
-                    <p class="level-description">Match each word with its corresponding picture</p>
-                </div>
+            <div class="story-content">
+                <p>Once upon a time, in a beautiful forest, there lived three best friends:</p>
+                <p><span class="word-highlight">Bunny</span>, <span class="word-highlight">Fox</span>, and <span class="word-highlight">Bear</span>.</p>
+                <p>They loved to play together and explore the woods. One sunny day, they decided to go on an adventure to find the legendary <span class="word-highlight">Golden Carrot</span>.</p>
+                <p>Along the way, they met many friendly animals and learned important lessons about <span class="word-highlight">friendship</span> and <span class="word-highlight">teamwork</span>.</p>
+                <p>Their journey taught them that working together makes everything possible!</p>
+            </div>
+
+            <button class="read-aloud-btn" id="readAloudBtn">🔊 Read Aloud</button>
+        </div>
+
+        <a href="../main.html" class="category-link">← Back to Main Menu</a>
+    </div>
+
+    <script>
+        // Read aloud functionality
+        document.getElementById('readAloudBtn').addEventListener('click', function() {
+            const button = this;
+            const originalText = button.textContent;
+            
+            // Change button text to indicate reading
+            button.textContent = '🔊 Reading...';
+            button.disabled = true;
+            
+            // Get story text
+            const storyText = document.querySelector('.story-content').textContent;
+            
+            // Check if SpeechSynthesis is available
+            if ('speechSynthesis' in window) {
+                // Create speech utterance
+                const utterance = new SpeechSynthesisUtterance(storyText);
+                utterance.lang = 'en-US';
+                utterance.rate = 0.9;
+                utterance.pitch = 1.1;
                 
-                <!-- Word Cards Grid -->
-                <div class="game-grid">
-                    <div class="word-card" data-word="cat">
-                        <div class="card-front">
-                            <div class="card-icon">❓</div>
-                            <div class="card-text">?</div>
-                        </div>
-                        <div class="card-back">
-                            <div class="card-icon">🐱</div>
-                            <div class="card-text">Cat</div>
-                        </div>
-                    </div>
-                    
-                    <div class="word-card" data-word="dog">
-                        <div class="card-front">
-                            <div class="card-icon">❓</div>
-                            <div class="card-text">?</div>
-                        </div>
-                        <div class="card-back">
-                            <div class="card-icon">🐶</div>
-                            <div class="card-text">Dog</div>
-                        </div>
-                    </div>
-                    
-                    <div class="word-card" data-word="apple">
-                        <div class="card-front">
-                            <div class="card-icon">❓</div>
-                            <div class="card-text">?</div>
-                        </div>
-                        <div class="card-back">
-                            <div class="card-icon">🍎</div>
-                            <div class="card-text">Apple</div>
-                        </div>
-                    </div>
-                    
-                    <div class="word-card" data-word="ball">
-                        <div class="card-front">
-                            <div class="card-icon">❓</div>
-                            <div class="card-text">?</div>
-                        </div>
-                        <div class="card-back">
-                            <div class="card-icon">⚽</div>
-                            <div class="card-text">Ball</div>
-                        </div>
-                    </div>
-                </div>
+                // Event when speech ends
+                utterance.onend = function() {
+                    button.textContent = originalText;
+                    button.disabled = false;
+                };
+                
+                // Event for errors
+                utterance.onerror = function() {
+                    button.textContent = originalText;
+                    button.disabled = false;
+                    alert('Sorry, speech synthesis is not available.');
+                };
+                
+                // Speak the text
+                speechSynthesis.speak(utterance);
+            } else {
+                button.textContent = originalText;
+                button.disabled = false;
+                alert('Sorry, speech synthesis is not available in your browser.');
+            }
+        });
 
-                <!-- Progress Bar -->
-                <div class="progress-container">
-                    <div class="progress-label">Progress</div>
-                    <div class="progress-bar">
-                        <div class="progress-fill" id="progressFill"></div>
-                    </div>
-                    <div class="progress-percentage">0%</div>
-                </div>
-
-                <!-- Hint Button -->
-                <div class="hint-container">
-                    <button class="btn-hint" id="hintBtn">
-                        <span class="hint-icon">💡</span>
-                        <span class="hint-text">Hint</span>
-                        <span class="hint-count">(3)</span>
-                    </button>
-                </div>
-            </div>
-
-            <!-- Level Complete Screen -->
-            <div class="complete-screen" id="completeScreen">
-                <div class="complete-content">
-                    <div class="complete-icon">🎉</div>
-                    <h2>Level Complete!</h2>
-                    <div class="score-display">
-                        <div class="final-score">
-                            <span class="score-label">Your Score</span>
-                            <span class="score-value">100</span>
-                        </div>
-                        <div class="stars-display">
-                            <span class="star">⭐</span>
-                            <span class="star">⭐</span>
-                            <span class="star">⭐</span>
-                        </div>
-                    </div>
-                    <div class="complete-stats">
-                        <div class="stat-item">
-                            <span class="stat-label">Words Matched</span>
-                            <span class="stat-value">4</span>
-                        </div>
-                        <div class="stat-item">
-                            <span class="stat-label">Time Taken</span>
-                            <span class="stat-value">2:30</span>
-                        </div>
-                        <div class="stat-item">
-                            <span class="stat-label">Hints Used</span>
-                            <span class="stat-value">0</span>
-                        </div>
-                    </div>
-                    <div class="complete-buttons">
-                        <button class="btn-primary" id="nextLevelBtn">Next Level</button>
-                        <button class="btn-secondary" id="replayBtn">Replay Level</button>
-                        <button class="btn-secondary" id="menuBtn">Main Menu</button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Game Over Screen -->
-            <div class="gameover-screen" id="gameoverScreen">
-                <div class="gameover-content">
-                    <div class="gameover-icon">💔</div>
-                    <h2>Game Over</h2>
-                    <p>Don't worry! Practice makes perfect. Try again!</p>
-                    <div class="score-display">
-                        <div class="final-score">
-                            <span class="score-label">Your Score</span>
-                            <span class="score-value">75</span>
-                        </div>
-                    </div>
-                    <div class="gameover-buttons">
-                        <button class="btn-primary" id="tryAgainBtn">Try Again</button>
-                        <button class="btn-secondary" id="quitGameBtn">Quit to Menu</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </main>
-
-    <!-- Footer -->
-    <footer class="game-footer">
-        <p>Level 1 - Reading Words</p>
-    </footer>
-
-    <script src="../script.js"></script>
-    <script src="script.js"></script>
+        // Highlight word on click
+        document.querySelectorAll('.word-highlight').forEach(word => {
+            word.addEventListener('click', function() {
+                // Remove previous highlight
+                document.querySelectorAll('.word-highlight').forEach(w => {
+                    w.style.background = 'linear-gradient(120deg, #fef782 0%, #fef782 100%)';
+                    w.style.backgroundRepeat = 'no-repeat';
+                    w.style.backgroundSize = '100% 30%';
+                    w.style.backgroundPosition = '0 80%';
+                });
+                
+                // Highlight clicked word
+                this.style.background = 'linear-gradient(120deg, #38ef7d 0%, #38ef7d 100%)';
+                this.style.backgroundRepeat = 'no-repeat';
+                this.style.backgroundSize = '100% 50%';
+                this.style.backgroundPosition = '0 70%';
+                this.style.color = 'white';
+                this.style.fontWeight = '600';
+                
+                // Speak the word
+                if ('speechSynthesis' in window) {
+                    const wordText = this.textContent;
+                    const utterance = new SpeechSynthesisUtterance(wordText);
+                    utterance.lang = 'en-US';
+                    utterance.rate = 0.8;
+                    utterance.pitch = 1.2;
+                    speechSynthesis.speak(utterance);
+                }
+            });
+        });
+    </script>
 </body>
 </html>

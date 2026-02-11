@@ -158,11 +158,15 @@ body {
 }
 
 .category-buttons {
-    display: flex;
+    display: none;
     gap: 1rem;
     flex-wrap: wrap;
     margin-top: 2rem;
     animation: fadeInUp 0.8s ease 0.6s backwards;
+}
+
+.category-buttons.show {
+    display: flex;
 }
 
 .btn {

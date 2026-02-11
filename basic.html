@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Test</title>
+    <title>Basic Test</title>
     <style>
         .hero-content {
             text-align: center;
@@ -61,7 +61,7 @@
                 <h1 class="hero-title">Let's Learn</h1>
                 <p class="hero-subtitle">Immerse in Playing</p>
                 <div class="hero-buttons">
-                    <button class="btn btn-primary" id="playBtn">Play</button>
+                    <button class="btn btn-primary" id="playBtn" onclick="toggleCategories()">Play</button>
                 </div>
                 <div class="category-buttons" id="categoryButtons">
                     <a href="counting/index.html" class="btn btn-primary">Counting</a>
@@ -74,30 +74,28 @@
     </section>
 
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            console.log('DOM content loaded');
-            const playBtn = document.getElementById('playBtn');
+        function toggleCategories() {
+            console.log('Toggle function called');
             const categoryButtons = document.getElementById('categoryButtons');
+            const playBtn = document.getElementById('playBtn');
 
-            if (playBtn && categoryButtons) {
-                playBtn.addEventListener('click', function() {
-                    console.log('Play button clicked');
-                    if (categoryButtons.style.display === 'flex') {
-                        categoryButtons.style.display = 'none';
-                        playBtn.textContent = 'Play';
-                    } else {
-                        categoryButtons.style.display = 'flex';
-                        playBtn.textContent = 'Hide Categories';
-                    }
-                });
+            console.log('Category buttons:', categoryButtons);
+            console.log('Play button:', playBtn);
 
-                // Simulate a click to test the functionality
-                setTimeout(function() {
-                    console.log('Simulating click');
-                    playBtn.click();
-                }, 2000);
+            if (categoryButtons.style.display === 'flex') {
+                categoryButtons.style.display = 'none';
+                playBtn.textContent = 'Play';
+            } else {
+                categoryButtons.style.display = 'flex';
+                playBtn.textContent = 'Hide Categories';
             }
-        });
+        }
+
+        // Test the button by simulating a click after 2 seconds
+        setTimeout(function() {
+            console.log('Simulating click');
+            document.getElementById('playBtn').click();
+        }, 2000);
     </script>
 </body>
 </html>
