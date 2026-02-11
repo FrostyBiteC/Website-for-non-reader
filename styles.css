@@ -211,37 +211,35 @@ body {
     align-items: center;
 }
 
-.floating-cloud {
-    position: absolute;
-    background: white;
-    border-radius: 100px;
-    opacity: 0.8;
-    animation: float 3s ease-in-out infinite;
-}
+        .cloud {
+            position: absolute;
+            opacity: 0.8;
+            animation: float 3s ease-in-out infinite;
+        }
 
-.cloud-1 {
-    width: 120px;
-    height: 40px;
-    top: 10%;
-    left: 10%;
-    animation-delay: 0s;
-}
+        .cloud-1 {
+            width: 120px;
+            height: 120px;
+            top: 10%;
+            left: 10%;
+            animation-delay: 0s;
+        }
 
-.cloud-2 {
-    width: 80px;
-    height: 30px;
-    top: 20%;
-    right: 15%;
-    animation-delay: 1s;
-}
+        .cloud-2 {
+            width: 80px;
+            height: 80px;
+            top: 20%;
+            right: 15%;
+            animation-delay: 1s;
+        }
 
-.cloud-3 {
-    width: 100px;
-    height: 35px;
-    bottom: 20%;
-    left: 20%;
-    animation-delay: 2s;
-}
+        .cloud-3 {
+            width: 100px;
+            height: 100px;
+            bottom: 20%;
+            left: 20%;
+            animation-delay: 2s;
+        }
 
 .hero-illustration {
     position: relative;
