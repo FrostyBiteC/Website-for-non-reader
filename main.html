@@ -56,13 +56,7 @@
                 <h1 class="hero-title">Lets Learn</h1>
                 <p class="hero-subtitle">immerse in playing</p>
                 <div class="hero-buttons">
-                    <button class="btn btn-primary" id="playBtn" onclick="toggleCategories()">Play</button>
-                </div>
-                <div class="category-buttons" id="categoryButtons" style="display: none;">
-                    <a href="counting/index.html" class="btn btn-primary">Counting</a>
-                    <a href="alphabet/index.html" class="btn btn-primary">Alphabet</a>
-                    <a href="reading/index.html" class="btn btn-primary">Reading</a>
-                    <a href="knowing/index.html" class="btn btn-primary">Knowing</a>
+                    <a href="categories/index.html" class="btn btn-primary">Play</a>
                 </div>
             </div>
             <div class="hero-image">
@@ -239,12 +233,13 @@
                     </ul>
                 </div>
                 <div class="footer-section">
-                    <h4>Services</h4>
+                    <h4>Categories</h4>
                     <ul class="footer-links">
-                        <li><a href="#">Infant Care</a></li>
-                        <li><a href="#">Toddler Programs</a></li>
-                        <li><a href="#">Pre-School</a></li>
-                        <li><a href="#">After School</a></li>
+                        <li><a href="counting/index.html">Counting</a></li>
+                        <li><a href="alphabet/index.html">Alphabet</a></li>
+                        <li><a href="reading/index.html">Reading</a></li>
+                        <li><a href="knowing/index.html">Knowing</a></li>
+                        <li><a href="play/index.html">Play</a></li>
                     </ul>
                 </div>
                 <div class="footer-section">
@@ -262,29 +257,6 @@
         </div>
     </footer>
 
-    <script>
-        function toggleCategories() {
-            console.log('Toggle function called');
-            const categoryButtons = document.getElementById('categoryButtons');
-            const playBtn = document.getElementById('playBtn');
 
-            console.log('Category buttons:', categoryButtons);
-            console.log('Play button:', playBtn);
-
-            if (categoryButtons.style.display === 'flex') {
-                categoryButtons.style.display = 'none';
-                playBtn.textContent = 'Play';
-            } else {
-                categoryButtons.style.display = 'flex';
-                playBtn.textContent = 'Hide Categories';
-            }
-        }
-
-        // Test the button by simulating a click after 2 seconds
-        setTimeout(function() {
-            console.log('Simulating click');
-            document.getElementById('playBtn').click();
-        }, 2000);
-    </script>
 </body>
 </html>
