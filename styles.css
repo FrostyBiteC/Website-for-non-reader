@@ -490,9 +490,13 @@ body {
 }
 
 .about-illustration {
-    width: 400px;
-    height: 400px;
+    width: 100%;
+    max-width: 400px;
+    height: auto;
     position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .group-illustration {
@@ -502,22 +506,12 @@ body {
     gap: 20px;
 }
 
-.child {
-    font-size: 3rem;
+.about-logo {
+    width: 200px;
+    height: 200px;
+    object-fit: contain;
+    border-radius: 50%;
     animation: bounce 2s ease-in-out infinite;
-}
-
-.child-1 {
-    animation-delay: 0s;
-}
-
-.child-2 {
-    animation-delay: 0.5s;
-}
-
-.caretaker {
-    font-size: 4rem;
-    animation: bounce 2s ease-in-out infinite 1s;
 }
 
 .about-text h2 {
@@ -732,19 +726,7 @@ body {
     color: #ff6b6b;
 }
 
-.newsletter-form {
-    display: flex;
-    gap: 1rem;
-    margin-top: 1rem;
-}
 
-.newsletter-form input {
-    flex: 1;
-    padding: 10px;
-    border: none;
-    border-radius: 5px;
-    font-family: 'Poppins', sans-serif;
-}
 
 .footer-bottom {
     border-top: 1px solid rgba(255, 255, 255, 0.1);
@@ -898,7 +880,31 @@ body {
         padding: 1.5rem;
     }
 
-    .newsletter-form {
-        flex-direction: column;
+    .about-logo {
+        width: 150px;
+        height: 150px;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-title {
+        font-size: 2rem;
+    }
+
+    .hero-subtitle {
+        font-size: 1rem;
+    }
+
+    .section-title {
+        font-size: 1.8rem;
+    }
+
+    .service-card {
+        padding: 1.5rem;
+    }
+
+    .about-logo {
+        width: 120px;
+        height: 120px;
     }
 }
