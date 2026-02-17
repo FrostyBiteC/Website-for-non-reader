@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tetris - Edulift</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="game-header">
+        <div class="header-container">
+            <div class="logo">
+                <img src="../cropped_circle_image.png" alt="Edulift Logo" class="logo-image">
+                <span class="logo-text">EDULIFT</span>
+            </div>
+            <div class="game-info">
+                <div class="level-info">
+                    <span class="level-label">Level</span>
+                    <span class="level-number">1</span>
+                </div>
+                <div class="score-info">
+                    <span class="score-label">Score</span>
+                    <span class="score-number">0</span>
+                </div>
+                <div class="lines-info">
+                    <span class="lines-label">Lines</span>
+                    <span class="lines-number">0</span>
+                </div>
+            </div>
+            <div class="menu-controls">
+                <button class="btn-menu" id="pauseBtn">⏸️</button>
+                <button class="btn-menu" id="homeBtn">🏠</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Game Area -->
+    <main class="game-container">
+        <div class="game-wrapper">
+            <!-- Welcome Screen -->
+            <div class="welcome-screen" id="welcomeScreen">
+                <div class="welcome-content">
+                    <div class="welcome-icon">🎮</div>
+                    <h1>Tetris Adventure!</h1>
+                    <p>Stack the blocks and clear lines to score points!</p>
+                    <div class="welcome-stats">
+                        <div class="stat-item">
+                            <span class="stat-icon">🎯</span>
+                            <span class="stat-text">Clear lines</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-icon">⭐</span>
+                            <span class="stat-text">Earn points</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-icon">🎨</span>
+                            <span class="stat-text">Level up</span>
+                        </div>
+                    </div>
+                    <button class="btn-primary start-btn" id="startBtn">Start Game</button>
+                </div>
+            </div>
+
+            <!-- Game Board -->
+            <div class="game-board" id="gameBoard">
+                <div class="tetris-container">
+                    <canvas id="tetrisCanvas" width="300" height="600"></canvas>
+                    <div class="game-sidebar">
+                        <div class="next-piece">
+                            <h3>Next Piece</h3>
+                            <canvas id="nextCanvas" width="120" height="120"></canvas>
+                        </div>
+                        <div class="controls-info">
+                            <h3>Controls</h3>
+                            <div class="control-item">
+                                <span class="control-key">←</span>
+                                <span class="control-desc">Move Left</span>
+                            </div>
+                            <div class="control-item">
+                                <span class="control-key">→</span>
+                                <span class="control-desc">Move Right</span>
+                            </div>
+                            <div class="control-item">
+                                <span class="control-key">↑</span>
+                                <span class="control-desc">Rotate</span>
+                            </div>
+                            <div class="control-item">
+                                <span class="control-key">↓</span>
+                                <span class="control-desc">Soft Drop</span>
+                            </div>
+                            <div class="control-item">
+                                <span class="control-key">Space</span>
+                                <span class="control-desc">Hard Drop</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pause Screen -->
+            <div class="pause-screen" id="pauseScreen">
+                <div class="pause-content">
+                    <h1>Paused</h1>
+                    <div class="pause-buttons">
+                        <button class="btn-primary" id="resumeBtn">Resume</button>
+                        <button class="btn-secondary" id="restartBtn">Restart</button>
+                        <button class="btn-secondary" id="quitBtn">Quit</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Game Over Screen -->
+            <div class="gameover-screen" id="gameoverScreen">
+                <div class="gameover-content">
+                    <h1>Game Over!</h1>
+                    <div class="final-score">
+                        <p>Your Score: <span id="finalScore">0</span></p>
+                        <p>Lines Cleared: <span id="finalLines">0</span></p>
+                        <p>Level Reached: <span id="finalLevel">1</span></p>
+                    </div>
+                    <div class="gameover-buttons">
+                        <button class="btn-primary" id="retryBtn">Play Again</button>
+                        <button class="btn-secondary" id="menuBtn">Main Menu</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
