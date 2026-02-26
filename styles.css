@@ -453,9 +453,17 @@ body {
 }
 
 .service-icon {
-    font-size: 3rem;
     margin-bottom: 1.5rem;
     animation: bounce 2s ease-in-out infinite;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.service-image {
+    width: 60px;
+    height: 60px;
+    object-fit: contain;
 }
 
 .service-card h3 {
