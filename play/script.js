@@ -346,7 +346,7 @@ function setupEventListeners() {
     // Quit to menu
     quitBtn.addEventListener('click', () => {
         initGame();
-        window.location.href = '../main.html';
+        window.location.href = '../index.html';
     });
 
     // Next level
@@ -367,7 +367,7 @@ function setupEventListeners() {
     // Main menu
     menuBtn.addEventListener('click', () => {
         initGame();
-        window.location.href = '../main.html';
+        window.location.href = '../index.html';
     });
 
     // Try again
@@ -380,13 +380,13 @@ function setupEventListeners() {
     // Quit game
     quitGameBtn.addEventListener('click', () => {
         initGame();
-        window.location.href = '../main.html';
+        window.location.href = '../index.html';
     });
 
     // Home button
     homeBtn.addEventListener('click', () => {
         initGame();
-        window.location.href = '../main.html';
+        window.location.href = '../index.html';
     });
 
     // Hint button

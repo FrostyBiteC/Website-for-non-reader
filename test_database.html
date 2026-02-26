@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Firebase Database Test</title>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f7fa;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .test-section {
+            margin: 20px 0;
+            padding: 15px;
+            border: 1px solid #e0e0e0;
+            border-radius: 5px;
+        }
+        .test-button {
+            background-color: #ff6b6b;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            margin: 5px;
+        }
+        .test-button:hover {
+            background-color: #ff5252;
+        }
+        .result {
+            margin-top: 15px;
+            padding: 10px;
+            border-radius: 5px;
+            font-family: monospace;
+            white-space: pre-wrap;
+        }
+        .success {
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        .error {
+            background-color: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+        .info {
+            background-color: #d1ecf1;
+            color: #0c5460;
+            border: 1px solid #bee5eb;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Firebase Realtime Database Test</h1>
+        
+        <div class="test-section">
+            <h3>Test 1: Connection Status</h3>
+            <button class="test-button" onclick="testConnection()">Test Connection</button>
+            <div id="connectionResult" class="result"></div>
+        </div>
+        
+        <div class="test-section">
+            <h3>Test 2: Write Data</h3>
+            <button class="test-button" onclick="testWriteData()">Write Test Data</button>
+            <div id="writeResult" class="result"></div>
+        </div>
+        
+        <div class="test-section">
+            <h3>Test 3: Read Data</h3>
+            <button class="test-button" onclick="testReadData()">Read Test Data</button>
+            <div id="readResult" class="result"></div>
+        </div>
+        
+        <div class="test-section">
+            <h3>Database Reference</h3>
+            <div id="dbReference" class="result info"></div>
+        </div>
+    </div>
+
+    <!-- Firebase SDK -->
+    <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/12.9.0/firebase-app.js";
+        import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.9.0/firebase-analytics.js";
+        import { getDatabase, ref, set, get, child } from "https://www.gstatic.com/firebasejs/12.9.0/firebase-database.js";
+        
+        // Your web app's Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyDNJxNpr4a4GP2E-hDyuBpyPYtM2Ue4auc",
+            authDomain: "edulift-2a722.firebaseapp.com",
+            projectId: "edulift-2a722",
+            storageBucket: "edulift-2a722.firebasestorage.app",
+            messagingSenderId: "793324044416",
+            appId: "1:793324044416:web:bd53086906f58796c1a665",
+            measurementId: "G-X58G1ZB9HM",
+            databaseURL: "https://edulift-2a722-default-rtdb.firebaseio.com/"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const analytics = getAnalytics(app);
+        const db = getDatabase(app);
+        
+        // Display database reference
+        document.getElementById('dbReference').textContent = `Database URL: ${firebaseConfig.databaseURL}`;
+        
+        // Test connection function
+        window.testConnection = async function() {
+            const resultDiv = document.getElementById('connectionResult');
+            try {
+                resultDiv.textContent = 'Testing connection...';
+                resultDiv.className = 'result info';
+                
+                const dbRef = ref(db);
+                const snapshot = await get(child(dbRef, 'test'));
+                
+                resultDiv.textContent = '✅ Database connection successful!';
+                resultDiv.className = 'result success';
+                
+                console.log('Database connection test successful');
+            } catch (error) {
+                resultDiv.textContent = `❌ Connection failed: ${error.message}`;
+                resultDiv.className = 'result error';
+                console.error('Database connection error:', error);
+            }
+        };
+        
+        // Test write data function
+        window.testWriteData = async function() {
+            const resultDiv = document.getElementById('writeResult');
+            try {
+                resultDiv.textContent = 'Writing test data...';
+                resultDiv.className = 'result info';
+                
+                const testData = {
+                    timestamp: new Date().toISOString(),
+                    message: 'Firebase Realtime Database test data',
+                    project: 'Edulift',
+                    testNumber: Math.floor(Math.random() * 1000)
+                };
+                
+                await set(ref(db, 'test'), testData);
+                
+                resultDiv.textContent = '✅ Test data written successfully!';
+                resultDiv.className = 'result success';
+                
+                console.log('Test data written:', testData);
+            } catch (error) {
+                resultDiv.textContent = `❌ Write failed: ${error.message}`;
+                resultDiv.className = 'result error';
+                console.error('Write operation error:', error);
+            }
+        };
+        
+        // Test read data function
+        window.testReadData = async function() {
+            const resultDiv = document.getElementById('readResult');
+            try {
+                resultDiv.textContent = 'Reading test data...';
+                resultDiv.className = 'result info';
+                
+                const dbRef = ref(db);
+                const snapshot = await get(child(dbRef, 'test'));
+                
+                if (snapshot.exists()) {
+                    resultDiv.textContent = '✅ Test data retrieved:\n' + JSON.stringify(snapshot.val(), null, 2);
+                    resultDiv.className = 'result success';
+                } else {
+                    resultDiv.textContent = 'ℹ️ No test data found in database';
+                    resultDiv.className = 'result info';
+                }
+            } catch (error) {
+                resultDiv.textContent = `❌ Read failed: ${error.message}`;
+                resultDiv.className = 'result error';
+                console.error('Read operation error:', error);
+            }
+        };
+        
+        // Auto-test connection on page load
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                window.testConnection();
+            }, 1000);
+        });
+    </script>
+</body>
+</html>

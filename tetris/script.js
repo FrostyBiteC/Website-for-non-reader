@@ -500,7 +500,7 @@ document.getElementById('menuBtn').addEventListener('click', () => {
     window.location.href = '../categories/index.html';
 });
 document.getElementById('homeBtn').addEventListener('click', () => {
-    window.location.href = '../main.html';
+    window.location.href = '../index.html';
 });
 
 // Keyboard controls
