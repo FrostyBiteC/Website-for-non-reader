@@ -290,6 +290,8 @@
                 playButton.classList.remove('disabled');
                 playButton.style.pointerEvents = 'auto';
                 playButton.style.opacity = '1';
+                // Remove any existing click listeners to allow default behavior
+                playButton.onclick = null;
                 
                 // Change navigation to show logout
                 loginLink.textContent = 'Logout';
