@@ -314,18 +314,13 @@ if ('IntersectionObserver' in window) {
     });
 }
 
-// Play button functionality
+// Play button functionality - only for pages with playBtn and categoryButtons
 document.addEventListener('DOMContentLoaded', function() {
-    console.log('DOM content loaded');
     const playBtn = document.getElementById('playBtn');
     const categoryButtons = document.getElementById('categoryButtons');
     
-    console.log('Play button:', playBtn);
-    console.log('Category buttons:', categoryButtons);
-    
     if (playBtn && categoryButtons) {
         playBtn.addEventListener('click', function() {
-            console.log('Play button clicked');
             if (categoryButtons.style.display === 'flex') {
                 categoryButtons.style.display = 'none';
                 playBtn.textContent = 'Play';
@@ -334,8 +329,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 playBtn.textContent = 'Hide Categories';
             }
         });
-    } else {
-        console.error('Elements not found');
     }
 });
 

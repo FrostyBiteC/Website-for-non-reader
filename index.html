@@ -313,11 +313,11 @@
                 playButton.style.pointerEvents = 'auto'; // Make button clickable
                 playButton.style.opacity = '0.7'; // Reduce opacity but keep clickable
                 
-                // Add event listener for click
-                playButton.addEventListener('click', function(e) {
+                // Remove existing event listeners first to prevent duplicates
+                playButton.onclick = function(e) {
                     e.preventDefault();
                     showAuthModal();
-                });
+                };
             }
         }
         
