@@ -86,7 +86,7 @@
         // Expose Firebase to global scope for script.js
         window.firebase = {
             auth,
-            signInWithEmailAndPassword,
+            signInWithEmailAndPassword: (email, password) => signInWithEmailAndPassword(auth, email, password),
             db,
             ref,
             set,

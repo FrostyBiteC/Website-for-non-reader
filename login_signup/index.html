@@ -90,7 +90,7 @@
         // Expose Firebase to global scope for script.js
         window.firebase = {
             auth,
-            createUserWithEmailAndPassword,
+            createUserWithEmailAndPassword: (email, password) => createUserWithEmailAndPassword(auth, email, password),
             db,
             ref,
             set,
