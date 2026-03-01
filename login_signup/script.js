@@ -129,7 +129,7 @@ function removeError(fieldId) {
     field.classList.add('success');
 }
 
- // Submit Sign Up Form
+  // Submit Sign Up Form
 function submitSignupForm() {
     const button = signupForm.querySelector('.btn-primary');
     const originalText = button.textContent;
@@ -137,6 +137,15 @@ function submitSignupForm() {
     button.textContent = 'Creating Account...';
     button.classList.add('loading');
     button.disabled = true;
+    
+    // Check if Firebase is initialized
+    if (!window.firebase || !window.firebase.createUserWithEmailAndPassword) {
+        showNotification('Firebase not initialized. Please refresh the page.', 'error');
+        button.textContent = originalText;
+        button.classList.remove('loading');
+        button.disabled = false;
+        return;
+    }
     
     const username = document.getElementById('username').value.trim();
     const password = document.getElementById('password').value;
@@ -188,7 +197,7 @@ function submitSignupForm() {
         });
 }
 
- // Submit Login Form
+  // Submit Login Form
 function submitLoginForm() {
     const button = loginForm.querySelector('.btn-primary');
     const originalText = button.textContent;
@@ -196,6 +205,15 @@ function submitLoginForm() {
     button.textContent = 'Logging In...';
     button.classList.add('loading');
     button.disabled = true;
+    
+    // Check if Firebase is initialized
+    if (!window.firebase || !window.firebase.signInWithEmailAndPassword) {
+        showNotification('Firebase not initialized. Please refresh the page.', 'error');
+        button.textContent = originalText;
+        button.classList.remove('loading');
+        button.disabled = false;
+        return;
+    }
     
     const username = document.getElementById('username').value.trim();
     const password = document.getElementById('password').value;

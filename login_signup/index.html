@@ -82,21 +82,29 @@
         };
 
         // Initialize Firebase
-        const app = initializeApp(firebaseConfig);
-        const analytics = getAnalytics(app);
-        const auth = getAuth(app);
-        const db = getDatabase(app);
-        
-        // Expose Firebase to global scope for script.js
-        window.firebase = {
-            auth,
-            createUserWithEmailAndPassword: (email, password) => createUserWithEmailAndPassword(auth, email, password),
-            db,
-            ref,
-            set,
-            get,
-            child
-        };
+        try {
+            const app = initializeApp(firebaseConfig);
+            const analytics = getAnalytics(app);
+            const auth = getAuth(app);
+            const db = getDatabase(app);
+            
+            console.log('Firebase initialized successfully');
+            
+            // Expose Firebase to global scope for script.js
+            window.firebase = {
+                auth,
+                createUserWithEmailAndPassword: (email, password) => createUserWithEmailAndPassword(auth, email, password),
+                db,
+                ref,
+                set,
+                get,
+                child
+            };
+            
+            console.log('Firebase services exposed to global scope');
+        } catch (error) {
+            console.error('Firebase initialization error:', error);
+        }
     </script>
     <script src="script.js"></script>
 </body>
