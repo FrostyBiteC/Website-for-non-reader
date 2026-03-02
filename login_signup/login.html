@@ -60,7 +60,7 @@
     <!-- Firebase SDK -->
     <script type="module">
         // Import the functions you need from the SDKs you need
-         import { initializeApp } from "https://www.gstatic.com/firebasejs/12.9.0/firebase-app.js";
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/12.9.0/firebase-app.js";
         import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.9.0/firebase-analytics.js";
         import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/12.9.0/firebase-auth.js";
         import { getDatabase, ref, set, get, child } from "https://www.gstatic.com/firebasejs/12.9.0/firebase-database.js";
@@ -98,7 +98,8 @@
                 ref,
                 set,
                 get,
-                child
+                child,
+                initialized: true
             };
             
             console.log('Firebase services exposed to global scope');
@@ -106,9 +107,6 @@
             console.log('createUserWithEmailAndPassword function:', typeof window.firebase.auth.createUserWithEmailAndPassword);
             console.log('signInWithEmailAndPassword function:', typeof window.firebase.auth.signInWithEmailAndPassword);
             console.log('auth object:', window.firebase.auth);
-            
-            // Signal that Firebase is ready
-            window.firebase.initialized = true;
         } catch (error) {
             console.error('Firebase initialization error:', error);
             window.firebase = {
