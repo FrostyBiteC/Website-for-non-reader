@@ -153,9 +153,9 @@ function submitSignupForm() {
     // Create a dummy email from username for Firebase Auth
     const email = `${username}@edulift.com`;
     
-    // Firebase Sign Up
-    window.firebase.createUserWithEmailAndPassword(email, password)
-        .then((userCredential) => {
+     // Firebase Sign Up
+     window.firebase.createUserWithEmailAndPassword(window.firebase.auth, email, password)
+         .then((userCredential) => {
             // Signed up successfully
             const user = userCredential.user;
             
@@ -221,9 +221,9 @@ function submitLoginForm() {
     // Create a dummy email from username for Firebase Auth
     const email = `${username}@edulift.com`;
     
-    // Firebase Login
-    window.firebase.signInWithEmailAndPassword(email, password)
-        .then((userCredential) => {
+     // Firebase Login
+     window.firebase.signInWithEmailAndPassword(window.firebase.auth, email, password)
+         .then((userCredential) => {
             // Signed in successfully
             const user = userCredential.user;
             
