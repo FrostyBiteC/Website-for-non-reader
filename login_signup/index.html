@@ -64,10 +64,10 @@
     <!-- Firebase SDK -->
     <script type="module">
         // Import the functions you need from the SDKs you need
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/12.10.0/firebase-app.js";
-        import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.10.0/firebase-analytics.js";
-        import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/12.10.0/firebase-auth.js";
-        import { getDatabase, ref, set, get, child } from "https://www.gstatic.com/firebasejs/12.10.0/firebase-database.js";
+         import { initializeApp } from "https://www.gstatic.com/firebasejs/12.9.0/firebase-app.js";
+        import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.9.0/firebase-analytics.js";
+        import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/12.9.0/firebase-auth.js";
+        import { getDatabase, ref, set, get, child } from "https://www.gstatic.com/firebasejs/12.9.0/firebase-database.js";
         
         // Your web app's Firebase configuration
         const firebaseConfig = {
@@ -93,15 +93,23 @@
             // Expose Firebase services directly to global scope with proper configuration
             window.firebase = {
                 app,
-                auth,
+                auth: {
+                    ...auth,
+                    createUserWithEmailAndPassword: (email, password) => createUserWithEmailAndPassword(auth, email, password),
+                    signInWithEmailAndPassword: (email, password) => signInWithEmailAndPassword(auth, email, password)
+                },
                 db,
-                createUserWithEmailAndPassword,
-                signInWithEmailAndPassword,
                 ref,
                 set,
                 get,
                 child
             };
+            
+            console.log('Firebase services exposed to global scope');
+            console.log('window.firebase object:', window.firebase);
+            console.log('createUserWithEmailAndPassword function:', typeof window.firebase.auth.createUserWithEmailAndPassword);
+            console.log('signInWithEmailAndPassword function:', typeof window.firebase.auth.signInWithEmailAndPassword);
+            console.log('auth object:', window.firebase.auth);
             
             console.log('Firebase services exposed to global scope');
             
