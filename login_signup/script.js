@@ -139,7 +139,7 @@ function submitSignupForm() {
     button.disabled = true;
     
     // Check if Firebase is initialized
-    if (!window.firebase || !window.firebase.createUserWithEmailAndPassword) {
+    if (!window.firebase || !window.firebase.initialized || !window.firebase.auth.createUserWithEmailAndPassword) {
         showNotification('Firebase not initialized. Please refresh the page.', 'error');
         button.textContent = originalText;
         button.classList.remove('loading');
@@ -153,9 +153,9 @@ function submitSignupForm() {
     // Create a dummy email from username for Firebase Auth
     const email = `${username}@edulift.com`;
     
-    // Firebase Sign Up
-    window.firebase.createUserWithEmailAndPassword(email, password)
-        .then((userCredential) => {
+      // Firebase Sign Up
+      window.firebase.auth.createUserWithEmailAndPassword(email, password)
+         .then((userCredential) => {
             // Signed up successfully
             const user = userCredential.user;
             
@@ -207,7 +207,7 @@ function submitLoginForm() {
     button.disabled = true;
     
     // Check if Firebase is initialized
-    if (!window.firebase || !window.firebase.signInWithEmailAndPassword) {
+    if (!window.firebase || !window.firebase.initialized || !window.firebase.auth.signInWithEmailAndPassword) {
         showNotification('Firebase not initialized. Please refresh the page.', 'error');
         button.textContent = originalText;
         button.classList.remove('loading');
@@ -221,9 +221,9 @@ function submitLoginForm() {
     // Create a dummy email from username for Firebase Auth
     const email = `${username}@edulift.com`;
     
-    // Firebase Login
-    window.firebase.signInWithEmailAndPassword(email, password)
-        .then((userCredential) => {
+      // Firebase Login
+      window.firebase.auth.signInWithEmailAndPassword(email, password)
+         .then((userCredential) => {
             // Signed in successfully
             const user = userCredential.user;
             

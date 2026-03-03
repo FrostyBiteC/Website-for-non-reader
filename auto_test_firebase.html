@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Firebase Realtime Database Auto Test</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 30px;
+        }
+        .test-section {
+            margin-bottom: 20px;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+        }
+        .test-section h2 {
+            margin-top: 0;
+            color: #555;
+            font-size: 18px;
+        }
+        .status {
+            margin-top: 10px;
+            padding: 10px;
+            border-radius: 5px;
+            font-weight: bold;
+            font-size: 14px;
+        }
+        .success {
+            background-color: #dff0d8;
+            color: #3c763d;
+            border: 1px solid #d6e9c6;
+        }
+        .error {
+            background-color: #f2dede;
+            color: #a94442;
+            border: 1px solid #ebccd1;
+        }
+        .info {
+            background-color: #d9edf7;
+            color: #31708f;
+            border: 1px solid #bce8f1;
+        }
+        .test-result {
+            margin-top: 10px;
+            padding: 10px;
+            background-color: #f8f9fa;
+            border-radius: 5px;
+            font-family: monospace;
+            font-size: 12px;
+            white-space: pre-wrap;
+        }
+        .loading {
+            display: inline-block;
+            width: 16px;
+            height: 16px;
+            border: 2px solid rgba(255,255,255,.3);
+            border-radius: 50%;
+            border-top-color: white;
+            animation: spin 1s ease-in-out infinite;
+            margin-right: 10px;
+        }
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        .progress {
+            width: 100%;
+            background-color: #f3f3f3;
+            border-radius: 5px;
+            margin-top: 10px;
+            height: 20px;
+        }
+        .progress-bar {
+            height: 100%;
+            background-color: #4CAF50;
+            border-radius: 5px;
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Firebase Realtime Database Auto Test</h1>
+        
+        <div class="test-section">
+            <h2>Test Progress</h2>
+            <div class="progress">
+                <div class="progress-bar" id="progressBar"></div>
+            </div>
+            <div id="currentTest" class="status info">Initializing...</div>
+        </div>
+
+        <div class="test-section">
+            <h2>1. Firebase Initialization</h2>
+            <div id="initStatus" class="status info">Initializing Firebase...</div>
+            <div id="initDetails" class="test-result"></div>
+        </div>
+
+        <div class="test-section">
+            <h2>2. Database Connection Test</h2>
+            <div id="connectionStatus" class="status info">Testing connection...</div>
+            <div id="connectionDetails" class="test-result"></div>
+        </div>
+
+        <div class="test-section">
+            <h2>3. Write Operation Test</h2>
+            <div id="writeStatus" class="status info">Testing write operation...</div>
+            <div id="writeDetails" class="test-result"></div>
+        </div>
+
+        <div class="test-section">
+            <h2>4. Read Operation Test</h2>
+            <div id="readStatus" class="status info">Testing read operation...</div>
+            <div id="readDetails" class="test-result"></div>
+        </div>
+
+        <div class="test-section">
+            <h2>5. Test Results Summary</h2>
+            <div id="summary" class="status info">All tests pending...</div>
+        </div>
+    </div>
+
+    <!-- Firebase SDK -->
+    <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/12.10.0/firebase-app.js";
+        import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.10.0/firebase-analytics.js";
+        import { getDatabase, ref, set, get, child } from "https://www.gstatic.com/firebasejs/12.10.0/firebase-database.js";
+        
+        // Your web app's Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyDNgIWKNESwLeL8unyI1Pgr_oqgtFy2c0s",
+            authDomain: "edulift-dac4d.firebaseapp.com",
+            databaseURL: "https://edulift-dac4d-default-rtdb.firebaseio.com",
+            projectId: "edulift-dac4d",
+            storageBucket: "edulift-dac4d.firebasestorage.app",
+            messagingSenderId: "281037743494",
+            appId: "1:281037743494:web:7e51661c9bb8e3faf43807",
+            measurementId: "G-TLE0PBSX3P"
+        };
+
+        // DOM Elements
+        const initStatus = document.getElementById('initStatus');
+        const initDetails = document.getElementById('initDetails');
+        const connectionStatus = document.getElementById('connectionStatus');
+        const connectionDetails = document.getElementById('connectionDetails');
+        const writeStatus = document.getElementById('writeStatus');
+        const writeDetails = document.getElementById('writeDetails');
+        const readStatus = document.getElementById('readStatus');
+        const readDetails = document.getElementById('readDetails');
+        const summary = document.getElementById('summary');
+        const currentTest = document.getElementById('currentTest');
+        const progressBar = document.getElementById('progressBar');
+
+        // Initialize Firebase
+        let db;
+        let app;
+
+        async function updateProgress(percent, message) {
+            progressBar.style.width = percent + '%';
+            currentTest.textContent = message;
+        }
+
+        async function runAllTests() {
+            let testFailed = false;
+
+            try {
+                // Test 1: Initialize Firebase
+                await updateProgress(20, 'Initializing Firebase...');
+                app = initializeApp(firebaseConfig);
+                const analytics = getAnalytics(app);
+                db = getDatabase(app);
+                
+                initStatus.className = 'status success';
+                initStatus.textContent = '✅ Firebase initialized successfully';
+                initDetails.textContent = `Project ID: ${firebaseConfig.projectId}\nDatabase URL: ${firebaseConfig.databaseURL}`;
+
+                // Test 2: Database Connection
+                await updateProgress(40, 'Testing database connection...');
+                const dbRef = ref(db);
+                const snapshot = await get(child(dbRef, 'test'));
+                
+                connectionStatus.className = 'status success';
+                connectionStatus.textContent = '✅ Database connection successful!';
+                if (snapshot.exists()) {
+                    connectionDetails.textContent = 'Data found in test path: ' + JSON.stringify(snapshot.val());
+                } else {
+                    connectionDetails.textContent = 'No existing data in test path';
+                }
+
+                // Test 3: Write Operation
+                await updateProgress(60, 'Testing write operation...');
+                const testData = {
+                    testId: `test-${Date.now()}`,
+                    message: 'Hello Firebase Realtime Database!',
+                    timestamp: Date.now(),
+                    randomValue: Math.random()
+                };
+                
+                const testRef = ref(db, 'test-connection/' + testData.testId);
+                await set(testRef, testData);
+                
+                writeStatus.className = 'status success';
+                writeStatus.textContent = '✅ Write operation successful!';
+                writeDetails.textContent = `Data written to: test-connection/${testData.testId}\n${JSON.stringify(testData, null, 2)}`;
+
+                // Test 4: Read Operation
+                await updateProgress(80, 'Testing read operation...');
+                const readSnapshot = await get(child(dbRef, 'test-connection'));
+                
+                if (readSnapshot.exists()) {
+                    readStatus.className = 'status success';
+                    readStatus.textContent = '✅ Read operation successful!';
+                    readDetails.textContent = `Data retrieved from test-connection:\n${JSON.stringify(readSnapshot.val(), null, 2)}`;
+                } else {
+                    throw new Error('No data found after write operation');
+                }
+
+                // All tests passed
+                await updateProgress(100, 'All tests completed!');
+                summary.className = 'status success';
+                summary.textContent = '✅ All tests passed! Firebase Realtime Database is working correctly.';
+
+            } catch (error) {
+                testFailed = true;
+                await updateProgress(100, 'Test failed!');
+                
+                if (!db) {
+                    initStatus.className = 'status error';
+                    initStatus.textContent = '❌ Firebase initialization failed';
+                    initDetails.textContent = `Error: ${error.message}`;
+                } else if (!connectionStatus.textContent.includes('✅')) {
+                    connectionStatus.className = 'status error';
+                    connectionStatus.textContent = '❌ Connection failed';
+                    connectionDetails.textContent = `Error: ${error.message}`;
+                } else if (!writeStatus.textContent.includes('✅')) {
+                    writeStatus.className = 'status error';
+                    writeStatus.textContent = '❌ Write operation failed';
+                    writeDetails.textContent = `Error: ${error.message}`;
+                } else {
+                    readStatus.className = 'status error';
+                    readStatus.textContent = '❌ Read operation failed';
+                    readDetails.textContent = `Error: ${error.message}`;
+                }
+                
+                summary.className = 'status error';
+                summary.textContent = '❌ Test failed: ' + error.message;
+            }
+        }
+
+        // Run all tests when DOM is loaded
+        document.addEventListener('DOMContentLoaded', () => {
+            setTimeout(runAllTests, 500);
+        });
+
+    </script>
+</body>
+</html>

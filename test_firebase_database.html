@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Firebase Realtime Database Test</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 30px;
+        }
+        .test-section {
+            margin-bottom: 30px;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+        }
+        .test-section h2 {
+            margin-top: 0;
+            color: #555;
+        }
+        .btn {
+            background-color: #4CAF50;
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            margin: 5px;
+        }
+        .btn:hover {
+            background-color: #45a049;
+        }
+        .btn:disabled {
+            background-color: #cccccc;
+            cursor: not-allowed;
+        }
+        .status {
+            margin-top: 15px;
+            padding: 10px;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+        .success {
+            background-color: #dff0d8;
+            color: #3c763d;
+            border: 1px solid #d6e9c6;
+        }
+        .error {
+            background-color: #f2dede;
+            color: #a94442;
+            border: 1px solid #ebccd1;
+        }
+        .info {
+            background-color: #d9edf7;
+            color: #31708f;
+            border: 1px solid #bce8f1;
+        }
+        .test-result {
+            margin-top: 10px;
+            padding: 10px;
+            background-color: #f8f9fa;
+            border-radius: 5px;
+            font-family: monospace;
+            font-size: 14px;
+        }
+        .loading {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(255,255,255,.3);
+            border-radius: 50%;
+            border-top-color: white;
+            animation: spin 1s ease-in-out infinite;
+        }
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Firebase Realtime Database Connection Test</h1>
+        
+        <div class="test-section">
+            <h2>1. Firebase Initialization</h2>
+            <div id="initStatus" class="status info">Initializing Firebase...</div>
+            <div id="initDetails" class="test-result"></div>
+        </div>
+
+        <div class="test-section">
+            <h2>2. Database Operations Test</h2>
+            <button id="testWriteBtn" class="btn" disabled>Test Write Operation</button>
+            <button id="testReadBtn" class="btn" disabled>Test Read Operation</button>
+            <div id="dbStatus" class="status info">Waiting to start tests...</div>
+            <div id="dbDetails" class="test-result"></div>
+        </div>
+
+        <div class="test-section">
+            <h2>3. Test Results Summary</h2>
+            <div id="summary" class="status info">All tests pending...</div>
+        </div>
+    </div>
+
+    <!-- Firebase SDK -->
+    <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/12.10.0/firebase-app.js";
+        import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.10.0/firebase-analytics.js";
+        import { getDatabase, ref, set, get, child } from "https://www.gstatic.com/firebasejs/12.10.0/firebase-database.js";
+        
+        // Your web app's Firebase configuration (from login_signup/index.html)
+        const firebaseConfig = {
+            apiKey: "AIzaSyDNgIWKNESwLeL8unyI1Pgr_oqgtFy2c0s",
+            authDomain: "edulift-dac4d.firebaseapp.com",
+            databaseURL: "https://edulift-dac4d-default-rtdb.firebaseio.com",
+            projectId: "edulift-dac4d",
+            storageBucket: "edulift-dac4d.firebasestorage.app",
+            messagingSenderId: "281037743494",
+            appId: "1:281037743494:web:7e51661c9bb8e3faf43807",
+            measurementId: "G-TLE0PBSX3P"
+        };
+
+        // DOM Elements
+        const initStatus = document.getElementById('initStatus');
+        const initDetails = document.getElementById('initDetails');
+        const dbStatus = document.getElementById('dbStatus');
+        const dbDetails = document.getElementById('dbDetails');
+        const summary = document.getElementById('summary');
+        const testWriteBtn = document.getElementById('testWriteBtn');
+        const testReadBtn = document.getElementById('testReadBtn');
+
+        // Initialize Firebase
+        let db;
+        let app;
+
+        async function initializeFirebase() {
+            try {
+                app = initializeApp(firebaseConfig);
+                const analytics = getAnalytics(app);
+                db = getDatabase(app);
+                
+                initStatus.className = 'status success';
+                initStatus.textContent = '✅ Firebase initialized successfully';
+                initDetails.textContent = `Project ID: ${firebaseConfig.projectId}\nDatabase URL: ${firebaseConfig.databaseURL}`;
+                
+                // Enable test buttons
+                testWriteBtn.disabled = false;
+                testReadBtn.disabled = false;
+                
+                dbStatus.textContent = 'Firebase initialized - ready to run tests';
+                
+                return true;
+            } catch (error) {
+                initStatus.className = 'status error';
+                initStatus.textContent = '❌ Firebase initialization failed';
+                initDetails.textContent = `Error: ${error.message}`;
+                summary.className = 'status error';
+                summary.textContent = '❌ Test failed: Firebase initialization error';
+                return false;
+            }
+        }
+
+        // Test database write operation
+        async function testWriteOperation() {
+            testWriteBtn.disabled = true;
+            testReadBtn.disabled = true;
+            dbStatus.className = 'status info';
+            dbStatus.textContent = 'Writing test data to database...';
+            
+            try {
+                const testData = {
+                    testId: `test-${Date.now()}`,
+                    message: 'Hello Firebase Realtime Database!',
+                    timestamp: Date.now(),
+                    randomValue: Math.random()
+                };
+                
+                const testRef = ref(db, 'test-connection/' + testData.testId);
+                await set(testRef, testData);
+                
+                dbStatus.className = 'status success';
+                dbStatus.textContent = '✅ Write operation successful!';
+                dbDetails.textContent = `Data written to: test-connection/${testData.testId}\n${JSON.stringify(testData, null, 2)}`;
+                
+                // Enable read button
+                testReadBtn.disabled = false;
+                
+            } catch (error) {
+                dbStatus.className = 'status error';
+                dbStatus.textContent = '❌ Write operation failed';
+                dbDetails.textContent = `Error: ${error.message}`;
+                summary.className = 'status error';
+                summary.textContent = '❌ Test failed: Write operation error';
+            } finally {
+                testWriteBtn.disabled = false;
+            }
+        }
+
+        // Test database read operation
+        async function testReadOperation() {
+            testReadBtn.disabled = true;
+            testWriteBtn.disabled = true;
+            dbStatus.className = 'status info';
+            dbStatus.textContent = 'Reading test data from database...';
+            
+            try {
+                const dbRef = ref(db);
+                const snapshot = await get(child(dbRef, 'test-connection'));
+                
+                if (snapshot.exists()) {
+                    const data = snapshot.val();
+                    dbStatus.className = 'status success';
+                    dbStatus.textContent = '✅ Read operation successful!';
+                    dbDetails.textContent = `Data retrieved from test-connection:\n${JSON.stringify(data, null, 2)}`;
+                    
+                    summary.className = 'status success';
+                    summary.textContent = '✅ All tests passed! Firebase Realtime Database is working correctly.';
+                } else {
+                    dbStatus.className = 'status error';
+                    dbStatus.textContent = '❌ No data found in test-connection path';
+                    dbDetails.textContent = 'Please run the write test first to create test data';
+                    summary.className = 'status error';
+                    summary.textContent = '⚠️ Test warning: No data found in database';
+                }
+                
+            } catch (error) {
+                dbStatus.className = 'status error';
+                dbStatus.textContent = '❌ Read operation failed';
+                dbDetails.textContent = `Error: ${error.message}`;
+                summary.className = 'status error';
+                summary.textContent = '❌ Test failed: Read operation error';
+            } finally {
+                testReadBtn.disabled = false;
+                testWriteBtn.disabled = false;
+            }
+        }
+
+        // Event listeners
+        testWriteBtn.addEventListener('click', testWriteOperation);
+        testReadBtn.addEventListener('click', testReadOperation);
+
+        // Initialize Firebase on page load
+        document.addEventListener('DOMContentLoaded', initializeFirebase);
+
+    </script>
+</body>
+</html>
