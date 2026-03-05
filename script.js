@@ -60,18 +60,9 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     }
 });
 
-// Contact Form Submission
-contactForm.addEventListener('submit', (e) => {
-    e.preventDefault();
-    const formData = new FormData(contactForm);
-    const data = Object.fromEntries(formData);
-    
-    // Show success message
-    showNotification('Thank you for your message! We will get back to you soon.', 'success');
-    
-    // Reset form
-    contactForm.reset();
-});
+// Contact Form Submission - Handled by Firebase in index.html
+// The contact form submission is now handled by the Firebase Firestore integration
+// in index.html to save data to the 'contacts' collection
 
 // Newsletter Form Submission
 newsletterForm.addEventListener('submit', (e) => {

@@ -255,6 +255,7 @@
         import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.9.0/firebase-analytics.js";
         import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/12.9.0/firebase-auth.js";
         import { getDatabase, ref, set, get, child } from "https://www.gstatic.com/firebasejs/12.9.0/firebase-database.js";
+        import { getFirestore, collection, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/12.9.0/firebase-firestore.js";
         
         // Your web app's Firebase configuration
         const firebaseConfig = {
@@ -273,6 +274,7 @@
         const analytics = getAnalytics(app);
         const auth = getAuth(app);
         const db = getDatabase(app);
+        const firestore = getFirestore(app);
         
         // Check if user is logged in
         function checkAuth() {
@@ -417,11 +419,63 @@
             });
         }
 
+        // Contact Form Submission Handler - Save to Firestore
+        function handleContactFormSubmit(e) {
+            e.preventDefault();
+            
+            // Get form elements
+            const nameInput = document.getElementById('name');
+            const emailInput = document.getElementById('email');
+            const phoneInput = document.getElementById('phone');
+            const messageInput = document.getElementById('message');
+            
+            // Get form values
+            const name = nameInput.value.trim();
+            const email = emailInput.value.trim();
+            const phone = phoneInput.value.trim();
+            const message = messageInput.value.trim();
+            
+            // Basic validation
+            if (!name || !email || !phone || !message) {
+                alert('Please fill in all fields.');
+                return;
+            }
+            
+            // Create contact data object
+            const contactData = {
+                name: name,
+                email: email,
+                phone: phone,
+                message: message,
+                createdAt: serverTimestamp()
+            };
+            
+            // Add document to Firestore 'contacts' collection
+            addDoc(collection(firestore, 'contacts'), contactData)
+                .then((docRef) => {
+                    console.log('Contact form submitted successfully! Document ID:', docRef.id);
+                    alert('Thank you for your message! We will get back to you soon.');
+                    
+                    // Reset form
+                    document.querySelector('.contact-form').reset();
+                })
+                .catch((error) => {
+                    console.error('Error submitting contact form:', error);
+                    alert('Sorry, there was an error sending your message. Please try again later.');
+                });
+        }
+        
         // Check auth state on page load
         document.addEventListener('DOMContentLoaded', function() {
             checkAuth();
             // Test database connection on page load
             testDatabaseConnection();
+            
+            // Attach contact form submission handler
+            const contactForm = document.querySelector('.contact-form');
+            if (contactForm) {
+                contactForm.addEventListener('submit', handleContactFormSubmit);
+            }
         });
     </script>
 
