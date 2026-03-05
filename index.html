@@ -203,6 +203,7 @@
                         <textarea id="message" name="message" rows="5" required></textarea>
                     </div>
                     <button type="submit" class="btn btn-primary">Send Message</button>
+                    <button type="button" id="testFirestoreBtn" class="btn btn-test">🧪 Test Firestore</button>
                 </form>
             </div>
         </div>
@@ -419,6 +420,60 @@
             });
         }
 
+        // Test Firestore Contact Form - Auto-fill and submit with dummy data
+        function testFirestoreContactForm() {
+            console.log('🧪 Starting Firestore Contact Form Test...');
+            
+            // Dummy test data
+            const testData = {
+                name: 'Test User',
+                email: 'test@example.com',
+                phone: '123-456-7890',
+                message: 'This is a test message from the Firestore test function'
+            };
+            
+            console.log('📋 Filling form with test data:', testData);
+            
+            // Get form elements and fill with test data
+            const nameInput = document.getElementById('name');
+            const emailInput = document.getElementById('email');
+            const phoneInput = document.getElementById('phone');
+            const messageInput = document.getElementById('message');
+            
+            // Auto-fill the form
+            nameInput.value = testData.name;
+            emailInput.value = testData.email;
+            phoneInput.value = testData.phone;
+            messageInput.value = testData.message;
+            
+            // Add visual feedback
+            nameInput.style.backgroundColor = '#e8f5e9';
+            emailInput.style.backgroundColor = '#e8f5e9';
+            phoneInput.style.backgroundColor = '#e8f5e9';
+            messageInput.style.backgroundColor = '#e8f5e9';
+            
+            console.log('✅ Form auto-filled with test data');
+            console.log('📤 Submitting form to Firestore...');
+            
+            // Create and dispatch submit event on the form
+            const contactForm = document.querySelector('.contact-form');
+            const submitEvent = new Event('submit', {
+                bubbles: true,
+                cancelable: true
+            });
+            
+            // Dispatch the event to trigger the form submission
+            contactForm.dispatchEvent(submitEvent);
+            
+            // Reset visual feedback after submission
+            setTimeout(() => {
+                nameInput.style.backgroundColor = '';
+                emailInput.style.backgroundColor = '';
+                phoneInput.style.backgroundColor = '';
+                messageInput.style.backgroundColor = '';
+            }, 2000);
+        }
+        
         // Contact Form Submission Handler - Save to Firestore
         function handleContactFormSubmit(e) {
             e.preventDefault();
@@ -453,8 +508,19 @@
             // Add document to Firestore 'contacts' collection
             addDoc(collection(firestore, 'contacts'), contactData)
                 .then((docRef) => {
-                    console.log('Contact form submitted successfully! Document ID:', docRef.id);
-                    alert('Thank you for your message! We will get back to you soon.');
+                    // Check if this is test data
+                    const isTestData = name === 'Test User' && email === 'test@example.com';
+                    
+                    if (isTestData) {
+                        console.log('✅ TEST SUCCESS! Test data saved to Firestore!');
+                        console.log('📄 Document ID:', docRef.id);
+                        console.log('📊 Collection: contacts');
+                        console.log('📝 Test Data:', contactData);
+                        alert('🧪 TEST SUCCESS! Test data saved to Firestore!\n\nDocument ID: ' + docRef.id + '\nCheck your Firebase console to verify.');
+                    } else {
+                        console.log('Contact form submitted successfully! Document ID:', docRef.id);
+                        alert('Thank you for your message! We will get back to you soon.');
+                    }
                     
                     // Reset form
                     document.querySelector('.contact-form').reset();
@@ -476,15 +542,55 @@
             if (contactForm) {
                 contactForm.addEventListener('submit', handleContactFormSubmit);
             }
+            
+            // Attach test Firestore button handler
+            const testFirestoreBtn = document.getElementById('testFirestoreBtn');
+            if (testFirestoreBtn) {
+                testFirestoreBtn.addEventListener('click', testFirestoreContactForm);
+                console.log('🧪 Test Firestore button initialized');
+            }
         });
     </script>
 
-    <!-- Add styles for disabled button -->
+    <!-- Add styles for disabled button and test button -->
     <style>
         .btn-primary.disabled {
             cursor: not-allowed;
             background-color: #ccc;
             border-color: #ccc;
+        }
+        
+        /* Test Firestore Button Styles */
+        .btn-test {
+            background: linear-gradient(135deg, #9c27b0, #673ab7);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-top: 15px;
+            margin-left: 10px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(156, 39, 176, 0.3);
+        }
+        
+        .btn-test:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(156, 39, 176, 0.4);
+            background: linear-gradient(135deg, #ab47bc, #7e57c2);
+        }
+        
+        .btn-test:active {
+            transform: translateY(0);
+        }
+        
+        @media (max-width: 768px) {
+            .btn-test {
+                margin-left: 0;
+                width: 100%;
+            }
         }
     </style>
 
