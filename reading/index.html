@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Reading - Kids Learning</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700&display=swap">
+    <link rel="stylesheet" href="styles.css">
     <style>
         * {
             margin: 0;
@@ -14,7 +15,7 @@
 
         body {
             font-family: 'Nunito', sans-serif;
-            background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+            background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
             min-height: 100vh;
             display: flex;
             flex-direction: column;
@@ -40,169 +41,169 @@
         }
 
         .logo {
-            font-size: 3rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            justify-content: center;
+            margin-bottom: 15px;
+        }
+
+        .logo-image {
+            width: 40px;
+            height: 40px;
+            object-fit: contain;
+            border-radius: 50%;
+        }
+
+        .logo-text {
+            font-size: 2rem;
             font-weight: 700;
-            color: #11998e;
-            margin-bottom: 10px;
+            color: #ff6b6b;
         }
 
         .header h1 {
             font-size: 2.5rem;
-            color: #333;
-            margin-bottom: 15px;
+            color: #2c3e50;
+            margin-bottom: 10px;
             font-weight: 700;
         }
 
         .header p {
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             color: #666;
             font-weight: 300;
         }
 
-        .story-container {
+        .reading-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .reading-card {
             background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
             border-radius: 20px;
-            padding: 30px;
-            margin-bottom: 30px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-        }
-
-        .story-title {
-            font-size: 1.8rem;
-            color: #11998e;
-            margin-bottom: 20px;
-            font-weight: 700;
+            padding: 35px;
             text-align: center;
-        }
-
-        .story-content {
-            font-size: 1.1rem;
-            line-height: 1.8;
-            color: #666;
-            margin-bottom: 20px;
-        }
-
-        .story-characters {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 15px;
-            margin-bottom: 20px;
-            justify-content: center;
-        }
-
-        .character-card {
-            background: white;
-            border-radius: 15px;
-            padding: 15px;
-            text-align: center;
-            min-width: 120px;
-            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
-        }
-
-        .character-emoji {
-            font-size: 2rem;
-            margin-bottom: 10px;
-        }
-
-        .character-name {
-            font-size: 1rem;
-            color: #333;
-            font-weight: 600;
-        }
-
-        .read-aloud-btn {
-            background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
-            color: white;
-            border: none;
-            padding: 15px 30px;
-            border-radius: 50px;
-            font-size: 1.1rem;
-            font-weight: 600;
             cursor: pointer;
             transition: all 0.3s ease;
+            border: 3px solid transparent;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            text-decoration: none;
             display: block;
-            margin: 20px auto 0;
-            box-shadow: 0 10px 30px rgba(17, 153, 142, 0.4);
         }
 
-        .read-aloud-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 15px 40px rgba(17, 153, 142, 0.5);
+        .reading-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
         }
 
-        .read-aloud-btn:active {
-            transform: translateY(0);
+        .reading-card.abakada {
+            background: linear-gradient(135deg, #ffeaa7 0%, #fdcb6e 100%);
         }
 
-        .word-highlight {
-            background: linear-gradient(120deg, #fef782 0%, #fef782 100%);
-            background-repeat: no-repeat;
-            background-size: 100% 30%;
-            background-position: 0 80%;
-            padding: 0 3px;
-            cursor: pointer;
-            transition: all 0.2s ease;
+        .reading-card.abakada:hover {
+            border-color: #fdcb6e;
+            box-shadow: 0 15px 35px rgba(253, 203, 110, 0.4);
         }
 
-        .word-highlight:hover {
-            background-size: 100% 50%;
-            background-position: 0 70%;
-            color: #11998e;
-            font-weight: 600;
+        .reading-card.filipino {
+            background: linear-gradient(135deg, #a8e6cf 0%, #88d8b0 100%);
         }
 
-        .category-link {
+        .reading-card.filipino:hover {
+            border-color: #88d8b0;
+            box-shadow: 0 15px 35px rgba(136, 216, 176, 0.4);
+        }
+
+        .reading-card.english {
+            background: linear-gradient(135deg, #ffd3e1 0%, #ff9eb5 100%);
+        }
+
+        .reading-card.english:hover {
+            border-color: #ff9eb5;
+            box-shadow: 0 15px 35px rgba(255, 158, 181, 0.4);
+        }
+
+        .reading-icon {
+            font-size: 4rem;
+            margin-bottom: 20px;
+        }
+
+        .reading-title {
+            font-size: 1.8rem;
+            color: #2c3e50;
+            margin-bottom: 12px;
+            font-weight: 700;
+        }
+
+        .reading-description {
+            font-size: 1.05rem;
+            color: #555;
+            line-height: 1.5;
+        }
+
+        .back-button {
             display: block;
-            background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+            background: linear-gradient(135deg, #6c757d 0%, #495057 100%);
             color: white;
             text-decoration: none;
-            padding: 15px 30px;
+            padding: 15px 35px;
             border-radius: 50px;
             font-size: 1.2rem;
             font-weight: 600;
             text-align: center;
-            margin-top: 30px;
+            margin-top: 40px;
             transition: all 0.3s ease;
-            box-shadow: 0 10px 30px rgba(17, 153, 142, 0.4);
+            box-shadow: 0 10px 30px rgba(108, 117, 125, 0.4);
+            width: fit-content;
+            margin-left: auto;
+            margin-right: auto;
         }
 
-        .category-link:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 15px 40px rgba(17, 153, 142, 0.5);
+        .back-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(108, 117, 125, 0.5);
         }
 
-        .category-link:active {
+        .back-button:active {
             transform: translateY(0);
         }
 
         @media (max-width: 768px) {
             .container {
-                padding: 20px;
+                padding: 25px;
             }
 
             .header h1 {
                 font-size: 2rem;
             }
 
-            .logo {
-                font-size: 2.5rem;
-            }
-
-            .story-title {
+            .logo-text {
                 font-size: 1.5rem;
             }
 
-            .story-content {
+            .reading-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .reading-card {
+                padding: 25px;
+            }
+
+            .reading-icon {
+                font-size: 3rem;
+            }
+
+            .reading-title {
+                font-size: 1.5rem;
+            }
+
+            .back-button {
+                padding: 12px 25px;
                 font-size: 1rem;
-            }
-
-            .character-card {
-                min-width: 100px;
-                padding: 12px;
-            }
-
-            .character-emoji {
-                font-size: 1.5rem;
             }
         }
 
@@ -212,7 +213,7 @@
             }
 
             .container {
-                padding: 15px;
+                padding: 20px;
                 border-radius: 20px;
             }
 
@@ -220,39 +221,24 @@
                 font-size: 1.8rem;
             }
 
-            .logo {
-                font-size: 2rem;
-            }
-
-            .story-title {
+            .logo-text {
                 font-size: 1.3rem;
             }
 
-            .story-content {
+            .reading-card {
+                padding: 20px;
+            }
+
+            .reading-icon {
+                font-size: 2.5rem;
+            }
+
+            .reading-title {
+                font-size: 1.3rem;
+            }
+
+            .reading-description {
                 font-size: 0.95rem;
-            }
-
-            .character-card {
-                min-width: 90px;
-                padding: 10px;
-            }
-
-            .character-emoji {
-                font-size: 1.3rem;
-            }
-
-            .character-name {
-                font-size: 0.9rem;
-            }
-
-            .read-aloud-btn {
-                padding: 12px 20px;
-                font-size: 1rem;
-            }
-
-            .category-link {
-                padding: 12px 20px;
-                font-size: 1rem;
             }
         }
     </style>
@@ -260,116 +246,35 @@
 <body>
     <div class="container">
         <div class="header">
-            <div class="logo">📖</div>
-            <h1>Reading Fun</h1>
-            <p>Explore exciting stories and learn new words!</p>
+            <div class="logo">
+                <img src="../cropped_circle_image.png" alt="Edulift Logo" class="logo-image">
+                <span class="logo-text">EDULIFT</span>
+            </div>
+            <h1>Reading Center</h1>
+            <p>Choose what you want to read and learn today!</p>
         </div>
 
-        <div class="story-container">
-            <h2 class="story-title">The Animal Friends Adventure</h2>
-            
-            <div class="story-characters">
-                <div class="character-card">
-                    <div class="character-emoji">🐰</div>
-                    <div class="character-name">Bunny</div>
-                </div>
-                <div class="character-card">
-                    <div class="character-emoji">🦊</div>
-                    <div class="character-name">Fox</div>
-                </div>
-                <div class="character-card">
-                    <div class="character-emoji">🐻</div>
-                    <div class="character-name">Bear</div>
-                </div>
-            </div>
+        <div class="reading-grid">
+            <a href="abakada.html" class="reading-card abakada">
+                <div class="reading-icon">🔤</div>
+                <h2 class="reading-title">Abakada</h2>
+                <p class="reading-description">Learn the traditional Filipino alphabet with colorful cards and pronunciation guides!</p>
+            </a>
 
-            <div class="story-content">
-                <p>Once upon a time, in a beautiful forest, there lived three best friends:</p>
-                <p><span class="word-highlight">Bunny</span>, <span class="word-highlight">Fox</span>, and <span class="word-highlight">Bear</span>.</p>
-                <p>They loved to play together and explore the woods. One sunny day, they decided to go on an adventure to find the legendary <span class="word-highlight">Golden Carrot</span>.</p>
-                <p>Along the way, they met many friendly animals and learned important lessons about <span class="word-highlight">friendship</span> and <span class="word-highlight">teamwork</span>.</p>
-                <p>Their journey taught them that working together makes everything possible!</p>
-            </div>
+            <a href="filipino.html" class="reading-card filipino">
+                <div class="reading-icon">📚</div>
+                <h2 class="reading-title">Filipino</h2>
+                <p class="reading-description">Read fun stories and passages in Filipino language with audio support!</p>
+            </a>
 
-            <button class="read-aloud-btn" id="readAloudBtn">🔊 Read Aloud</button>
+            <a href="english.html" class="reading-card english">
+                <div class="reading-icon">📖</div>
+                <h2 class="reading-title">English</h2>
+                <p class="reading-description">Explore exciting English stories and improve your reading skills!</p>
+            </a>
         </div>
 
-        <a href="../index.html" class="category-link">← Back to Main Menu</a>
+        <a href="../categories/index.html" class="back-button">← Back to Categories</a>
     </div>
-
-    <script>
-        // Read aloud functionality
-        document.getElementById('readAloudBtn').addEventListener('click', function() {
-            const button = this;
-            const originalText = button.textContent;
-            
-            // Change button text to indicate reading
-            button.textContent = '🔊 Reading...';
-            button.disabled = true;
-            
-            // Get story text
-            const storyText = document.querySelector('.story-content').textContent;
-            
-            // Check if SpeechSynthesis is available
-            if ('speechSynthesis' in window) {
-                // Create speech utterance
-                const utterance = new SpeechSynthesisUtterance(storyText);
-                utterance.lang = 'en-US';
-                utterance.rate = 0.9;
-                utterance.pitch = 1.1;
-                
-                // Event when speech ends
-                utterance.onend = function() {
-                    button.textContent = originalText;
-                    button.disabled = false;
-                };
-                
-                // Event for errors
-                utterance.onerror = function() {
-                    button.textContent = originalText;
-                    button.disabled = false;
-                    alert('Sorry, speech synthesis is not available.');
-                };
-                
-                // Speak the text
-                speechSynthesis.speak(utterance);
-            } else {
-                button.textContent = originalText;
-                button.disabled = false;
-                alert('Sorry, speech synthesis is not available in your browser.');
-            }
-        });
-
-        // Highlight word on click
-        document.querySelectorAll('.word-highlight').forEach(word => {
-            word.addEventListener('click', function() {
-                // Remove previous highlight
-                document.querySelectorAll('.word-highlight').forEach(w => {
-                    w.style.background = 'linear-gradient(120deg, #fef782 0%, #fef782 100%)';
-                    w.style.backgroundRepeat = 'no-repeat';
-                    w.style.backgroundSize = '100% 30%';
-                    w.style.backgroundPosition = '0 80%';
-                });
-                
-                // Highlight clicked word
-                this.style.background = 'linear-gradient(120deg, #38ef7d 0%, #38ef7d 100%)';
-                this.style.backgroundRepeat = 'no-repeat';
-                this.style.backgroundSize = '100% 50%';
-                this.style.backgroundPosition = '0 70%';
-                this.style.color = 'white';
-                this.style.fontWeight = '600';
-                
-                // Speak the word
-                if ('speechSynthesis' in window) {
-                    const wordText = this.textContent;
-                    const utterance = new SpeechSynthesisUtterance(wordText);
-                    utterance.lang = 'en-US';
-                    utterance.rate = 0.8;
-                    utterance.pitch = 1.2;
-                    speechSynthesis.speak(utterance);
-                }
-            });
-        });
-    </script>
 </body>
 </html>

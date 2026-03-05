@@ -599,61 +599,273 @@ body {
     }
 
     .welcome-screen h1,
-    .pause-screen h2,
     .complete-screen h2,
     .gameover-screen h2 {
-        font-size: 2rem;
+        font-size: 1.8rem;
     }
 
     .game-grid {
-        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        grid-template-columns: repeat(2, 1fr);
         gap: 1rem;
     }
 
     .number-card {
-        height: 160px;
+        height: 150px;
     }
 
     .card-icon {
         font-size: 2rem;
     }
 
-    .card-number {
-        font-size: 1rem;
-    }
-
     .complete-stats {
-        grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-        gap: 1rem;
-        padding: 1.5rem;
+        grid-template-columns: repeat(3, 1fr);
+        padding: 1rem;
     }
 }
 
 @media (max-width: 480px) {
-    .game-grid {
-        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-        gap: 0.5rem;
-    }
-
-    .number-card {
-        height: 140px;
-    }
-
-    .card-icon {
+    .logo-text {
         font-size: 1.5rem;
     }
 
-    .card-number {
-        font-size: 0.875rem;
-    }
-
-    .welcome-stats {
-        grid-template-columns: 1fr;
+    .game-info {
         gap: 1rem;
     }
 
-    .complete-stats {
-        grid-template-columns: 1fr;
-        gap: 1rem;
+    .level-number,
+    .score-number,
+    .lives-number {
+        font-size: 1.2rem;
+    }
+
+    .game-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* ========================================
+   SHARED STYLES FOR COUNTING MODULE
+   ======================================== */
+
+/* TTS Toggle Switch */
+.tts-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 20px;
+    padding: 10px 20px;
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    border-radius: 50px;
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.tts-toggle label {
+    font-weight: 600;
+    color: #2c3e50;
+    cursor: pointer;
+    font-family: 'Nunito', sans-serif;
+}
+
+.tts-toggle input[type="checkbox"] {
+    width: 50px;
+    height: 25px;
+    cursor: pointer;
+}
+
+/* Back Button Styles */
+.back-button {
+    display: block;
+    background: linear-gradient(135deg, #6c757d 0%, #495057 100%);
+    color: white;
+    text-decoration: none;
+    padding: 15px 35px;
+    border-radius: 50px;
+    font-size: 1.2rem;
+    font-weight: 600;
+    text-align: center;
+    margin-top: 40px;
+    transition: all 0.3s ease;
+    box-shadow: 0 10px 30px rgba(108, 117, 125, 0.4);
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.back-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 40px rgba(108, 117, 125, 0.5);
+}
+
+/* Number Cards (for numbers.html) */
+.numbers-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 15px;
+}
+
+.number-list-card {
+    background: white;
+    border-radius: 15px;
+    padding: 20px 15px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+    border: 2px solid transparent;
+}
+
+.number-list-card:hover {
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    border-color: #88d8b0;
+}
+
+.number-list-card .number-numeral {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #2c3e50;
+    margin-bottom: 5px;
+}
+
+.number-list-card .number-word {
+    font-size: 0.9rem;
+    color: #6c757d;
+    font-weight: 600;
+    text-transform: capitalize;
+}
+
+/* Arithmetic Table Columns */
+.tables-grid {
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    gap: 10px;
+    min-width: 1000px;
+}
+
+.table-column {
+    background: white;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.column-header {
+    padding: 15px 10px;
+    text-align: center;
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: white;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.column-cell {
+    padding: 12px 8px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 600;
+    font-size: 0.95rem;
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+}
+
+.column-cell:hover {
+    transform: scale(1.1);
+    font-weight: 700;
+}
+
+/* Scroll to Top Button */
+.scroll-top {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background: linear-gradient(135deg, #88d8b0 0%, #a8e6cf 100%);
+    color: white;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+    font-size: 1.5rem;
+    border: none;
+    z-index: 1000;
+}
+
+.scroll-top:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+}
+
+/* Responsive adjustments for new elements */
+@media (max-width: 768px) {
+    .numbers-grid {
+        grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+        gap: 10px;
+    }
+
+    .number-list-card {
+        padding: 15px 10px;
+    }
+
+    .number-list-card .number-numeral {
+        font-size: 1.5rem;
+    }
+
+    .number-list-card .number-word {
+        font-size: 0.8rem;
+    }
+
+    .tables-grid {
+        gap: 6px;
+        min-width: 800px;
+    }
+
+    .column-header {
+        padding: 10px 6px;
+        font-size: 0.85rem;
+    }
+
+    .column-cell {
+        padding: 8px 4px;
+        font-size: 0.8rem;
+    }
+
+    .scroll-top {
+        width: 45px;
+        height: 45px;
+        font-size: 1.2rem;
+        bottom: 20px;
+        right: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .numbers-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 8px;
+    }
+
+    .number-list-card {
+        padding: 12px 8px;
+    }
+
+    .number-list-card .number-numeral {
+        font-size: 1.3rem;
+    }
+
+    .number-list-card .number-word {
+        font-size: 0.7rem;
+    }
+
+    .back-button {
+        padding: 12px 25px;
+        font-size: 1rem;
     }
 }

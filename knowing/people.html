@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>People & Society - Visual Encyclopedia</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&display=swap">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="page-container category-page">
+        <!-- Header -->
+        <header class="page-header">
+            <a href="index.html" class="back-button">
+                <span class="back-icon">←</span>
+                <span class="back-text">Back to Encyclopedia</span>
+            </a>
+            <div class="header-title">
+                <span class="header-icon">👥</span>
+                <h1>People & Society</h1>
+            </div>
+            <div class="header-spacer"></div>
+        </header>
+
+        <!-- Sub-category Tabs -->
+        <nav class="subcategory-nav">
+            <button class="subcategory-tab active" data-filter="all">All</button>
+            <button class="subcategory-tab" data-filter="family">👨‍👩‍👧‍👦 Family</button>
+            <button class="subcategory-tab" data-filter="jobs">👨‍🚒 Jobs</button>
+            <button class="subcategory-tab" data-filter="sports">⚽ Sports</button>
+            <button class="subcategory-tab" data-filter="music">🎵 Music</button>
+            <button class="subcategory-tab" data-filter="holidays">🎉 Holidays</button>
+        </nav>
+
+        <!-- Gallery Grid -->
+        <main class="gallery-container">
+            <!-- Family -->
+            <div class="gallery-item" data-category="family">
+                <div class="item-card">
+                    <div class="item-image">
+                        <img src="https://placehold.co/400x300/FFB6C1/C71585?text=👩+Mother" alt="A loving mother">
+                        <button class="tts-button" data-text="Mother" title="Listen">
+                            <span class="tts-icon">🔊</span>
+                        </button>
+                    </div>
+                    <div class="item-info">
+                        <h3 class="item-name">Mother</h3>
+                        <p class="item-description">A female parent who loves and cares for her children</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="gallery-item" data-category="family">
+                <div class="item-card">
+                    <div class="item-image">
+                        <img src="https://placehold.co/400x300/87CEEB/4169E1?text=👨+Father" alt="A caring father">
+                        <button class="tts-button" data-text="Father" title="Listen">
+                            <span class="tts-icon">🔊</span>
+                        </button>
+                    </div>
+                    <div class="item-info">
+                        <h3 class="item-name">Father</h3>
+                        <p class="item-description">A male parent who protects and provides for his family</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="gallery-item" data-category="family">
+                <div class="item-card">
+                    <div class="item-image">
+                        <img src="https://placehold.co/400x300/FFB6C1/FF69B4?text=👧+Sister" alt="A girl sister">
+                        <button class="tts-button" data-text="Sister" title="Listen">
+                            <span class="tts-icon">🔊</span>
+                        </button>
+                    </div>
+                    <div class="item-info">
+                        <h3 class="item-name">Sister</h3>
+                        <p class="item-description">A female sibling who shares parents with you</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="gallery-item" data-category="family">
+                <div class="item-card">
+                    <div class="item-image">
+                        <img src="https://placehold.co/400x300/87CEFA/1E90FF?text=👦+Brother" alt="A boy brother">
+                        <button class="tts-button" data-text="Brother" title="Listen">
+                            <span class="tts-icon">🔊</span>
+                        </button>
+                    </div>
+                    <div class="item-info">
+                        <h3 class="item-name">Brother</h3>
+                        <p class="item-description">A male sibling who shares parents with you</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="gallery-item" data-category="family">
+                <div class="item-card">
+                    <div class="item-image">
+                        <img src="https://placehold.co/400x300/FFFACD/FFD700?text=👶+Baby" alt="A cute baby">
+                        <button class="tts-button" data-text="Baby" title="Listen">
+                            <span class="tts-icon">🔊</span>
+                        </button>
+                    </div>
+                    <div class="item-info">
+                        <h3 class="item-name">Baby</h3>
+                        <p class="item-description">A very young child who needs lots of care and love</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="gallery-item" data-category="family">
+                <div class="item-card">
+                    <div class="item-image">
+                        <img src="https://placehold.co/400x300/E6E6FA/9370DB?text=👴+Grandparents" alt="Grandparents">
+                        <button class="tts-button" data-text="Grandparents" title="Listen">
+                            <span class="tts-icon">🔊</span>
+                        </button>
+                    </div>
+                    <div class="item-info">
+                        <h3 class="item-name">Grandparents</h3>
+                        <p class="item-description">The parents of your mother or father, full of wisdom</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Jobs -->
+            <div class="gallery-item" data-category="jobs">
+                <div class="item-card">
+                    <div class="item-image">
+                        <img src="https://placehold.co/400x300/98FB98/228B22?text=👩‍🏫+Teacher" alt="A teacher at school">
+                        <button class="tts-button" data-text="Teacher" title="Listen">
+                            <span class="tts-icon">🔊</span>
+                        </button>
+                    </div>
+                    <div class="item-info">
+                        <h3 class="item-name">Teacher</h3>
+                        <p class="item-description">A person who helps students learn new things at school</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="gallery-item" data-category="jobs">
+                <div class="item-card">
+                    <div class="item-image">
+                        <img src="https://placehold.co/400x300/FFFFFF/4169E1?text=👨‍⚕️+Doctor" alt="A doctor with stethoscope">
+                        <button class="tts-button" data-text="Doctor" title="Listen">
+                            <span class="tts-icon">🔊</span>
+                        </button>
+                    </div>
+                    <div class="item-info">
+                        <h3 class="item-name">Doctor</h3>
+                        <p class="item-description">A person who helps sick people feel better</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="gallery-item" data-category="jobs">
+                <div class="item-card">
+                    <div class="item-image">
+                        <img src="https://placehold.co/400x300/FF6347/8B0000?text=👨‍🚒+Firefighter" alt="A firefighter in uniform">
+                        <button class="tts-button" data-text="Firefighter" title="Listen">
+                            <span class="tts-icon">🔊</span>
+                        </button>
+                    </div>
+                    <div class="item-info">
+                        <h3 class="item-name">Firefighter</h3>
+                        <p class="item-description">Brave heroes who put out fires and save people</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="gallery-item" data-category="jobs">
+                <div class="item-card">
+                    <div class="item-image">
+                        <img src="https://placehold.co/400x300/4169E1/000080?text=👮+Police" alt="A police officer">
+                        <button class="tts-button" data-text="Police" title="Listen">
+                            <span class="tts-icon">🔊</span>
+                        </button>
+                    </div>
+                    <div class="item-info">
+                        <h3 class="item-name">Police</h3>
+                        <p class="item-description">Officers who keep our communities safe and help people</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="gallery-item" data-category="jobs">
+                <div class="item-card">
+                    <div class="item-image">
+                        <img src="https://placehold.co/400x300/FFFFFF/FF6347?text=👨‍🍳+Chef" alt="A chef cooking">
+                        <button class="tts-button" data-text="Chef" title="Listen">
+                            <span class="tts-icon">🔊</span>
+                        </button>
+                    </div>
+                    <div class="item-info">
+                        <h3 class="item-name">Chef</h3>
+                        <p class="item-description">A professional cook who makes delicious food</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="gallery-item" data-category="jobs">
+                <div class="item-card">
+                    <div class="item-image">
+                        <img src="https://placehold.co/400x300/F4A460/8B4513?text=👨‍🌾+Farmer" alt="A farmer in field">
+                        <button class="tts-button" data-text="Farmer" title="Listen">
+                            <span class="tts-icon">🔊</span>
+                        </button>
+                    </div>
+                    <div class="item-info">
+                        <h3 class="item-name">Farmer</h3>
+                        <p class="item-description">A person who grows food and takes care of animals</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sports -->
+            <div class="gallery-item" data-category="sports">
+                <div class="item-card">
+                    <div class="item-image">
+                        <img src="https://placehold.co/400x300/FFFFFF/000000?text=⚽+Soccer" alt="A soccer ball">
+                        <button class="tts-button" data-text="Soccer" title="Listen">
+                            <span class="tts-icon">🔊</span>
+                        </button>
+                    </div>
+                    <div class="item-info">
+                        <h3 class="item-name">Soccer</h3>
+                        <p class="item-description">A popular sport where players kick a ball into goals</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="gallery-item" data-category="sports">
+                <div class="item-card">
+                    <div class="item-image">
+                        <img src="https://placehold.co/400x300/FF6347/8B0000?text=🏀+Basketball" alt="A basketball">
+                        <button class="tts-button" data-text="Basketball" title="Listen">
+                            <span class="tts-icon">🔊</span>
+                        </button>
+                    </div>
+                    <div class="item-info">
+                        <h3 class="item-name">Basketball</h3>
+                        <p class="item-description">A game where players shoot a ball through hoops</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="gallery-item" data-category="sports">
+                <div class="item-card">
+                    <div class="item-image">
+                        <img src="https://placehold.co/400x300/87CEEB/4169E1?text=🏊+Swimming" alt="A person swimming">
+                        <button class="tts-button" data-text="Swimming" title="Listen">
+                            <span class="tts-icon">🔊</span>
+                        </button>
+                    </div>
+                    <div class="item-info">
+                        <h3 class="item-name">Swimming</h3>
+                        <p class="item-description">Moving through water using arms and legs</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="gallery-item" data-category="sports">
+                <div class="item-card">
+                    <div class="item-image">
+                        <img src="https://placehold.co/400x300/90EE90/228B22?text=🏃+Running" alt="A person running">
+                        <button class="tts-button" data-text="Running" title="Listen">
+                            <span class="tts-icon">🔊</span>
+                        </button>
+                    </div>
+                    <div class="item-info">
+                        <h3 class="item-name">Running</h3>
+                        <p class="item-description">Moving fast on foot, faster than walking</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="gallery-item" data-category="sports">
+                <div class="item-card">
+                    <div class="item-image">
+                        <img src="https://placehold.co/400x300/FFD700/B8860B?text=🚴+Cycling" alt="A person riding a bicycle">
+                        <button class="tts-button" data-text="Cycling" title="Listen">
+                            <span class="tts-icon">🔊</span>
+                        </button>
+                    </div>
+                    <div class="item-info">
+                        <h3 class="item-name">Cycling</h3>
+                        <p class="item-description">Riding a bicycle for fun, exercise, or transportation</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Music -->
+            <div class="gallery-item" data-category="music">
+                <div class="item-card">
+                    <div class="item-image">
+                        <img src="https://placehold.co/400x300/000000/FFFFFF?text=🎹+Piano" alt="A piano keyboard">
+                        <button class="tts-button" data-text="Piano" title="Listen">
+                            <span class="tts-icon">🔊</span>
+                        </button>
+                    </div>
+                    <div class="item-info">
+                        <h3 class="item-name">Piano</h3>
+                        <p class="item-description">A large instrument with black and white keys</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="gallery-item" data-category="music">
+                <div class="item-card">
+                    <div class="item-image">
+                        <img src="https://placehold.co/400x300/D2691E/8B4513?text=🎸+Guitar" alt="An acoustic guitar">
+                        <button class="tts-button" data-text="Guitar" title="Listen">
+                            <span class="tts-icon">🔊</span>
+                        </button>
+                    </div>
+                    <div class="item-info">
+                        <h3 class="item-name">Guitar</h3>
+                        <p class="item-description">A string instrument played by strumming or plucking</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="gallery-item" data-category="music">
+                <div class="item-card">
+                    <div class="item-image">
+                        <img src="https://placehold.co/400x300/8B4513/654321?text=🎻+Violin" alt="A violin">
+                        <button class="tts-button" data-text="Violin" title="Listen">
+                            <span class="tts-icon">🔊</span>
+                        </button>
+                    </div>
+                    <div class="item-info">
+                        <h3 class="item-name">Violin</h3>
+                        <p class="item-description">A small string instrument played with a bow</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="gallery-item" data-category="music">
+                <div class="item-card">
+                    <div class="item-image">
+                        <img src="https://placehold.co/400x300/FF6347/8B0000?text=🥁+Drums" alt="Drum set">
+                        <button class="tts-button" data-text="Drums" title="Listen">
+                            <span class="tts-icon">🔊</span>
+                        </button>
+                    </div>
+                    <div class="item-info">
+                        <h3 class="item-name">Drums</h3>
+                        <p class="item-description">Instruments you hit with sticks to make rhythm</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="gallery-item" data-category="music">
+                <div class="item-card">
+                    <div class="item-image">
+                        <img src="https://placehold.co/400x300/9370DB/4B0082?text=🎤+Singing" alt="A microphone for singing">
+                        <button class="tts-button" data-text="Singing" title="Listen">
+                            <span class="tts-icon">🔊</span>
+                        </button>
+                    </div>
+                    <div class="item-info">
+                        <h3 class="item-name">Singing</h3>
+                        <p class="item-description">Making musical sounds with your voice</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="gallery-item" data-category="music">
+                <div class="item-card">
+                    <div class="item-image">
+                        <img src="https://placehold.co/400x300/FF69B4/C71585?text=💃+Dancing" alt="People dancing">
+                        <button class="tts-button" data-text="Dancing" title="Listen">
+                            <span class="tts-icon">🔊</span>
+                        </button>
+                    </div>
+                    <div class="item-info">
+                        <h3 class="item-name">Dancing</h3>
+                        <p class="item-description">Moving your body to music and rhythm</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Holidays -->
+            <div class="gallery-item" data-category="holidays">
+                <div class="item-card">
+                    <div class="item-image">
+                        <img src="https://placehold.co/400x300/FF0000/006400?text=🎄+Christmas" alt="A decorated Christmas tree">
+                        <button class="tts-button" data-text="Christmas" title="Listen">
+                            <span class="tts-icon">🔊</span>
+                        </button>
+                    </div>
+                    <div class="item-info">
+                        <h3 class="item-name">Christmas</h3>
+                        <p class="item-description">A joyful winter holiday with gifts and family time</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="gallery-item" data-category="holidays">
+                <div class="item-card">
+                    <div class="item-image">
+                        <img src="https://placehold.co/400x300/FFB6C1/FF69B4?text=🎂+Birthday" alt="Birthday cake with candles">
+                        <button class="tts-button" data-text="Birthday" title="Listen">
+                            <span class="tts-icon">🔊</span>
+                        </button>
+                    </div>
+                    <div class="item-info">
+                        <h3 class="item-name">Birthday</h3>
+                        <p class="item-description">A special day celebrating when someone was born</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="gallery-item" data-category="holidays">
+                <div class="item-card">
+                    <div class="item-image">
+                        <img src="https://placehold.co/400x300/FFD700/B8860B?text=🎆+New+Year" alt="Fireworks for New Year">
+                        <button class="tts-button" data-text="New Year" title="Listen">
+                            <span class="tts-icon">🔊</span>
+                        </button>
+                    </div>
+                    <div class="item-info">
+                        <h3 class="item-name">New Year</h3>
+                        <p class="item-description">Celebrating the start of a brand new year</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="gallery-item" data-category="holidays">
+                <div class="item-card">
+                    <div class="item-image">
+                        <img src="https://placehold.co/400x300/FF8C00/8B4500?text=🎃+Halloween" alt="Halloween pumpkin">
+                        <button class="tts-button" data-text="Halloween" title="Listen">
+                            <span class="tts-icon">🔊</span>
+                        </button>
+                    </div>
+                    <div class="item-info">
+                        <h3 class="item-name">Halloween</h3>
+                        <p class="item-description">A fun holiday with costumes, pumpkins, and candy</p>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="page-footer">
+            <p>Explore more categories above! 🌍</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

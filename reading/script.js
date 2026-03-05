@@ -280,3 +280,179 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }, 1000);
 });
+
+/* ============================================
+   TEXT-TO-SPEECH (TTS) HELPER FUNCTIONS
+   ============================================ */
+
+// Check if speech synthesis is available
+function isSpeechSynthesisAvailable() {
+    return 'speechSynthesis' in window;
+}
+
+// Speak text with specified options
+function speakText(text, options = {}) {
+    if (!isSpeechSynthesisAvailable()) {
+        console.warn('Speech synthesis not available');
+        return null;
+    }
+
+    const utterance = new SpeechSynthesisUtterance(text);
+    utterance.lang = options.lang || 'en-US';
+    utterance.rate = options.rate || 0.85;
+    utterance.pitch = options.pitch || 1;
+    utterance.volume = options.volume || 1;
+
+    if (options.onStart) utterance.onstart = options.onStart;
+    if (options.onEnd) utterance.onend = options.onEnd;
+    if (options.onError) utterance.onerror = options.onError;
+    if (options.onBoundary) utterance.onboundary = options.onBoundary;
+
+    window.speechSynthesis.speak(utterance);
+    return utterance;
+}
+
+// Stop all speech
+function stopSpeech() {
+    if (isSpeechSynthesisAvailable()) {
+        window.speechSynthesis.cancel();
+    }
+}
+
+// Pause speech
+function pauseSpeech() {
+    if (isSpeechSynthesisAvailable()) {
+        window.speechSynthesis.pause();
+    }
+}
+
+// Resume speech
+function resumeSpeech() {
+    if (isSpeechSynthesisAvailable()) {
+        window.speechSynthesis.resume();
+    }
+}
+
+// Speak letter with word (for Abakada)
+function speakLetterAndWord(letter, word, lang = 'tl-PH') {
+    if (!isSpeechSynthesisAvailable()) return;
+
+    stopSpeech();
+
+    const letterUtterance = new SpeechSynthesisUtterance(letter.toLowerCase());
+    letterUtterance.lang = lang;
+    letterUtterance.rate = 0.8;
+    letterUtterance.pitch = 1.1;
+
+    const wordUtterance = new SpeechSynthesisUtterance(word);
+    wordUtterance.lang = lang;
+    wordUtterance.rate = 0.7;
+    wordUtterance.pitch = 1.1;
+
+    letterUtterance.onend = () => {
+        window.speechSynthesis.speak(wordUtterance);
+    };
+
+    window.speechSynthesis.speak(letterUtterance);
+}
+
+// Read passage with word highlighting
+function readPassageWithHighlighting(text, words, options = {}) {
+    if (!isSpeechSynthesisAvailable()) {
+        alert('Sorry, speech synthesis is not available in your browser.');
+        return null;
+    }
+
+    stopSpeech();
+
+    const utterance = new SpeechSynthesisUtterance(text);
+    utterance.lang = options.lang || 'en-US';
+    utterance.rate = options.rate || 0.85;
+    utterance.pitch = options.pitch || 1;
+
+    let wordIndex = 0;
+    let highlightInterval = null;
+    const wordDelay = options.wordDelay || 350;
+
+    utterance.onstart = () => {
+        wordIndex = 0;
+        highlightWord(words, 0);
+
+        highlightInterval = setInterval(() => {
+            wordIndex++;
+            if (wordIndex < words.length) {
+                highlightWord(words, wordIndex);
+            }
+        }, wordDelay);
+
+        if (options.onStart) options.onStart();
+    };
+
+    utterance.onend = () => {
+        clearInterval(highlightInterval);
+        if (words) {
+            words.forEach(word => word.classList.remove('highlighted'));
+        }
+        if (options.onEnd) options.onEnd();
+    };
+
+    utterance.onerror = () => {
+        clearInterval(highlightInterval);
+        if (words) {
+            words.forEach(word => word.classList.remove('highlighted'));
+        }
+        if (options.onError) options.onError();
+    };
+
+    window.speechSynthesis.speak(utterance);
+    return { utterance, highlightInterval };
+}
+
+// Highlight a specific word
+function highlightWord(words, index) {
+    if (!words) return;
+    words.forEach(word => word.classList.remove('highlighted'));
+    if (words[index]) {
+        words[index].classList.add('highlighted');
+        words[index].scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'nearest' });
+    }
+}
+
+// Clear all word highlights
+function clearHighlights(words) {
+    if (!words) return;
+    words.forEach(word => word.classList.remove('highlighted'));
+}
+
+// Get Filipino voice if available
+function getFilipinoVoice() {
+    if (!isSpeechSynthesisAvailable()) return null;
+    
+    const voices = window.speechSynthesis.getVoices();
+    return voices.find(voice => 
+        voice.lang.includes('tl') || 
+        voice.lang.includes('fil') ||
+        voice.lang.includes('ph')
+    ) || voices.find(voice => voice.lang.includes('en'));
+}
+
+// Initialize voices (voices may load asynchronously)
+function initVoices() {
+    if (!isSpeechSynthesisAvailable()) return;
+    
+    // Force load voices
+    window.speechSynthesis.getVoices();
+    
+    // Chrome loads voices asynchronously
+    if (window.speechSynthesis.onvoiceschanged !== undefined) {
+        window.speechSynthesis.onvoiceschanged = () => {
+            window.speechSynthesis.getVoices();
+        };
+    }
+}
+
+// Initialize on DOM ready
+document.addEventListener('DOMContentLoaded', initVoices);
+
+// Stop speech when leaving page
+window.addEventListener('beforeunload', stopSpeech);

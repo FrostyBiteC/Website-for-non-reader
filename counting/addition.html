@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Addition Tables - Kids Learning</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700&display=swap">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Nunito', sans-serif;
+            background: linear-gradient(135deg, #a8e6cf 0%, #88d8b0 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1400px;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.98);
+            border-radius: 30px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            margin-bottom: 20px;
+            backdrop-filter: blur(10px);
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            justify-content: center;
+            margin-bottom: 15px;
+        }
+
+        .logo-image {
+            width: 40px;
+            height: 40px;
+            object-fit: contain;
+            border-radius: 50%;
+        }
+
+        .logo-text {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #ff6b6b;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            color: #2c3e50;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .header p {
+            font-size: 1.1rem;
+            color: #666;
+            font-weight: 300;
+        }
+
+        .tts-toggle {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 20px;
+            padding: 10px 20px;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            border-radius: 50px;
+            width: fit-content;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .tts-toggle label {
+            font-weight: 600;
+            color: #2c3e50;
+            cursor: pointer;
+        }
+
+        .tts-toggle input[type="checkbox"] {
+            width: 50px;
+            height: 25px;
+            cursor: pointer;
+        }
+
+        .tables-container {
+            overflow-x: auto;
+            padding: 10px;
+        }
+
+        .tables-grid {
+            display: grid;
+            grid-template-columns: repeat(10, 1fr);
+            gap: 10px;
+            min-width: 1000px;
+        }
+
+        .table-column {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .column-header {
+            padding: 15px 10px;
+            text-align: center;
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: white;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .column-cell {
+            padding: 12px 8px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            font-size: 0.95rem;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .column-cell:hover {
+            transform: scale(1.1);
+            font-weight: 700;
+        }
+
+        .column-cell:last-child {
+            border-bottom: none;
+        }
+
+        /* Color schemes for each column */
+        .col-1 .column-header { background: linear-gradient(135deg, #ff6b6b 0%, #ff8e8e 100%); }
+        .col-1 .column-cell:hover { background: rgba(255, 107, 107, 0.2); color: #ff6b6b; }
+
+        .col-2 .column-header { background: linear-gradient(135deg, #4ecdc4 0%, #7eddd7 100%); }
+        .col-2 .column-cell:hover { background: rgba(78, 205, 196, 0.2); color: #4ecdc4; }
+
+        .col-3 .column-header { background: linear-gradient(135deg, #ffe66d 0%, #fff099 100%); color: #333; }
+        .col-3 .column-cell:hover { background: rgba(255, 230, 109, 0.3); color: #d4a500; }
+
+        .col-4 .column-header { background: linear-gradient(135deg, #a8e6cf 0%, #c4f0e0 100%); color: #333; }
+        .col-4 .column-cell:hover { background: rgba(168, 230, 207, 0.3); color: #2d8a6a; }
+
+        .col-5 .column-header { background: linear-gradient(135deg, #ff8b94 0%, #ffb3b9 100%); }
+        .col-5 .column-cell:hover { background: rgba(255, 139, 148, 0.2); color: #e74c3c; }
+
+        .col-6 .column-header { background: linear-gradient(135deg, #c7ceea 0%, #dddff5 100%); color: #333; }
+        .col-6 .column-cell:hover { background: rgba(199, 206, 234, 0.3); color: #5a67d8; }
+
+        .col-7 .column-header { background: linear-gradient(135deg, #ffd93d 0%, #ffe770 100%); color: #333; }
+        .col-7 .column-cell:hover { background: rgba(255, 217, 61, 0.3); color: #b8860b; }
+
+        .col-8 .column-header { background: linear-gradient(135deg, #6bcf7f 0%, #8fd99f 100%); }
+        .col-8 .column-cell:hover { background: rgba(107, 207, 127, 0.2); color: #27ae60; }
+
+        .col-9 .column-header { background: linear-gradient(135deg, #9b59b6 0%, #bb8fce 100%); }
+        .col-9 .column-cell:hover { background: rgba(155, 89, 182, 0.2); color: #8e44ad; }
+
+        .col-10 .column-header { background: linear-gradient(135deg, #3498db 0%, #5dade2 100%); }
+        .col-10 .column-cell:hover { background: rgba(52, 152, 219, 0.2); color: #2980b9; }
+
+        .back-button {
+            display: block;
+            background: linear-gradient(135deg, #6c757d 0%, #495057 100%);
+            color: white;
+            text-decoration: none;
+            padding: 15px 35px;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            text-align: center;
+            margin-top: 40px;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(108, 117, 125, 0.4);
+            width: fit-content;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .back-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(108, 117, 125, 0.5);
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+
+            .header h1 {
+                font-size: 1.8rem;
+            }
+
+            .logo-text {
+                font-size: 1.5rem;
+            }
+
+            .tables-container {
+                padding: 5px;
+            }
+
+            .tables-grid {
+                gap: 6px;
+                min-width: 800px;
+            }
+
+            .column-header {
+                padding: 10px 6px;
+                font-size: 0.85rem;
+            }
+
+            .column-cell {
+                padding: 8px 4px;
+                font-size: 0.8rem;
+            }
+
+            .back-button {
+                padding: 12px 25px;
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="logo">
+                <img src="../cropped_circle_image.png" alt="Edulift Logo" class="logo-image">
+                <span class="logo-text">EDULIFT</span>
+            </div>
+            <h1>➕ Addition Tables</h1>
+            <p>Click on any equation to hear it spoken!</p>
+        </div>
+
+        <div class="tts-toggle">
+            <label for="ttsEnabled">🔊 Text-to-Speech:</label>
+            <input type="checkbox" id="ttsEnabled" checked>
+        </div>
+
+        <div class="tables-container">
+            <div class="tables-grid" id="tablesGrid">
+                <!-- Addition tables will be generated by JavaScript -->
+            </div>
+        </div>
+
+        <a href="arithmetic.html" class="back-button">← Back to Arithmetic</a>
+    </div>
+
+    <script>
+        // Number to word conversion
+        const numberToWords = (num) => {
+            const ones = ['', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine'];
+            const teens = ['ten', 'eleven', 'twelve', 'thirteen', 'fourteen', 'fifteen', 'sixteen', 'seventeen', 'eighteen', 'nineteen'];
+            const tens = ['', '', 'twenty', 'thirty', 'forty', 'fifty', 'sixty', 'seventy', 'eighty', 'ninety'];
+
+            if (num === 0) return 'zero';
+            if (num < 10) return ones[num];
+            if (num < 20) return teens[num - 10];
+            if (num < 100) {
+                return tens[Math.floor(num / 10)] + (num % 10 !== 0 ? ' ' + ones[num % 10] : '');
+            }
+            return num.toString();
+        };
+
+        // Generate addition tables
+        const generateAdditionTables = () => {
+            const grid = document.getElementById('tablesGrid');
+            
+            for (let col = 1; col <= 10; col++) {
+                const column = document.createElement('div');
+                column.className = `table-column col-${col}`;
+                
+                // Header
+                const header = document.createElement('div');
+                header.className = 'column-header';
+                header.textContent = numberToWords(col) + (col === 1 ? '' : 's');
+                column.appendChild(header);
+                
+                // Cells
+                for (let row = 1; row <= 10; row++) {
+                    const cell = document.createElement('div');
+                    cell.className = 'column-cell';
+                    const sum = col + row;
+                    cell.textContent = `${col} + ${row} = ${sum}`;
+                    cell.dataset.equation = `${numberToWords(col)} plus ${numberToWords(row)} equals ${numberToWords(sum)}`;
+                    cell.addEventListener('click', () => speakEquation(cell.dataset.equation));
+                    column.appendChild(cell);
+                }
+                
+                grid.appendChild(column);
+            }
+        };
+
+        // Check if speech synthesis is available
+        const isSpeechSynthesisAvailable = () => {
+            return 'speechSynthesis' in window;
+        };
+
+        // Speak equation
+        const speakEquation = (equation) => {
+            const ttsEnabled = document.getElementById('ttsEnabled').checked;
+            if (!ttsEnabled || !isSpeechSynthesisAvailable()) return;
+
+            // Cancel any ongoing speech
+            window.speechSynthesis.cancel();
+
+            const utterance = new SpeechSynthesisUtterance(equation);
+            utterance.lang = 'en-US';
+            utterance.rate = 0.85;
+            utterance.pitch = 1.1;
+
+            window.speechSynthesis.speak(utterance);
+        };
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            generateAdditionTables();
+        });
+    </script>
+</body>
+</html>

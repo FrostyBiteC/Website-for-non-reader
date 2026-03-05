@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nature & Environment - Visual Encyclopedia</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&display=swap">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="page-container category-page">
+        <!-- Header -->
+        <header class="page-header">
+            <a href="index.html" class="back-button">
+                <span class="back-icon">←</span>
+                <span class="back-text">Back to Encyclopedia</span>
+            </a>
+            <div class="header-title">
+                <span class="header-icon">🌿</span>
+                <h1>Nature & Environment</h1>
+            </div>
+            <div class="header-spacer"></div>
+        </header>
+
+        <!-- Sub-category Tabs -->
+        <nav class="subcategory-nav">
+            <button class="subcategory-tab active" data-filter="all">All</button>
+            <button class="subcategory-tab" data-filter="animals">🦁 Animals</button>
+            <button class="subcategory-tab" data-filter="plants">🌳 Plants</button>
+            <button class="subcategory-tab" data-filter="weather">☀️ Weather</button>
+            <button class="subcategory-tab" data-filter="space">🚀 Space</button>
+            <button class="subcategory-tab" data-filter="ocean">🐠 Ocean</button>
+        </nav>
+
+        <!-- Gallery Grid -->
+        <main class="gallery-container">
+            <!-- Animals -->
+            <div class="gallery-item" data-category="animals">
+                <div class="item-card">
+                    <div class="item-image">
+                        <img src="https://placehold.co/400x300/90EE90/2E7D32?text=🐕+Dog" alt="A friendly domestic dog, loyal pet and companion">
+                        <button class="tts-button" data-text="Dog" title="Listen">
+                            <span class="tts-icon">🔊</span>
+                        </button>
+                    </div>
+                    <div class="item-info">
+                        <h3 class="item-name">Dog</h3>
+                        <p class="item-description">A loyal pet that loves to play and protects its family</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="gallery-item" data-category="animals">
+                <div class="item-card">
+                    <div class="item-image">
+                        <img src="https://placehold.co/400x300/FFB6C1/C71585?text=🐈+Cat" alt="A cute domestic cat with soft fur">
+                        <button class="tts-button" data-text="Cat" title="Listen">
+                            <span class="tts-icon">🔊</span>
+                        </button>
+                    </div>
+                    <div class="item-info">
+                        <h3 class="item-name">Cat</h3>
+                        <p class="item-description">A soft, independent pet that loves to purr and play</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="gallery-item" data-category="animals">
+                <div class="item-card">
+                    <div class="item-image">
+                        <img src="https://placehold.co/400x300/D3D3D3/4A4A4A?text=🐘+Elephant" alt="A large African elephant with big ears and trunk">
+                        <button class="tts-button" data-text="Elephant" title="Listen">
+                            <span class="tts-icon">🔊</span>
+                        </button>
+                    </div>
+                    <div class="item-info">
+                        <h3 class="item-name">Elephant</h3>
+                        <p class="item-description">The largest land animal with a long trunk and big ears</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="gallery-item" data-category="animals">
+                <div class="item-card">
+                    <div class="item-image">
+                        <img src="https://placehold.co/400x300/FFD700/B8860B?text=🦁+Lion" alt="A majestic lion, king of the jungle">
+                        <button class="tts-button" data-text="Lion" title="Listen">
+                            <span class="tts-icon">🔊</span>
+                        </button>
+                    </div>
+                    <div class="item-info">
+                        <h3 class="item-name">Lion</h3>
+                        <p class="item-description">The king of the jungle with a beautiful golden mane</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="gallery-item" data-category="animals">
+                <div class="item-card">
+                    <div class="item-image">
+                        <img src="https://placehold.co/400x300/87CEEB/1E90FF?text=🐦+Bird" alt="A colorful bird with feathers and wings">
+                        <button class="tts-button" data-text="Bird" title="Listen">
+                            <span class="tts-icon">🔊</span>
+                        </button>
+                    </div>
+                    <div class="item-info">
+                        <h3 class="item-name">Bird</h3>
+                        <p class="item-description">Animals with feathers and wings that can fly in the sky</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="gallery-item" data-category="animals">
+                <div class="item-card">
+                    <div class="item-image">
+                        <img src="https://placehold.co/400x300/4682B4/000080?text=🐠+Fish" alt="A colorful fish swimming in water">
+                        <button class="tts-button" data-text="Fish" title="Listen">
+                            <span class="tts-icon">🔊</span>
+                        </button>
+                    </div>
+                    <div class="item-info">
+                        <h3 class="item-name">Fish</h3>
+                        <p class="item-description">Animals that live in water and breathe through gills</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="gallery-item" data-category="animals">
+                <div class="item-card">
+                    <div class="item-image">
+                        <img src="https://placehold.co/400x300/FF69B4/8B008B?text=🦋+Butterfly" alt="A beautiful butterfly with colorful wings">
+                        <button class="tts-button" data-text="Butterfly" title="Listen">
+                            <span class="tts-icon">🔊</span>
+                        </button>
+                    </div>
+                    <div class="item-info">
+                        <h3 class="item-name">Butterfly</h3>
+                        <p class="item-description">Beautiful insects with colorful wings that flutter around flowers</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Plants -->
+            <div class="gallery-item" data-category="plants">
+                <div class="item-card">
+                    <div class="item-image">
+                        <img src="https://placehold.co/400x300/228B22/006400?text=🌳+Tree" alt="A tall green tree with branches and leaves">
+                        <button class="tts-button" data-text="Tree" title="Listen">
+                            <span class="tts-icon">🔊</span>
+                        </button>
+                    </div>
+                    <div class="item-info">
+                        <h3 class="item-name">Tree</h3>
+                        <p class="item-description">Tall plants with a trunk, branches, and green leaves</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="gallery-item" data-category="plants">
+                <div class="item-card">
+                    <div class="item-image">
+                        <img src="https://placehold.co/400x300/FF1493/8B008B?text=🌸+Flower" alt="A beautiful colorful flower">
+                        <button class="tts-button" data-text="Flower" title="Listen">
+                            <span class="tts-icon">🔊</span>
+                        </button>
+                    </div>
+                    <div class="item-info">
+                        <h3 class="item-name">Flower</h3>
+                        <p class="item-description">Beautiful plants with colorful petals and sweet smells</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="gallery-item" data-category="plants">
+                <div class="item-card">
+                    <div class="item-image">
+                        <img src="https://placehold.co/400x300/7CFC00/228B22?text=🌿+Grass" alt="Green grass growing in a field">
+                        <button class="tts-button" data-text="Grass" title="Listen">
+                            <span class="tts-icon">🔊</span>
+                        </button>
+                    </div>
+                    <div class="item-info">
+                        <h3 class="item-name">Grass</h3>
+                        <p class="item-description">Soft green plants that cover the ground in fields and lawns</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="gallery-item" data-category="plants">
+                <div class="item-card">
+                    <div class="item-image">
+                        <img src="https://placehold.co/400x300/2E8B57/006400?text=🌵+Cactus" alt="A green cactus with spines in the desert">
+                        <button class="tts-button" data-text="Cactus" title="Listen">
+                            <span class="tts-icon">🔊</span>
+                        </button>
+                    </div>
+                    <div class="item-info">
+                        <h3 class="item-name">Cactus</h3>
+                        <p class="item-description">Spiky plants that grow in hot deserts and store water</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="gallery-item" data-category="plants">
+                <div class="item-card">
+                    <div class="item-image">
+                        <img src="https://placehold.co/400x300/32CD32/228B22?text=🌿+Fern" alt="A green fern with delicate leaves">
+                        <button class="tts-button" data-text="Fern" title="Listen">
+                            <span class="tts-icon">🔊</span>
+                        </button>
+                    </div>
+                    <div class="item-info">
+                        <h3 class="item-name">Fern</h3>
+                        <p class="item-description">Green plants with delicate, feather-like leaves</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="gallery-item" data-category="plants">
+                <div class="item-card">
+                    <div class="item-image">
+                        <img src="https://placehold.co/400x300/FFD700/DAA520?text=🌻+Sunflower" alt="A bright yellow sunflower">
+                        <button class="tts-button" data-text="Sunflower" title="Listen">
+                            <span class="tts-icon">🔊</span>
+                        </button>
+                    </div>
+                    <div class="item-info">
+                        <h3 class="item-name">Sunflower</h3>
+                        <p class="item-description">Tall yellow flowers that turn to follow the sun</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Weather -->
+            <div class="gallery-item" data-category="weather">
+                <div class="item-card">
+                    <div class="item-image">
+                        <img src="https://placehold.co/400x300/FFD700/FFA500?text=☀️+Sun" alt="The bright yellow sun shining in the sky">
+                        <button class="tts-button" data-text="Sun" title="Listen">
+                            <span class="tts-icon">🔊</span>
+                        </button>
+                    </div>
+                    <div class="item-info">
+                        <h3 class="item-name">Sun</h3>
+                        <p class="item-description">The bright star that gives us light and warmth</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="gallery-item" data-category="weather">
+                <div class="item-card">
+                    <div class="item-image">
+                        <img src="https://placehold.co/400x300/F0F8FF/B0C4DE?text=☁️+Cloud" alt="A fluffy white cloud in the sky">
+                        <button class="tts-button" data-text="Cloud" title="Listen">
+                            <span class="tts-icon">🔊</span>
+                        </button>
+                    </div>
+                    <div class="item-info">
+                        <h3 class="item-name">Cloud</h3>
+                        <p class="item-description">Fluffy white shapes floating in the sky made of tiny water drops</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="gallery-item" data-category="weather">
+                <div class="item-card">
+                    <div class="item-image">
+                        <img src="https://placehold.co/400x300/87CEEB/4682B4?text=🌧️+Rain" alt="Rain falling from clouds">
+                        <button class="tts-button" data-text="Rain" title="Listen">
+                            <span class="tts-icon">🔊</span>
+                        </button>
+                    </div>
+                    <div class="item-info">
+                        <h3 class="item-name">Rain</h3>
+                        <p class="item-description">Water falling from clouds to water the plants</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="gallery-item" data-category="weather">
+                <div class="item-card">
+                    <div class="item-image">
+                        <img src="https://placehold.co/400x300/F0FFFF/87CEEB?text=❄️+Snow" alt="White snowflakes falling">
+                        <button class="tts-button" data-text="Snow" title="Listen">
+                            <span class="tts-icon">🔊</span>
+                        </button>
+                    </div>
+                    <div class="item-info">
+                        <h3 class="item-name">Snow</h3>
+                        <p class="item-description">Frozen water crystals that fall when it's very cold</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="gallery-item" data-category="weather">
+                <div class="item-card">
+                    <div class="item-image">
+                        <img src="https://placehold.co/400x300/FF69B4/9370DB?text=🌈+Rainbow" alt="A colorful rainbow in the sky">
+                        <button class="tts-button" data-text="Rainbow" title="Listen">
+                            <span class="tts-icon">🔊</span>
+                        </button>
+                    </div>
+                    <div class="item-info">
+                        <h3 class="item-name">Rainbow</h3>
+                        <p class="item-description">Beautiful colors in the sky after the rain</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="gallery-item" data-category="weather">
+                <div class="item-card">
+                    <div class="item-image">
+                        <img src="https://placehold.co/400x300/4B0082/483D8B?text=⚡+Thunder" alt="Lightning and thunder storm">
+                        <button class="tts-button" data-text="Thunder" title="Listen">
+                            <span class="tts-icon">🔊</span>
+                        </button>
+                    </div>
+                    <div class="item-info">
+                        <h3 class="item-name">Thunder</h3>
+                        <p class="item-description">The loud sound that follows lightning in a storm</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Space -->
+            <div class="gallery-item" data-category="space">
+                <div class="item-card">
+                    <div class="item-image">
+                        <img src="https://placehold.co/400x300/191970/FFD700?text=⭐+Star" alt="A bright star twinkling in the night sky">
+                        <button class="tts-button" data-text="Star" title="Listen">
+                            <span class="tts-icon">🔊</span>
+                        </button>
+                    </div>
+                    <div class="item-info">
+                        <h3 class="item-name">Star</h3>
+                        <p class="item-description">Bright twinkling lights in the night sky, far away suns</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="gallery-item" data-category="space">
+                <div class="item-card">
+                    <div class="item-image">
+                        <img src="https://placehold.co/400x300/2F4F4F/C0C0C0?text=🌙+Moon" alt="The glowing moon in the night sky">
+                        <button class="tts-button" data-text="Moon" title="Listen">
+                            <span class="tts-icon">🔊</span>
+                        </button>
+                    </div>
+                    <div class="item-info">
+                        <h3 class="item-name">Moon</h3>
+                        <p class="item-description">The Earth's companion that glows at night</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="gallery-item" data-category="space">
+                <div class="item-card">
+                    <div class="item-image">
+                        <img src="https://placehold.co/400x300/4169E1/191970?text=🪐+Planet" alt="A planet in space">
+                        <button class="tts-button" data-text="Planet" title="Listen">
+                            <span class="tts-icon">🔊</span>
+                        </button>
+                    </div>
+                    <div class="item-info">
+                        <h3 class="item-name">Planet</h3>
+                        <p class="item-description">Large round objects that orbit around the sun</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="gallery-item" data-category="space">
+                <div class="item-card">
+                    <div class="item-image">
+                        <img src="https://placehold.co/400x300/FF6347/8B0000?text=🚀+Rocket" alt="A rocket ship flying to space">
+                        <button class="tts-button" data-text="Rocket" title="Listen">
+                            <span class="tts-icon">🔊</span>
+                        </button>
+                    </div>
+                    <div class="item-info">
+                        <h3 class="item-name">Rocket</h3>
+                        <p class="item-description">A vehicle that travels to space and beyond</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="gallery-item" data-category="space">
+                <div class="item-card">
+                    <div class="item-image">
+                        <img src="https://placehold.co/400x300/FFFFFF/4169E1?text=👨‍🚀+Astronaut" alt="An astronaut in a space suit">
+                        <button class="tts-button" data-text="Astronaut" title="Listen">
+                            <span class="tts-icon">🔊</span>
+                        </button>
+                    </div>
+                    <div class="item-info">
+                        <h3 class="item-name">Astronaut</h3>
+                        <p class="item-description">Brave people who travel and work in space</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="gallery-item" data-category="space">
+                <div class="item-card">
+                    <div class="item-image">
+                        <img src="https://placehold.co/400x300/9400D3/4B0082?text=🌌+Galaxy" alt="A beautiful galaxy with stars">
+                        <button class="tts-button" data-text="Galaxy" title="Listen">
+                            <span class="tts-icon">🔊</span>
+                        </button>
+                    </div>
+                    <div class="item-info">
+                        <h3 class="item-name">Galaxy</h3>
+                        <p class="item-description">A huge group of stars, dust, and gas in space</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Ocean -->
+            <div class="gallery-item" data-category="ocean">
+                <div class="item-card">
+                    <div class="item-image">
+                        <img src="https://placehold.co/400x300/4682B4/000080?text=🐟+Fish" alt="A colorful fish swimming">
+                        <button class="tts-button" data-text="Fish" title="Listen">
+                            <span class="tts-icon">🔊</span>
+                        </button>
+                    </div>
+                    <div class="item-info">
+                        <h3 class="item-name">Fish</h3>
+                        <p class="item-description">Animals with fins and scales that swim in the ocean</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="gallery-item" data-category="ocean">
+                <div class="item-card">
+                    <div class="item-image">
+                        <img src="https://placehold.co/400x300/87CEEB/4682B4?text=🐋+Whale" alt="A giant blue whale in the ocean">
+                        <button class="tts-button" data-text="Whale" title="Listen">
+                            <span class="tts-icon">🔊</span>
+                        </button>
+                    </div>
+                    <div class="item-info">
+                        <h3 class="item-name">Whale</h3>
+                        <p class="item-description">The largest animals in the world that live in the ocean</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="gallery-item" data-category="ocean">
+                <div class="item-card">
+                    <div class="item-image">
+                        <img src="https://placehold.co/400x300/87CEFA/4169E1?text=🐬+Dolphin" alt="A playful dolphin jumping">
+                        <button class="tts-button" data-text="Dolphin" title="Listen">
+                            <span class="tts-icon">🔊</span>
+                        </button>
+                    </div>
+                    <div class="item-info">
+                        <h3 class="item-name">Dolphin</h3>
+                        <p class="item-description">Smart, friendly animals that love to play and jump</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="gallery-item" data-category="ocean">
+                <div class="item-card">
+                    <div class="item-image">
+                        <img src="https://placehold.co/400x300/708090/2F4F4F?text=🦈+Shark" alt="A shark swimming in the ocean">
+                        <button class="tts-button" data-text="Shark" title="Listen">
+                            <span class="tts-icon">🔊</span>
+                        </button>
+                    </div>
+                    <div class="item-info">
+                        <h3 class="item-name">Shark</h3>
+                        <p class="item-description">Large fish with sharp teeth that swim in the ocean</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="gallery-item" data-category="ocean">
+                <div class="item-card">
+                    <div class="item-image">
+                        <img src="https://placehold.co/400x300/FF7F50/FF6347?text=🪸+Coral" alt="Colorful coral reef underwater">
+                        <button class="tts-button" data-text="Coral" title="Listen">
+                            <span class="tts-icon">🔊</span>
+                        </button>
+                    </div>
+                    <div class="item-info">
+                        <h3 class="item-name">Coral</h3>
+                        <p class="item-description">Colorful underwater structures where fish live</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="gallery-item" data-category="ocean">
+                <div class="item-card">
+                    <div class="item-image">
+                        <img src="https://placehold.co/400x300/98FB98/3CB371?text=🦄+Seahorse" alt="A tiny seahorse swimming">
+                        <button class="tts-button" data-text="Seahorse" title="Listen">
+                            <span class="tts-icon">🔊</span>
+                        </button>
+                    </div>
+                    <div class="item-info">
+                        <h3 class="item-name">Seahorse</h3>
+                        <p class="item-description">Tiny ocean animals that look like horses and swim upright</p>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="page-footer">
+            <p>Explore more categories above! 🌍</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

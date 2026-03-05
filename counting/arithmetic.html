@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Counting - Kids Learning</title>
+    <title>Arithmetic Tables - Kids Learning</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700&display=swap">
     <style>
         * {
@@ -14,7 +14,7 @@
 
         body {
             font-family: 'Nunito', sans-serif;
-            background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+            background: linear-gradient(135deg, #ffd3e1 0%, #ff9eb5 100%);
             min-height: 100vh;
             display: flex;
             flex-direction: column;
@@ -73,14 +73,14 @@
             font-weight: 300;
         }
 
-        .counting-grid {
+        .arithmetic-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 25px;
             margin-top: 30px;
         }
 
-        .counting-card {
+        .arithmetic-card {
             background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
             border-radius: 20px;
             padding: 35px;
@@ -93,42 +93,60 @@
             display: block;
         }
 
-        .counting-card:hover {
+        .arithmetic-card:hover {
             transform: translateY(-10px);
             box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
         }
 
-        .counting-card.numbers {
+        .arithmetic-card.addition {
             background: linear-gradient(135deg, #a8e6cf 0%, #88d8b0 100%);
         }
 
-        .counting-card.numbers:hover {
+        .arithmetic-card.addition:hover {
             border-color: #88d8b0;
             box-shadow: 0 15px 35px rgba(136, 216, 176, 0.4);
         }
 
-        .counting-card.arithmetic {
+        .arithmetic-card.subtraction {
             background: linear-gradient(135deg, #ffd3e1 0%, #ff9eb5 100%);
         }
 
-        .counting-card.arithmetic:hover {
+        .arithmetic-card.subtraction:hover {
             border-color: #ff9eb5;
             box-shadow: 0 15px 35px rgba(255, 158, 181, 0.4);
         }
 
-        .counting-icon {
+        .arithmetic-card.multiplication {
+            background: linear-gradient(135deg, #ffeaa7 0%, #fdcb6e 100%);
+        }
+
+        .arithmetic-card.multiplication:hover {
+            border-color: #fdcb6e;
+            box-shadow: 0 15px 35px rgba(253, 203, 110, 0.4);
+        }
+
+        .arithmetic-card.division {
+            background: linear-gradient(135deg, #b8c5d6 0%, #a8b8d8 100%);
+        }
+
+        .arithmetic-card.division:hover {
+            border-color: #a8b8d8;
+            box-shadow: 0 15px 35px rgba(168, 184, 216, 0.4);
+        }
+
+        .arithmetic-icon {
             font-size: 4rem;
             margin-bottom: 20px;
         }
 
-        .counting-title {
+        .arithmetic-title {
             font-size: 1.8rem;
             color: #2c3e50;
             margin-bottom: 12px;
             font-weight: 700;
         }
 
-        .counting-description {
+        .arithmetic-description {
             font-size: 1.05rem;
             color: #555;
             line-height: 1.5;
@@ -174,20 +192,20 @@
                 font-size: 1.5rem;
             }
 
-            .counting-grid {
+            .arithmetic-grid {
                 grid-template-columns: 1fr;
                 gap: 20px;
             }
 
-            .counting-card {
+            .arithmetic-card {
                 padding: 25px;
             }
 
-            .counting-icon {
+            .arithmetic-icon {
                 font-size: 3rem;
             }
 
-            .counting-title {
+            .arithmetic-title {
                 font-size: 1.5rem;
             }
 
@@ -215,19 +233,19 @@
                 font-size: 1.3rem;
             }
 
-            .counting-card {
+            .arithmetic-card {
                 padding: 20px;
             }
 
-            .counting-icon {
+            .arithmetic-icon {
                 font-size: 2.5rem;
             }
 
-            .counting-title {
+            .arithmetic-title {
                 font-size: 1.3rem;
             }
 
-            .counting-description {
+            .arithmetic-description {
                 font-size: 0.95rem;
             }
         }
@@ -240,25 +258,37 @@
                 <img src="../cropped_circle_image.png" alt="Edulift Logo" class="logo-image">
                 <span class="logo-text">EDULIFT</span>
             </div>
-            <h1>Counting Center</h1>
-            <p>Choose what you want to learn today!</p>
+            <h1>➕ Arithmetic Tables</h1>
+            <p>Choose an operation to learn its tables!</p>
         </div>
 
-        <div class="counting-grid">
-            <a href="numbers.html" class="counting-card numbers">
-                <div class="counting-icon">🔢</div>
-                <h2 class="counting-title">Numbers</h2>
-                <p class="counting-description">Learn numbers from 1 to 100+ with colorful displays and audio pronunciation!</p>
+        <div class="arithmetic-grid">
+            <a href="addition.html" class="arithmetic-card addition">
+                <div class="arithmetic-icon">➕</div>
+                <h2 class="arithmetic-title">Addition</h2>
+                <p class="arithmetic-description">Learn to add numbers from 1+1 to 10+10 with colorful tables and audio!</p>
             </a>
 
-            <a href="arithmetic.html" class="counting-card arithmetic">
-                <div class="counting-icon">➕</div>
-                <h2 class="counting-title">Arithmetic Tables</h2>
-                <p class="counting-description">Master addition, subtraction, multiplication, and division with interactive tables!</p>
+            <a href="subtraction.html" class="arithmetic-card subtraction">
+                <div class="arithmetic-icon">➖</div>
+                <h2 class="arithmetic-title">Subtraction</h2>
+                <p class="arithmetic-description">Master subtraction tables with interactive columns and audio support!</p>
+            </a>
+
+            <a href="multiplication.html" class="arithmetic-card multiplication">
+                <div class="arithmetic-icon">✖️</div>
+                <h2 class="arithmetic-title">Multiplication</h2>
+                <p class="arithmetic-description">Practice multiplication tables from 1x1 to 10x10 with color-coded rows!</p>
+            </a>
+
+            <a href="division.html" class="arithmetic-card division">
+                <div class="arithmetic-icon">➗</div>
+                <h2 class="arithmetic-title">Division</h2>
+                <p class="arithmetic-description">Learn division with clear tables and helpful audio guidance!</p>
             </a>
         </div>
 
-        <a href="../categories/index.html" class="back-button">← Back to Categories</a>
+        <a href="index.html" class="back-button">← Back to Counting</a>
     </div>
 </body>
 </html>

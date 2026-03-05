@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Concepts - Visual Encyclopedia</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&display=swap">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="page-container category-page">
+        <!-- Header -->
+        <header class="page-header">
+            <a href="index.html" class="back-button">
+                <span class="back-icon">←</span>
+                <span class="back-text">Back to Encyclopedia</span>
+            </a>
+            <div class="header-title">
+                <span class="header-icon">🎨</span>
+                <h1>Concepts</h1>
+            </div>
+            <div class="header-spacer"></div>
+        </header>
+
+        <!-- Sub-category Tabs -->
+        <nav class="subcategory-nav">
+            <button class="subcategory-tab active" data-filter="all">All</button>
+            <button class="subcategory-tab" data-filter="colors">🌈 Colors</button>
+            <button class="subcategory-tab" data-filter="shapes">⭐ Shapes</button>
+            <button class="subcategory-tab" data-filter="numbers">🔢 Numbers</button>
+            <button class="subcategory-tab" data-filter="emotions">😊 Emotions</button>
+            <button class="subcategory-tab" data-filter="time">⏰ Time</button>
+        </nav>
+
+        <!-- Gallery Grid -->
+        <main class="gallery-container">
+            <!-- Colors -->
+            <div class="gallery-item" data-category="colors">
+                <div class="item-card">
+                    <div class="item-image">
+                        <img src="https://placehold.co/400x300/FF0000/FFFFFF?text=🔴+Red" alt="The color red">
+                        <button class="tts-button" data-text="Red" title="Listen">
+                            <span class="tts-icon">🔊</span>
+                        </button>
+                    </div>
+                    <div class="item-info">
+                        <h3 class="item-name">Red</h3>
+                        <p class="item-description">A bright color like apples, roses, and stop signs</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="gallery-item" data-category="colors">
+                <div class="item-card">
+                    <div class="item-image">
+                        <img src="https://placehold.co/400x300/0000FF/FFFFFF?text=🔵+Blue" alt="The color blue">
+                        <button class="tts-button" data-text="Blue" title="Listen">
+                            <span class="tts-icon">🔊</span>
+                        </button>
+                    </div>
+                    <div class="item-info">
+                        <h3 class="item-name">Blue</h3>
+                        <p class="item-description">A cool color like the sky, ocean, and blueberries</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="gallery-item" data-category="colors">
+                <div class="item-card">
+                    <div class="item-image">
+                        <img src="https://placehold.co/400x300/00FF00/006400?text=🟢+Green" alt="The color green">
+                        <button class="tts-button" data-text="Green" title="Listen">
+                            <span class="tts-icon">🔊</span>
+                        </button>
+                    </div>
+                    <div class="item-info">
+                        <h3 class="item-name">Green</h3>
+                        <p class="item-description">A natural color like grass, leaves, and frogs</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="gallery-item" data-category="colors">
+                <div class="item-card">
+                    <div class="item-image">
+                        <img src="https://placehold.co/400x300/FFFF00/8B8000?text=🟡+Yellow" alt="The color yellow">
+                        <button class="tts-button" data-text="Yellow" title="Listen">
+                            <span class="tts-icon">🔊</span>
+                        </button>
+                    </div>
+                    <div class="item-info">
+                        <h3 class="item-name">Yellow</h3>
+                        <p class="item-description">A sunny color like bananas, lemons, and the sun</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="gallery-item" data-category="colors">
+                <div class="item-card">
+                    <div class="item-image">
+                        <img src="https://placehold.co/400x300/FFA500/8B4500?text=🟠+Orange" alt="The color orange">
+                        <button class="tts-button" data-text="Orange" title="Listen">
+                            <span class="tts-icon">🔊</span>
+                        </button>
+                    </div>
+                    <div class="item-info">
+                        <h3 class="item-name">Orange</h3>
+                        <p class="item-description">A warm color like oranges, pumpkins, and carrots</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="gallery-item" data-category="colors">
+                <div class="item-card">
+                    <div class="item-image">
+                        <img src="https://placehold.co/400x300/800080/FFFFFF?text=🟣+Purple" alt="The color purple">
+                        <button class="tts-button" data-text="Purple" title="Listen">
+                            <span class="tts-icon">🔊</span>
+                        </button>
+                    </div>
+                    <div class="item-info">
+                        <h3 class="item-name">Purple</h3>
+                        <p class="item-description">A royal color like grapes, violets, and eggplants</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="gallery-item" data-category="colors">
+                <div class="item-card">
+                    <div class="item-image">
+                        <img src="https://placehold.co/400x300/FFC0CB/C71585?text=🩷+Pink" alt="The color pink">
+                        <button class="tts-button" data-text="Pink" title="Listen">
+                            <span class="tts-icon">🔊</span>
+                        </button>
+                    </div>
+                    <div class="item-info">
+                        <h3 class="item-name">Pink</h3>
+                        <p class="item-description">A soft color like flowers, cotton candy, and flamingos</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Shapes -->
+            <div class="gallery-item" data-category="shapes">
+                <div class="item-card">
+                    <div class="item-image">
+                        <img src="https://placehold.co/400x300/FF6347/FFFFFF?text=⭕+Circle" alt="A circle shape">
+                        <button class="tts-button" data-text="Circle" title="Listen">
+                            <span class="tts-icon">🔊</span>
+                        </button>
+                    </div>
+                    <div class="item-info">
+                        <h3 class="item-name">Circle</h3>
+                        <p class="item-description">A round shape with no corners, like a wheel or ball</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="gallery-item" data-category="shapes">
+                <div class="item-card">
+                    <div class="item-image">
+                        <img src="https://placehold.co/400x300/4169E1/FFFFFF?text=⬜+Square" alt="A square shape">
+                        <button class="tts-button" data-text="Square" title="Listen">
+                            <span class="tts-icon">🔊</span>
+                        </button>
+                    </div>
+                    <div class="item-info">
+                        <h3 class="item-name">Square</h3>
+                        <p class="item-description">A shape with four equal sides and four corners</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="gallery-item" data-category="shapes">
+                <div class="item-card">
+                    <div class="item-image">
+                        <img src="https://placehold.co/400x300/32CD32/006400?text=🔺+Triangle" alt="A triangle shape">
+                        <button class="tts-button" data-text="Triangle" title="Listen">
+                            <span class="tts-icon">🔊</span>
+                        </button>
+                    </div>
+                    <div class="item-info">
+                        <h3 class="item-name">Triangle</h3>
+                        <p class="item-description">A shape with three sides and three corners</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="gallery-item" data-category="shapes">
+                <div class="item-card">
+                    <div class="item-image">
+                        <img src="https://placehold.co/400x300/FFD700/8B8000?text=▭+Rectangle" alt="A rectangle shape">
+                        <button class="tts-button" data-text="Rectangle" title="Listen">
+                            <span class="tts-icon">🔊</span>
+                        </button>
+                    </div>
+                    <div class="item-info">
+                        <h3 class="item-name">Rectangle</h3>
+                        <p class="item-description">A shape with four sides, longer than it is wide</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="gallery-item" data-category="shapes">
+                <div class="item-card">
+                    <div class="item-image">
+                        <img src="https://placehold.co/400x300/FFD700/FFA500?text=⭐+Star" alt="A star shape">
+                        <button class="tts-button" data-text="Star" title="Listen">
+                            <span class="tts-icon">🔊</span>
+                        </button>
+                    </div>
+                    <div class="item-info">
+                        <h3 class="item-name">Star</h3>
+                        <p class="item-description">A pointed shape with five or more points</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="gallery-item" data-category="shapes">
+                <div class="item-card">
+                    <div class="item-image">
+                        <img src="https://placehold.co/400x300/FF1493/8B008B?text=❤️+Heart" alt="A heart shape">
+                        <button class="tts-button" data-text="Heart" title="Listen">
+                            <span class="tts-icon">🔊</span>
+                        </button>
+                    </div>
+                    <div class="item-info">
+                        <h3 class="item-name">Heart</h3>
+                        <p class="item-description">A shape that represents love and caring</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Numbers -->
+            <div class="gallery-item" data-category="numbers">
+                <div class="item-card">
+                    <div class="item-image">
+                        <img src="https://placehold.co/400x300/FF6347/FFFFFF?text=0️⃣+Zero" alt="Number zero">
+                        <button class="tts-button" data-text="Zero" title="Listen">
+                            <span class="tts-icon">🔊</span>
+                        </button>
+                    </div>
+                    <div class="item-info">
+                        <h3 class="item-name">Zero</h3>
+                        <p class="item-description">The number 0 - nothing, empty, or the start of counting</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="gallery-item" data-category="numbers">
+                <div class="item-card">
+                    <div class="item-image">
+                        <img src="https://placehold.co/400x300/4169E1/FFFFFF?text=1️⃣+One" alt="Number one">
+                        <button class="tts-button" data-text="One" title="Listen">
+                            <span class="tts-icon">🔊</span>
+                        </button>
+                    </div>
+                    <div class="item-info">
+                        <h3 class="item-name">One</h3>
+                        <p class="item-description">The number 1 - a single item, the first number</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="gallery-item" data-category="numbers">
+                <div class="item-card">
+                    <div class="item-image">
+                        <img src="https://placehold.co/400x300/32CD32/FFFFFF?text=2️⃣+Two" alt="Number two">
+                        <button class="tts-button" data-text="Two" title="Listen">
+                            <span class="tts-icon">🔊</span>
+                        </button>
+                    </div>
+                    <div class="item-info">
+                        <h3 class="item-name">Two</h3>
+                        <p class="item-description">The number 2 - a pair, like two eyes or hands</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="gallery-item" data-category="numbers">
+                <div class="item-card">
+                    <div class="item-image">
+                        <img src="https://placehold.co/400x300/FFD700/8B8000?text=3️⃣+Three" alt="Number three">
+                        <button class="tts-button" data-text="Three" title="Listen">
+                            <span class="tts-icon">🔊</span>
+                        </button>
+                    </div>
+                    <div class="item-info">
+                        <h3 class="item-name">Three</h3>
+                        <p class="item-description">The number 3 - a small group, like three little pigs</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="gallery-item" data-category="numbers">
+                <div class="item-card">
+                    <div class="item-image">
+                        <img src="https://placehold.co/400x300/FF8C00/FFFFFF?text=4️⃣+Four" alt="Number four">
+                        <button class="tts-button" data-text="Four" title="Listen">
+                            <span class="tts-icon">🔊</span>
+                        </button>
+                    </div>
+                    <div class="item-info">
+                        <h3 class="item-name">Four</h3>
+                        <p class="item-description">The number 4 - like four legs of a table or dog</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="gallery-item" data-category="numbers">
+                <div class="item-card">
+                    <div class="item-image">
+                        <img src="https://placehold.co/400x300/9370DB/FFFFFF?text=5️⃣+Five" alt="Number five">
+                        <button class="tts-button" data-text="Five" title="Listen">
+                            <span class="tts-icon">🔊</span>
+                        </button>
+                    </div>
+                    <div class="item-info">
+                        <h3 class="item-name">Five</h3>
+                        <p class="item-description">The number 5 - fingers on one hand</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="gallery-item" data-category="numbers">
+                <div class="item-card">
+                    <div class="item-image">
+                        <img src="https://placehold.co/400x300/20B2AA/FFFFFF?text=6️⃣+Six" alt="Number six">
+                        <button class="tts-button" data-text="Six" title="Listen">
+                            <span class="tts-icon">🔊</span>
+                        </button>
+                    </div>
+                    <div class="item-info">
+                        <h3 class="item-name">Six</h3>
+                        <p class="item-description">The number 6 - half a dozen eggs</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="gallery-item" data-category="numbers">
+                <div class="item-card">
+                    <div class="item-image">
+                        <img src="https://placehold.co/400x300/FF69B4/FFFFFF?text=7️⃣+Seven" alt="Number seven">
+                        <button class="tts-button" data-text="Seven" title="Listen">
+                            <span class="tts-icon">🔊</span>
+                        </button>
+                    </div>
+                    <div class="item-info">
+                        <h3 class="item-name">Seven</h3>
+                        <p class="item-description">The number 7 - days in a week, colors in a rainbow</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="gallery-item" data-category="numbers">
+                <div class="item-card">
+                    <div class="item-image">
+                        <img src="https://placehold.co/400x300/8B4513/FFFFFF?text=8️⃣+Eight" alt="Number eight">
+                        <button class="tts-button" data-text="Eight" title="Listen">
+                            <span class="tts-icon">🔊</span>
+                        </button>
+                    </div>
+                    <div class="item-info">
+                        <h3 class="item-name">Eight</h3>
+                        <p class="item-description">The number 8 - legs on a spider</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="gallery-item" data-category="numbers">
+                <div class="item-card">
+                    <div class="item-image">
+                        <img src="https://placehold.co/400x300/708090/FFFFFF?text=9️⃣+Nine" alt="Number nine">
+                        <button class="tts-button" data-text="Nine" title="Listen">
+                            <span class="tts-icon">🔊</span>
+                        </button>
+                    </div>
+                    <div class="item-info">
+                        <h3 class="item-name">Nine</h3>
+                        <p class="item-description">The number 9 - players on a baseball team</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Emotions -->
+            <div class="gallery-item" data-category="emotions">
+                <div class="item-card">
+                    <div class="item-image">
+                        <img src="https://placehold.co/400x300/FFD700/FFA500?text=😊+Happy" alt="A happy face">
+                        <button class="tts-button" data-text="Happy" title="Listen">
+                            <span class="tts-icon">🔊</span>
+                        </button>
+                    </div>
+                    <div class="item-info">
+                        <h3 class="item-name">Happy</h3>
+                        <p class="item-description">Feeling joy and pleasure, like when you smile</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="gallery-item" data-category="emotions">
+                <div class="item-card">
+                    <div class="item-image">
+                        <img src="https://placehold.co/400x300/87CEEB/4682B4?text=😢+Sad" alt="A sad face">
+                        <button class="tts-button" data-text="Sad" title="Listen">
+                            <span class="tts-icon">🔊</span>
+                        </button>
+                    </div>
+                    <div class="item-info">
+                        <h3 class="item-name">Sad</h3>
+                        <p class="item-description">Feeling unhappy or sorrowful, when tears may come</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="gallery-item" data-category="emotions">
+                <div class="item-card">
+                    <div class="item-image">
+                        <img src="https://placehold.co/400x300/FF6347/8B0000?text=😠+Angry" alt="An angry face">
+                        <button class="tts-button" data-text="Angry" title="Listen">
+                            <span class="tts-icon">🔊</span>
+                        </button>
+                    </div>
+                    <div class="item-info">
+                        <h3 class="item-name">Angry</h3>
+                        <p class="item-description">Feeling mad or upset when something is wrong</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="gallery-item" data-category="emotions">
+                <div class="item-card">
+                    <div class="item-image">
+                        <img src="https://placehold.co/400x300/FFB6C1/FF69B4?text=😮+Surprised" alt="A surprised face">
+                        <button class="tts-button" data-text="Surprised" title="Listen">
+                            <span class="tts-icon">🔊</span>
+                        </button>
+                    </div>
+                    <div class="item-info">
+                        <h3 class="item-name">Surprised</h3>
+                        <p class="item-description">Feeling shocked when something unexpected happens</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="gallery-item" data-category="emotions">
+                <div class="item-card">
+                    <div class="item-image">
+                        <img src="https://placehold.co/400x300/9370DB/4B0082?text=😨+Scared" alt="A scared face">
+                        <button class="tts-button" data-text="Scared" title="Listen">
+                            <span class="tts-icon">🔊</span>
+                        </button>
+                    </div>
+                    <div class="item-info">
+                        <h3 class="item-name">Scared</h3>
+                        <p class="item-description">Feeling afraid or frightened of something</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="gallery-item" data-category="emotions">
+                <div class="item-card">
+                    <div class="item-image">
+                        <img src="https://placehold.co/400x300/FF69B4/FF1493?text=🤩+Excited" alt="An excited face">
+                        <button class="tts-button" data-text="Excited" title="Listen">
+                            <span class="tts-icon">🔊</span>
+                        </button>
+                    </div>
+                    <div class="item-info">
+                        <h3 class="item-name">Excited</h3>
+                        <p class="item-description">Feeling eager and enthusiastic about something fun</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Time -->
+            <div class="gallery-item" data-category="time">
+                <div class="item-card">
+                    <div class="item-image">
+                        <img src="https://placehold.co/400x300/FFD700/8B8000?text=🕐+Clock" alt="A clock showing time">
+                        <button class="tts-button" data-text="Clock" title="Listen">
+                            <span class="tts-icon">🔊</span>
+                        </button>
+                    </div>
+                    <div class="item-info">
+                        <h3 class="item-name">Clock</h3>
+                        <p class="item-description">A device that shows what time it is</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="gallery-item" data-category="time">
+                <div class="item-card">
+                    <div class="item-image">
+                        <img src="https://placehold.co/400x300/FF6347/FFFFFF?text=📅+Calendar" alt="A calendar">
+                        <button class="tts-button" data-text="Calendar" title="Listen">
+                            <span class="tts-icon">🔊</span>
+                        </button>
+                    </div>
+                    <div class="item-info">
+                        <h3 class="item-name">Calendar</h3>
+                        <p class="item-description">Shows the days, weeks, and months of the year</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="gallery-item" data-category="time">
+                <div class="item-card">
+                    <div class="item-image">
+                        <img src="https://placehold.co/400x300/87CEEB/4682B4?text=☀️+Day" alt="Sunshine representing daytime">
+                        <button class="tts-button" data-text="Day" title="Listen">
+                            <span class="tts-icon">🔊</span>
+                        </button>
+                    </div>
+                    <div class="item-info">
+                        <h3 class="item-name">Day</h3>
+                        <p class="item-description">The time when the sun is shining and it's light outside</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="gallery-item" data-category="time">
+                <div class="item-card">
+                    <div class="item-image">
+                        <img src="https://placehold.co/400x300/191970/FFFFFF?text=🌙+Night" alt="Moon and stars representing night">
+                        <button class="tts-button" data-text="Night" title="Listen">
+                            <span class="tts-icon">🔊</span>
+                        </button>
+                    </div>
+                    <div class="item-info">
+                        <h3 class="item-name">Night</h3>
+                        <p class="item-description">The time when it's dark and the moon comes out</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="gallery-item" data-category="time">
+                <div class="item-card">
+                    <div class="item-image">
+                        <img src="https://placehold.co/400x300/FFD700/FFA500?text=🌅+Morning" alt="Sunrise morning">
+                        <button class="tts-button" data-text="Morning" title="Listen">
+                            <span class="tts-icon">🔊</span>
+                        </button>
+                    </div>
+                    <div class="item-info">
+                        <h3 class="item-name">Morning</h3>
+                        <p class="item-description">The start of the day when the sun rises</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="gallery-item" data-category="time">
+                <div class="item-card">
+                    <div class="item-image">
+                        <img src="https://placehold.co/400x300/FF8C00/8B4513?text=🌇+Evening" alt="Sunset evening">
+                        <button class="tts-button" data-text="Evening" title="Listen">
+                            <span class="tts-icon">🔊</span>
+                        </button>
+                    </div>
+                    <div class="item-info">
+                        <h3 class="item-name">Evening</h3>
+                        <p class="item-description">The end of the day when the sun sets</p>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="page-footer">
+            <p>Explore more categories above! 🌍</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

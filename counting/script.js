@@ -1,3 +1,172 @@
+// ========================================
+// COUNTING MODULE - SHARED JAVASCRIPT
+// ========================================
+
+// ========================================
+// TTS (Text-to-Speech) Functions
+// ========================================
+
+/**
+ * Check if speech synthesis is available in the browser
+ * @returns {boolean}
+ */
+function isSpeechSynthesisAvailable() {
+    return 'speechSynthesis' in window;
+}
+
+/**
+ * Speak text with specified options
+ * @param {string} text - The text to speak
+ * @param {Object} options - Options for speech synthesis
+ * @param {string} options.lang - Language code (default: 'en-US')
+ * @param {number} options.rate - Speech rate (default: 0.9)
+ * @param {number} options.pitch - Speech pitch (default: 1.1)
+ * @param {number} options.volume - Speech volume (default: 1)
+ * @returns {SpeechSynthesisUtterance|null}
+ */
+function speakText(text, options = {}) {
+    if (!isSpeechSynthesisAvailable()) {
+        console.warn('Speech synthesis not available');
+        return null;
+    }
+
+    // Cancel any ongoing speech
+    window.speechSynthesis.cancel();
+
+    const utterance = new SpeechSynthesisUtterance(text);
+    utterance.lang = options.lang || 'en-US';
+    utterance.rate = options.rate || 0.9;
+    utterance.pitch = options.pitch || 1.1;
+    utterance.volume = options.volume || 1;
+
+    window.speechSynthesis.speak(utterance);
+    return utterance;
+}
+
+/**
+ * Stop any ongoing speech
+ */
+function stopSpeaking() {
+    if (isSpeechSynthesisAvailable()) {
+        window.speechSynthesis.cancel();
+    }
+}
+
+/**
+ * Pause speech
+ */
+function pauseSpeaking() {
+    if (isSpeechSynthesisAvailable()) {
+        window.speechSynthesis.pause();
+    }
+}
+
+/**
+ * Resume speech
+ */
+function resumeSpeaking() {
+    if (isSpeechSynthesisAvailable()) {
+        window.speechSynthesis.resume();
+    }
+}
+
+// ========================================
+// Number to Words Conversion
+// ========================================
+
+/**
+ * Convert a number to its word representation
+ * @param {number} num - The number to convert
+ * @returns {string} - The word representation
+ */
+function numberToWords(num) {
+    const ones = ['', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine'];
+    const teens = ['ten', 'eleven', 'twelve', 'thirteen', 'fourteen', 'fifteen', 'sixteen', 'seventeen', 'eighteen', 'nineteen'];
+    const tens = ['', '', 'twenty', 'thirty', 'forty', 'fifty', 'sixty', 'seventy', 'eighty', 'ninety'];
+
+    if (num === 0) return 'zero';
+    if (num < 10) return ones[num];
+    if (num < 20) return teens[num - 10];
+    if (num < 100) {
+        return tens[Math.floor(num / 10)] + (num % 10 !== 0 ? '-' + ones[num % 10] : '');
+    }
+    if (num < 1000) {
+        return ones[Math.floor(num / 100)] + ' hundred' + (num % 100 !== 0 ? ' ' + numberToWords(num % 100) : '');
+    }
+    return num.toString();
+}
+
+/**
+ * Convert a number to words for arithmetic equations
+ * @param {number} num - The number to convert
+ * @returns {string} - The word representation
+ */
+function numberToWordsForArithmetic(num) {
+    const words = numberToWords(num);
+    // Replace hyphens with spaces for better TTS
+    return words.replace(/-/g, ' ');
+}
+
+// ========================================
+// Speak Arithmetic Equations
+// ========================================
+
+/**
+ * Speak an addition equation
+ * @param {number} a - First number
+ * @param {number} b - Second number
+ */
+function speakAddition(a, b) {
+    const sum = a + b;
+    const equation = `${numberToWordsForArithmetic(a)} plus ${numberToWordsForArithmetic(b)} equals ${numberToWordsForArithmetic(sum)}`;
+    speakText(equation, { rate: 0.85 });
+}
+
+/**
+ * Speak a subtraction equation
+ * @param {number} a - First number (minuend)
+ * @param {number} b - Second number (subtrahend)
+ */
+function speakSubtraction(a, b) {
+    const difference = a - b;
+    const equation = `${numberToWordsForArithmetic(a)} minus ${numberToWordsForArithmetic(b)} equals ${numberToWordsForArithmetic(difference)}`;
+    speakText(equation, { rate: 0.85 });
+}
+
+/**
+ * Speak a multiplication equation
+ * @param {number} a - First number
+ * @param {number} b - Second number
+ */
+function speakMultiplication(a, b) {
+    const product = a * b;
+    const equation = `${numberToWordsForArithmetic(a)} times ${numberToWordsForArithmetic(b)} equals ${numberToWordsForArithmetic(product)}`;
+    speakText(equation, { rate: 0.85 });
+}
+
+/**
+ * Speak a division equation
+ * @param {number} dividend - The number being divided
+ * @param {number} divisor - The number dividing by
+ */
+function speakDivision(dividend, divisor) {
+    const quotient = dividend / divisor;
+    const equation = `${numberToWordsForArithmetic(dividend)} divided by ${numberToWordsForArithmetic(divisor)} equals ${numberToWordsForArithmetic(quotient)}`;
+    speakText(equation, { rate: 0.85 });
+}
+
+/**
+ * Speak a number
+ * @param {number} num - The number to speak
+ */
+function speakNumber(num) {
+    speakText(numberToWords(num), { rate: 0.9, pitch: 1.1 });
+}
+
+// ========================================
+// Original Game Code (Number Cards Game)
+// ========================================
+
 // Game state
 let gameState = 'welcome'; // welcome, playing, paused, complete, gameover
 let level = 1;
@@ -29,24 +198,27 @@ const quitGameBtn = document.getElementById('quitGameBtn');
 
 // Initialize game
 document.addEventListener('DOMContentLoaded', function() {
-    // Event listeners
-    startBtn.addEventListener('click', startGame);
-    pauseBtn.addEventListener('click', pauseGame);
-    homeBtn.addEventListener('click', goHome);
-    hintBtn.addEventListener('click', useHint);
-    nextLevelBtn.addEventListener('click', nextLevel);
-    replayBtn.addEventListener('click', replayLevel);
-    menuBtn.addEventListener('click', goHome);
-    tryAgainBtn.addEventListener('click', startGame);
-    quitGameBtn.addEventListener('click', goHome);
-    
-    // Number card listeners
-    document.querySelectorAll('.number-card').forEach(card => {
-        card.addEventListener('click', () => flipCard(card));
-    });
-    
-    // Show welcome screen
-    showWelcomeScreen();
+    // Only initialize game elements if they exist (for the game page)
+    if (startBtn) {
+        // Event listeners
+        startBtn.addEventListener('click', startGame);
+        pauseBtn.addEventListener('click', pauseGame);
+        homeBtn.addEventListener('click', goHome);
+        hintBtn.addEventListener('click', useHint);
+        nextLevelBtn.addEventListener('click', nextLevel);
+        replayBtn.addEventListener('click', replayLevel);
+        menuBtn.addEventListener('click', goHome);
+        tryAgainBtn.addEventListener('click', startGame);
+        quitGameBtn.addEventListener('click', goHome);
+        
+        // Number card listeners
+        document.querySelectorAll('.number-card').forEach(card => {
+            card.addEventListener('click', () => flipCard(card));
+        });
+        
+        // Show welcome screen
+        showWelcomeScreen();
+    }
 });
 
 // Start game
@@ -149,6 +321,9 @@ function checkMatch(card1, card2) {
         card2.classList.add('matched', 'correct');
         matchedPairs++;
         score += 10;
+        
+        // Speak the matched number
+        speakNumber(num1);
         
         // Check if level complete
         if (matchedPairs === cardPairs) {
@@ -269,14 +444,59 @@ function updateTimer() {
 
 // Auto-flip cards for demonstration
 document.addEventListener('DOMContentLoaded', function() {
-    setTimeout(() => {
-        document.querySelectorAll('.number-card').forEach((card, index) => {
-            setTimeout(() => {
-                card.classList.add('flipped');
+    // Only run for game page
+    if (document.querySelector('.number-card')) {
+        setTimeout(() => {
+            document.querySelectorAll('.number-card').forEach((card, index) => {
                 setTimeout(() => {
-                    card.classList.remove('flipped');
-                }, 1500);
-            }, index * 500);
-        });
-    }, 1000);
+                    card.classList.add('flipped');
+                    setTimeout(() => {
+                        card.classList.remove('flipped');
+                    }, 1500);
+                }, index * 500);
+            });
+        }, 1000);
+    }
 });
+
+// ========================================
+// Utility Functions
+// ========================================
+
+/**
+ * Add click-to-speak functionality to elements
+ * @param {string} selector - CSS selector for elements
+ * @param {Function} speakFunction - Function to call when element is clicked
+ */
+function addSpeakOnClick(selector, speakFunction) {
+    document.querySelectorAll(selector).forEach(element => {
+        element.addEventListener('click', speakFunction);
+    });
+}
+
+/**
+ * Create visual feedback on element
+ * @param {HTMLElement} element - The element to animate
+ */
+function visualFeedback(element) {
+    element.style.transform = 'scale(0.95)';
+    setTimeout(() => {
+        element.style.transform = '';
+    }, 150);
+}
+
+// ========================================
+// Voice Loading (for Chrome)
+// ========================================
+
+// Force load voices when available
+if (isSpeechSynthesisAvailable()) {
+    window.speechSynthesis.getVoices();
+    
+    // Chrome loads voices asynchronously
+    if (window.speechSynthesis.onvoiceschanged !== undefined) {
+        window.speechSynthesis.onvoiceschanged = () => {
+            window.speechSynthesis.getVoices();
+        };
+    }
+}

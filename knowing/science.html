@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Science & Chemistry - Visual Encyclopedia</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&display=swap">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="page-container category-page">
+        <!-- Header -->
+        <header class="page-header">
+            <a href="index.html" class="back-button">
+                <span class="back-icon">←</span>
+                <span class="back-text">Back to Encyclopedia</span>
+            </a>
+            <div class="header-title">
+                <span class="header-icon">⚗️</span>
+                <h1>Science & Chemistry</h1>
+            </div>
+            <div class="header-spacer"></div>
+        </header>
+
+        <!-- Sub-category Tabs -->
+        <nav class="subcategory-nav">
+            <button class="subcategory-tab active" data-filter="all">All</button>
+            <button class="subcategory-tab" data-filter="gas">💨 Gas</button>
+            <button class="subcategory-tab" data-filter="liquid">💧 Liquid</button>
+            <button class="subcategory-tab" data-filter="solid">🧊 Solid</button>
+            <button class="subcategory-tab" data-filter="metals">🔩 Metals</button>
+            <button class="subcategory-tab" data-filter="crystals">💎 Crystals</button>
+        </nav>
+
+        <!-- Gallery Grid -->
+        <main class="gallery-container">
+            <!-- Gas -->
+            <div class="gallery-item" data-category="gas">
+                <div class="item-card">
+                    <div class="item-image">
+                        <img src="https://placehold.co/400x300/E0FFFF/87CEEB?text=💨+Air" alt="Air moving">
+                        <button class="tts-button" data-text="Air" title="Listen">
+                            <span class="tts-icon">🔊</span>
+                        </button>
+                    </div>
+                    <div class="item-info">
+                        <h3 class="item-name">Air</h3>
+                        <p class="item-description">The invisible gas all around us that we breathe</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="gallery-item" data-category="gas">
+                <div class="item-card">
+                    <div class="item-image">
+                        <img src="https://placehold.co/400x300/87CEEB/4682B4?text=💨+Oxygen" alt="Oxygen gas representation">
+                        <button class="tts-button" data-text="Oxygen" title="Listen">
+                            <span class="tts-icon">🔊</span>
+                        </button>
+                    </div>
+                    <div class="item-info">
+                        <h3 class="item-name">Oxygen</h3>
+                        <p class="item-description">The gas in air that humans and animals need to live</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="gallery-item" data-category="gas">
+                <div class="item-card">
+                    <div class="item-image">
+                        <img src="https://placehold.co/400x300/E6E6FA/DDA0DD?text=🎈+Helium" alt="Helium balloons">
+                        <button class="tts-button" data-text="Helium" title="Listen">
+                            <span class="tts-icon">🔊</span>
+                        </button>
+                    </div>
+                    <div class="item-info">
+                        <h3 class="item-name">Helium</h3>
+                        <p class="item-description">A light gas that makes balloons float in the air</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="gallery-item" data-category="gas">
+                <div class="item-card">
+                    <div class="item-image">
+                        <img src="https://placehold.co/400x300/D3D3D3/A9A9A9?text=💨+Steam" alt="Steam rising">
+                        <button class="tts-button" data-text="Steam" title="Listen">
+                            <span class="tts-icon">🔊</span>
+                        </button>
+                    </div>
+                    <div class="item-info">
+                        <h3 class="item-name">Steam</h3>
+                        <p class="item-description">Hot water vapor that rises when water boils</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="gallery-item" data-category="gas">
+                <div class="item-card">
+                    <div class="item-image">
+                        <img src="https://placehold.co/400x300/808080/2F4F4F?text=💨+Smoke" alt="Gray smoke">
+                        <button class="tts-button" data-text="Smoke" title="Listen">
+                            <span class="tts-icon">🔊</span>
+                        </button>
+                    </div>
+                    <div class="item-info">
+                        <h3 class="item-name">Smoke</h3>
+                        <p class="item-description">Gray or black gas that comes from fire</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Liquid -->
+            <div class="gallery-item" data-category="liquid">
+                <div class="item-card">
+                    <div class="item-image">
+                        <img src="https://placehold.co/400x300/87CEEB/4682B4?text=💧+Water" alt="Water drops">
+                        <button class="tts-button" data-text="Water" title="Listen">
+                            <span class="tts-icon">🔊</span>
+                        </button>
+                    </div>
+                    <div class="item-info">
+                        <h3 class="item-name">Water</h3>
+                        <p class="item-description">A clear liquid we drink and need to live</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="gallery-item" data-category="liquid">
+                <div class="item-card">
+                    <div class="item-image">
+                        <img src="https://placehold.co/400x300/FFD700/DAA520?text=🛢️+Oil" alt="Oil liquid">
+                        <button class="tts-button" data-text="Oil" title="Listen">
+                            <span class="tts-icon">🔊</span>
+                        </button>
+                    </div>
+                    <div class="item-info">
+                        <h3 class="item-name">Oil</h3>
+                        <p class="item-description">A thick liquid used for cooking and fuel</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="gallery-item" data-category="liquid">
+                <div class="item-card">
+                    <div class="item-image">
+                        <img src="https://placehold.co/400x300/FFA500/FF8C00?text=🧃+Juice" alt="Fruit juice">
+                        <button class="tts-button" data-text="Juice" title="Listen">
+                            <span class="tts-icon">🔊</span>
+                        </button>
+                    </div>
+                    <div class="item-info">
+                        <h3 class="item-name">Juice</h3>
+                        <p class="item-description">Liquid squeezed from fruits like oranges and apples</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="gallery-item" data-category="liquid">
+                <div class="item-card">
+                    <div class="item-image">
+                        <img src="https://placehold.co/400x300/FFF8DC/FFD700?text=🥛+Milk" alt="Milk in a glass">
+                        <button class="tts-button" data-text="Milk" title="Listen">
+                            <span class="tts-icon">🔊</span>
+                        </button>
+                    </div>
+                    <div class="item-info">
+                        <h3 class="item-name">Milk</h3>
+                        <p class="item-description">A white liquid from cows that makes bones strong</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="gallery-item" data-category="liquid">
+                <div class="item-card">
+                    <div class="item-image">
+                        <img src="https://placehold.co/400x300/FFD700/DAA520?text=🍯+Honey" alt="Golden honey">
+                        <button class="tts-button" data-text="Honey" title="Listen">
+                            <span class="tts-icon">🔊</span>
+                        </button>
+                    </div>
+                    <div class="item-info">
+                        <h3 class="item-name">Honey</h3>
+                        <p class="item-description">A sweet, thick liquid made by bees</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Solid -->
+            <div class="gallery-item" data-category="solid">
+                <div class="item-card">
+                    <div class="item-image">
+                        <img src="https://placehold.co/400x300/E0FFFF/ADD8E6?text=🧊+Ice" alt="Frozen ice cubes">
+                        <button class="tts-button" data-text="Ice" title="Listen">
+                            <span class="tts-icon">🔊</span>
+                        </button>
+                    </div>
+                    <div class="item-info">
+                        <h3 class="item-name">Ice</h3>
+                        <p class="item-description">Frozen water that is hard and cold</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="gallery-item" data-category="solid">
+                <div class="item-card">
+                    <div class="item-image">
+                        <img src="https://placehold.co/400x300/808080/2F4F4F?text=🪨+Rock" alt="A solid rock">
+                        <button class="tts-button" data-text="Rock" title="Listen">
+                            <span class="tts-icon">🔊</span>
+                        </button>
+                    </div>
+                    <div class="item-info">
+                        <h3 class="item-name">Rock</h3>
+                        <p class="item-description">A hard, solid piece of the earth</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="gallery-item" data-category="solid">
+                <div class="item-card">
+                    <div class="item-image">
+                        <img src="https://placehold.co/400x300/8B4513/654321?text=🪵+Wood" alt="A piece of wood">
+                        <button class="tts-button" data-text="Wood" title="Listen">
+                            <span class="tts-icon">🔊</span>
+                        </button>
+                    </div>
+                    <div class="item-info">
+                        <h3 class="item-name">Wood</h3>
+                        <p class="item-description">The hard material that comes from trees</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="gallery-item" data-category="solid">
+                <div class="item-card">
+                    <div class="item-image">
+                        <img src="https://placehold.co/400x300/C0C0C0/808080?text=⚙️+Metal" alt="A metal gear">
+                        <button class="tts-button" data-text="Metal" title="Listen">
+                            <span class="tts-icon">🔊</span>
+                        </button>
+                    </div>
+                    <div class="item-info">
+                        <h3 class="item-name">Metal</h3>
+                        <p class="item-description">Hard, shiny materials like iron, steel, and aluminum</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="gallery-item" data-category="solid">
+                <div class="item-card">
+                    <div class="item-image">
+                        <img src="https://placehold.co/400x300/87CEEB/4682B4?text=🪟+Glass" alt="A glass window">
+                        <button class="tts-button" data-text="Glass" title="Listen">
+                            <span class="tts-icon">🔊</span>
+                        </button>
+                    </div>
+                    <div class="item-info">
+                        <h3 class="item-name">Glass</h3>
+                        <p class="item-description">A hard, clear material you can see through</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Metals -->
+            <div class="gallery-item" data-category="metals">
+                <div class="item-card">
+                    <div class="item-image">
+                        <img src="https://placehold.co/400x300/FFD700/B8860B?text=👑+Gold" alt="Shiny gold">
+                        <button class="tts-button" data-text="Gold" title="Listen">
+                            <span class="tts-icon">🔊</span>
+                        </button>
+                    </div>
+                    <div class="item-info">
+                        <h3 class="item-name">Gold</h3>
+                        <p class="item-description">A precious yellow metal used for jewelry and coins</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="gallery-item" data-category="metals">
+                <div class="item-card">
+                    <div class="item-image">
+                        <img src="https://placehold.co/400x300/C0C0C0/808080?text=🥈+Silver" alt="Shiny silver">
+                        <button class="tts-button" data-text="Silver" title="Listen">
+                            <span class="tts-icon">🔊</span>
+                        </button>
+                    </div>
+                    <div class="item-info">
+                        <h3 class="item-name">Silver</h3>
+                        <p class="item-description">A shiny white metal used in jewelry and mirrors</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="gallery-item" data-category="metals">
+                <div class="item-card">
+                    <div class="item-image">
+                        <img src="https://placehold.co/400x300/2F4F4F/000000?text=⚙️+Iron" alt="Iron metal">
+                        <button class="tts-button" data-text="Iron" title="Listen">
+                            <span class="tts-icon">🔊</span>
+                        </button>
+                    </div>
+                    <div class="item-info">
+                        <h3 class="item-name">Iron</h3>
+                        <p class="item-description">A strong, dark metal used for building and tools</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="gallery-item" data-category="metals">
+                <div class="item-card">
+                    <div class="item-image">
+                        <img src="https://placehold.co/400x300/B87333/8B4513?text=🥉+Copper" alt="Copper metal">
+                        <button class="tts-button" data-text="Copper" title="Listen">
+                            <span class="tts-icon">🔊</span>
+                        </button>
+                    </div>
+                    <div class="item-info">
+                        <h3 class="item-name">Copper</h3>
+                        <p class="item-description">A reddish metal used in wires and pennies</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="gallery-item" data-category="metals">
+                <div class="item-card">
+                    <div class="item-image">
+                        <img src="https://placehold.co/400x300/C0C0C0/696969?text=🔩+Aluminum" alt="Aluminum metal">
+                        <button class="tts-button" data-text="Aluminum" title="Listen">
+                            <span class="tts-icon">🔊</span>
+                        </button>
+                    </div>
+                    <div class="item-info">
+                        <h3 class="item-name">Aluminum</h3>
+                        <p class="item-description">A lightweight, silvery metal used for cans and foil</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Crystals -->
+            <div class="gallery-item" data-category="crystals">
+                <div class="item-card">
+                    <div class="item-image">
+                        <img src="https://placehold.co/400x300/E0FFFF/B0E0E6?text=💎+Diamond" alt="A sparkling diamond">
+                        <button class="tts-button" data-text="Diamond" title="Listen">
+                            <span class="tts-icon">🔊</span>
+                        </button>
+                    </div>
+                    <div class="item-info">
+                        <h3 class="item-name">Diamond</h3>
+                        <p class="item-description">The hardest natural crystal, very precious and sparkly</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="gallery-item" data-category="crystals">
+                <div class="item-card">
+                    <div class="item-image">
+                        <img src="https://placehold.co/400x300/FFF0F5/E6E6FA?text=💎+Quartz" alt="A quartz crystal">
+                        <button class="tts-button" data-text="Quartz" title="Listen">
+                            <span class="tts-icon">🔊</span>
+                        </button>
+                    </div>
+                    <div class="item-info">
+                        <h3 class="item-name">Quartz</h3>
+                        <p class="item-description">A clear, shiny crystal found in rocks</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="gallery-item" data-category="crystals">
+                <div class="item-card">
+                    <div class="item-image">
+                        <img src="https://placehold.co/400x300/FFFFFF/D3D3D3?text=🧂+Salt" alt="Salt crystals">
+                        <button class="tts-button" data-text="Salt" title="Listen">
+                            <span class="tts-icon">🔊</span>
+                        </button>
+                    </div>
+                    <div class="item-info">
+                        <h3 class="item-name">Salt</h3>
+                        <p class="item-description">White crystals used to flavor food</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="gallery-item" data-category="crystals">
+                <div class="item-card">
+                    <div class="item-image">
+                        <img src="https://placehold.co/400x300/FFF8DC/DEB887?text=🍬+Sugar" alt="Sugar crystals">
+                        <button class="tts-button" data-text="Sugar" title="Listen">
+                            <span class="tts-icon">🔊</span>
+                        </button>
+                    </div>
+                    <div class="item-info">
+                        <h3 class="item-name">Sugar</h3>
+                        <p class="item-description">Sweet white crystals used to make food taste sweet</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="gallery-item" data-category="crystals">
+                <div class="item-card">
+                    <div class="item-image">
+                        <img src="https://placehold.co/400x300/E0FFFF/87CEEB?text=❄️+Ice+Crystal" alt="Ice crystals">
+                        <button class="tts-button" data-text="Ice Crystal" title="Listen">
+                            <span class="tts-icon">🔊</span>
+                        </button>
+                    </div>
+                    <div class="item-info">
+                        <h3 class="item-name">Ice Crystal</h3>
+                        <p class="item-description">Beautiful patterns made by frozen water</p>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="page-footer">
+            <p>Explore more categories above! 🌍</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,282 +1,374 @@
-// Game state
-let gameState = 'welcome'; // welcome, playing, paused, complete, gameover
-let level = 1;
-let score = 0;
-let lives = 3;
-let hints = 3;
-let currentCard = null;
-let gameTimer = null;
-let startTime = null;
-let levelTime = 0;
-let cardPairs = 0;
-let matchedPairs = 0;
+/**
+ * Visual Encyclopedia - Knowing Module Script
+ * Features: TTS (Text-to-Speech), Sub-category Filtering, Lazy Loading
+ */
 
-// DOM elements
-const welcomeScreen = document.getElementById('welcomeScreen');
-const gameBoard = document.getElementById('gameBoard');
-const completeScreen = document.getElementById('completeScreen');
-const gameoverScreen = document.getElementById('gameoverScreen');
-const progressFill = document.getElementById('progressFill');
-const startBtn = document.getElementById('startBtn');
-const pauseBtn = document.getElementById('pauseBtn');
-const homeBtn = document.getElementById('homeBtn');
-const hintBtn = document.getElementById('hintBtn');
-const nextLevelBtn = document.getElementById('nextLevelBtn');
-const replayBtn = document.getElementById('replayBtn');
-const menuBtn = document.getElementById('menuBtn');
-const tryAgainBtn = document.getElementById('tryAgainBtn');
-const quitGameBtn = document.getElementById('quitGameBtn');
+// ============================================
+// TEXT-TO-SPEECH (TTS) FUNCTIONALITY
+// ============================================
 
-// Initialize game
-document.addEventListener('DOMContentLoaded', function() {
-    // Event listeners
-    startBtn.addEventListener('click', startGame);
-    pauseBtn.addEventListener('click', pauseGame);
-    homeBtn.addEventListener('click', goHome);
-    hintBtn.addEventListener('click', useHint);
-    nextLevelBtn.addEventListener('click', nextLevel);
-    replayBtn.addEventListener('click', replayLevel);
-    menuBtn.addEventListener('click', goHome);
-    tryAgainBtn.addEventListener('click', startGame);
-    quitGameBtn.addEventListener('click', goHome);
-    
-    // Shape card listeners
-    document.querySelectorAll('.shape-card').forEach(card => {
-        card.addEventListener('click', () => flipCard(card));
-    });
-    
-    // Show welcome screen
-    showWelcomeScreen();
-});
-
-// Start game
-function startGame() {
-    gameState = 'playing';
-    level = 1;
-    score = 0;
-    lives = 3;
-    hints = 3;
-    matchedPairs = 0;
-    cardPairs = 4;
-    levelTime = 0;
-    
-    updateStats();
-    resetCards();
-    showGameBoard();
-    
-    // Start timer
-    startTime = Date.now();
-    gameTimer = setInterval(updateTimer, 1000);
-}
-
-// Show welcome screen
-function showWelcomeScreen() {
-    welcomeScreen.style.display = 'block';
-    gameBoard.style.display = 'none';
-    completeScreen.style.display = 'none';
-    gameoverScreen.style.display = 'none';
-}
-
-// Show game board
-function showGameBoard() {
-    welcomeScreen.style.display = 'none';
-    gameBoard.style.display = 'block';
-    completeScreen.style.display = 'none';
-    gameoverScreen.style.display = 'none';
-}
-
-// Show level complete screen
-function showCompleteScreen() {
-    welcomeScreen.style.display = 'none';
-    gameBoard.style.display = 'none';
-    completeScreen.style.display = 'block';
-    gameoverScreen.style.display = 'none';
-}
-
-// Show game over screen
-function showGameOverScreen() {
-    welcomeScreen.style.display = 'none';
-    gameBoard.style.display = 'none';
-    completeScreen.style.display = 'none';
-    gameoverScreen.style.display = 'block';
-}
-
-// Update stats
-function updateStats() {
-    document.querySelector('.level-number').textContent = level;
-    document.querySelector('.score-number').textContent = score;
-    document.querySelector('.lives-number').textContent = '❤️'.repeat(lives);
-    document.querySelector('.hint-count').textContent = `(${hints})`;
-    
-    // Update progress
-    const progress = Math.round((matchedPairs / cardPairs) * 100);
-    progressFill.style.width = progress + '%';
-    document.querySelector('.progress-percentage').textContent = progress + '%';
-}
-
-// Reset cards
-function resetCards() {
-    document.querySelectorAll('.shape-card').forEach(card => {
-        card.classList.remove('flipped', 'matched', 'correct', 'incorrect');
-    });
-}
-
-// Flip card
-function flipCard(card) {
-    if (gameState !== 'playing') return;
-    if (card.classList.contains('flipped')) return;
-    if (currentCard === card) return;
-    
-    card.classList.add('flipped');
-    
-    // Check for match
-    if (!currentCard) {
-        currentCard = card;
-    } else {
-        checkMatch(currentCard, card);
-        currentCard = null;
-    }
-}
-
-// Check match
-function checkMatch(card1, card2) {
-    const shape1 = card1.dataset.shape.toLowerCase();
-    const shape2 = card2.dataset.shape.toLowerCase();
-    
-    if (shape1 === shape2) {
-        // Match
-        card1.classList.add('matched', 'correct');
-        card2.classList.add('matched', 'correct');
-        matchedPairs++;
-        score += 10;
+class TTSManager {
+    constructor() {
+        this.synth = window.speechSynthesis;
+        this.currentUtterance = null;
+        this.isSpeaking = false;
+        this.voices = [];
+        this.preferredVoice = null;
         
-        // Check if level complete
-        if (matchedPairs === cardPairs) {
-            setTimeout(levelComplete, 500);
+        this.init();
+    }
+    
+    init() {
+        // Load voices when available
+        if (this.synth.onvoiceschanged !== undefined) {
+            this.synth.onvoiceschanged = () => this.loadVoices();
         }
-    } else {
-        // No match
-        card1.classList.add('incorrect');
-        card2.classList.add('incorrect');
-        lives--;
         
-        // Flip back after delay
-        setTimeout(() => {
-            card1.classList.remove('flipped', 'incorrect');
-            card2.classList.remove('flipped', 'incorrect');
-        }, 1000);
+        // Try loading voices immediately as well
+        this.loadVoices();
         
-        // Check if game over
-        if (lives === 0) {
-            setTimeout(gameOver, 500);
-        }
-    }
-    
-    updateStats();
-}
-
-// Level complete
-function levelComplete() {
-    gameState = 'complete';
-    clearInterval(gameTimer);
-    showCompleteScreen();
-}
-
-// Game over
-function gameOver() {
-    gameState = 'gameover';
-    clearInterval(gameTimer);
-    showGameOverScreen();
-}
-
-// Pause game
-function pauseGame() {
-    if (gameState === 'playing') {
-        gameState = 'paused';
-        clearInterval(gameTimer);
-        pauseBtn.textContent = '▶️';
-    } else if (gameState === 'paused') {
-        gameState = 'playing';
-        startTime = Date.now() - (levelTime * 1000);
-        gameTimer = setInterval(updateTimer, 1000);
-        pauseBtn.textContent = '⏸️';
-    }
-}
-
-// Go home
-function goHome() {
-    gameState = 'welcome';
-    clearInterval(gameTimer);
-    showWelcomeScreen();
-}
-
-// Use hint
-function useHint() {
-    if (gameState !== 'playing' || hints === 0) return;
-    
-    // Find unflipped cards
-    const unflippedCards = Array.from(document.querySelectorAll('.shape-card:not(.flipped):not(.matched)'));
-    if (unflippedCards.length > 0) {
-        const randomCard = unflippedCards[Math.floor(Math.random() * unflippedCards.length)];
-        randomCard.classList.add('flipped');
-        hints--;
-        updateStats();
-    }
-}
-
-// Next level
-function nextLevel() {
-    level++;
-    score = 0;
-    lives = 3;
-    hints = 3;
-    matchedPairs = 0;
-    cardPairs = Math.min(4 + level * 2, 12);
-    levelTime = 0;
-    
-    updateStats();
-    resetCards();
-    showGameBoard();
-    
-    // Start timer
-    startTime = Date.now();
-    gameTimer = setInterval(updateTimer, 1000);
-}
-
-// Replay level
-function replayLevel() {
-    score = 0;
-    lives = 3;
-    hints = 3;
-    matchedPairs = 0;
-    levelTime = 0;
-    
-    updateStats();
-    resetCards();
-    showGameBoard();
-    
-    // Start timer
-    startTime = Date.now();
-    gameTimer = setInterval(updateTimer, 1000);
-}
-
-// Update timer
-function updateTimer() {
-    levelTime = Math.floor((Date.now() - startTime) / 1000);
-    const minutes = Math.floor(levelTime / 60);
-    const seconds = levelTime % 60;
-}
-
-// Auto-flip cards for demonstration
-document.addEventListener('DOMContentLoaded', function() {
-    setTimeout(() => {
-        document.querySelectorAll('.shape-card').forEach((card, index) => {
-            setTimeout(() => {
-                card.classList.add('flipped');
-                setTimeout(() => {
-                    card.classList.remove('flipped');
-                }, 1500);
-            }, index * 500);
+        // Add click listeners to all TTS buttons
+        document.addEventListener('click', (e) => {
+            const ttsButton = e.target.closest('.tts-button');
+            if (ttsButton) {
+                e.preventDefault();
+                e.stopPropagation();
+                this.speak(ttsButton);
+            }
         });
-    }, 1000);
+    }
+    
+    loadVoices() {
+        this.voices = this.synth.getVoices();
+        
+        // Try to find a good English voice
+        this.preferredVoice = this.voices.find(voice => 
+            voice.lang.startsWith('en') && voice.name.includes('Google')
+        ) || this.voices.find(voice => 
+            voice.lang.startsWith('en')
+        ) || this.voices[0];
+    }
+    
+    speak(button) {
+        const text = button.dataset.text;
+        if (!text) return;
+        
+        // If already speaking this text, stop it
+        if (this.isSpeaking && this.currentText === text) {
+            this.stop();
+            this.removeSpeakingState(button);
+            return;
+        }
+        
+        // Stop any current speech
+        this.stop();
+        this.removeAllSpeakingStates();
+        
+        // Create new utterance
+        const utterance = new SpeechSynthesisUtterance(text);
+        utterance.voice = this.preferredVoice;
+        utterance.rate = 0.9; // Slightly slower for children
+        utterance.pitch = 1.1; // Slightly higher pitch
+        utterance.volume = 1;
+        
+        utterance.onstart = () => {
+            this.isSpeaking = true;
+            this.currentText = text;
+            this.addSpeakingState(button);
+        };
+        
+        utterance.onend = () => {
+            this.isSpeaking = false;
+            this.currentText = null;
+            this.removeSpeakingState(button);
+        };
+        
+        utterance.onerror = (e) => {
+            console.error('TTS Error:', e);
+            this.isSpeaking = false;
+            this.removeSpeakingState(button);
+        };
+        
+        this.currentUtterance = utterance;
+        this.synth.speak(utterance);
+    }
+    
+    stop() {
+        if (this.synth.speaking) {
+            this.synth.cancel();
+        }
+        this.isSpeaking = false;
+        this.currentText = null;
+    }
+    
+    addSpeakingState(button) {
+        button.classList.add('speaking');
+        button.querySelector('.tts-icon').textContent = '⏹️';
+    }
+    
+    removeSpeakingState(button) {
+        button.classList.remove('speaking');
+        button.querySelector('.tts-icon').textContent = '🔊';
+    }
+    
+    removeAllSpeakingStates() {
+        document.querySelectorAll('.tts-button.speaking').forEach(btn => {
+            this.removeSpeakingState(btn);
+        });
+    }
+}
+
+// ============================================
+// SUB-CATEGORY FILTERING
+// ============================================
+
+class CategoryFilter {
+    constructor() {
+        this.tabs = document.querySelectorAll('.subcategory-tab');
+        this.items = document.querySelectorAll('.gallery-item');
+        
+        this.init();
+    }
+    
+    init() {
+        this.tabs.forEach(tab => {
+            tab.addEventListener('click', (e) => {
+                const filter = e.target.dataset.filter;
+                this.filterItems(filter);
+                this.updateActiveTab(e.target);
+            });
+        });
+    }
+    
+    filterItems(category) {
+        this.items.forEach(item => {
+            if (category === 'all' || item.dataset.category === category) {
+                item.classList.remove('hidden');
+                // Small delay for animation
+                setTimeout(() => {
+                    item.style.opacity = '1';
+                    item.style.transform = 'translateY(0)';
+                }, 10);
+            } else {
+                item.style.opacity = '0';
+                item.style.transform = 'translateY(20px)';
+                setTimeout(() => {
+                    item.classList.add('hidden');
+                }, 300);
+            }
+        });
+    }
+    
+    updateActiveTab(activeTab) {
+        this.tabs.forEach(tab => {
+            tab.classList.remove('active');
+        });
+        activeTab.classList.add('active');
+    }
+}
+
+// ============================================
+// LAZY LOADING FOR IMAGES
+// ============================================
+
+class LazyLoader {
+    constructor() {
+        this.images = document.querySelectorAll('img[data-src]');
+        this.imageObserver = null;
+        
+        this.init();
+    }
+    
+    init() {
+        if ('IntersectionObserver' in window) {
+            this.imageObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        this.loadImage(entry.target);
+                        this.imageObserver.unobserve(entry.target);
+                    }
+                });
+            }, {
+                rootMargin: '50px 0px',
+                threshold: 0.01
+            });
+            
+            this.images.forEach(img => this.imageObserver.observe(img));
+        } else {
+            // Fallback for browsers without IntersectionObserver
+            this.images.forEach(img => this.loadImage(img));
+        }
+    }
+    
+    loadImage(img) {
+        const src = img.dataset.src;
+        if (src) {
+            img.src = src;
+            img.removeAttribute('data-src');
+            img.classList.add('loaded');
+        }
+    }
+}
+
+// ============================================
+// SMOOTH SCROLL
+// ============================================
+
+class SmoothScroll {
+    constructor() {
+        this.init();
+    }
+    
+    init() {
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', (e) => {
+                const targetId = anchor.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    e.preventDefault();
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    }
+}
+
+// ============================================
+// KEYBOARD NAVIGATION
+// ============================================
+
+class KeyboardNavigation {
+    constructor() {
+        this.init();
+    }
+    
+    init() {
+        document.addEventListener('keydown', (e) => {
+            // ESC key stops TTS
+            if (e.key === 'Escape') {
+                if (window.ttsManager) {
+                    window.ttsManager.stop();
+                    window.ttsManager.removeAllSpeakingStates();
+                }
+            }
+            
+            // Arrow keys for tab navigation
+            const tabs = document.querySelectorAll('.subcategory-tab');
+            if (tabs.length && (e.key === 'ArrowLeft' || e.key === 'ArrowRight')) {
+                const activeTab = document.querySelector('.subcategory-tab.active');
+                if (activeTab) {
+                    const currentIndex = Array.from(tabs).indexOf(activeTab);
+                    let newIndex;
+                    
+                    if (e.key === 'ArrowLeft') {
+                        newIndex = currentIndex > 0 ? currentIndex - 1 : tabs.length - 1;
+                    } else {
+                        newIndex = currentIndex < tabs.length - 1 ? currentIndex + 1 : 0;
+                    }
+                    
+                    tabs[newIndex].click();
+                    tabs[newIndex].focus();
+                }
+            }
+        });
+    }
+}
+
+// ============================================
+// UTILITY FUNCTIONS
+// ============================================
+
+const Utils = {
+    // Debounce function for performance
+    debounce(func, wait) {
+        let timeout;
+        return function executedFunction(...args) {
+            const later = () => {
+                clearTimeout(timeout);
+                func(...args);
+            };
+            clearTimeout(timeout);
+            timeout = setTimeout(later, wait);
+        };
+    },
+    
+    // Throttle function for scroll events
+    throttle(func, limit) {
+        let inThrottle;
+        return function executedFunction(...args) {
+            if (!inThrottle) {
+                func(...args);
+                inThrottle = true;
+                setTimeout(() => inThrottle = false, limit);
+            }
+        };
+    },
+    
+    // Check if element is in viewport
+    isInViewport(element) {
+        const rect = element.getBoundingClientRect();
+        return (
+            rect.top >= 0 &&
+            rect.left >= 0 &&
+            rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+            rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+        );
+    }
+};
+
+// ============================================
+// INITIALIZATION
+// ============================================
+
+document.addEventListener('DOMContentLoaded', () => {
+    // Initialize TTS Manager
+    window.ttsManager = new TTSManager();
+    
+    // Initialize Category Filter (only on category pages)
+    if (document.querySelector('.subcategory-tab')) {
+        new CategoryFilter();
+    }
+    
+    // Initialize Lazy Loader
+    new LazyLoader();
+    
+    // Initialize Smooth Scroll
+    new SmoothScroll();
+    
+    // Initialize Keyboard Navigation
+    new KeyboardNavigation();
+    
+    // Add loaded class to body for any CSS transitions
+    document.body.classList.add('loaded');
+    
+    console.log('🎓 Visual Encyclopedia loaded successfully!');
 });
+
+// ============================================
+// SERVICE WORKER REGISTRATION (Optional PWA support)
+// ============================================
+
+if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+        // Uncomment when service worker is available
+        // navigator.serviceWorker.register('/knowing/sw.js')
+        //     .then(registration => {
+        //         console.log('SW registered:', registration);
+        //     })
+        //     .catch(error => {
+        //         console.log('SW registration failed:', error);
+        //     });
+    });
+}
+
+// ============================================
+// CONSOLE EASTER EGG
+// ============================================
+
+console.log('%c📚 Visual Encyclopedia', 'font-size: 24px; font-weight: bold; color: #667eea;');
+console.log('%cLearn, Explore, Discover!', 'font-size: 14px; color: #764ba2;');

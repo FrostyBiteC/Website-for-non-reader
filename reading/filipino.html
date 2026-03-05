@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="tl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Filipino Reading - Kids Learning</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700&display=swap">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Nunito', sans-serif;
+            background: linear-gradient(135deg, #a8e6cf 0%, #88d8b0 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1200px;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.98);
+            border-radius: 30px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            margin-bottom: 20px;
+            backdrop-filter: blur(10px);
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            justify-content: center;
+            margin-bottom: 15px;
+        }
+
+        .logo-image {
+            width: 40px;
+            height: 40px;
+            object-fit: contain;
+            border-radius: 50%;
+        }
+
+        .logo-text {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #ff6b6b;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            color: #2c3e50;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .header p {
+            font-size: 1.1rem;
+            color: #666;
+            font-weight: 300;
+        }
+
+        .passages-container {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .passage-card {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            border-left: 6px solid #88d8b0;
+            transition: all 0.3s ease;
+        }
+
+        .passage-card:hover {
+            transform: translateX(5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .passage-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .passage-icon {
+            font-size: 2.5rem;
+        }
+
+        .passage-title {
+            font-size: 1.6rem;
+            color: #2c3e50;
+            font-weight: 700;
+        }
+
+        .passage-content {
+            font-size: 1.15rem;
+            line-height: 2;
+            color: #444;
+            margin-bottom: 20px;
+        }
+
+        .passage-content .word {
+            cursor: pointer;
+            padding: 2px 4px;
+            border-radius: 4px;
+            transition: all 0.2s ease;
+        }
+
+        .passage-content .word:hover {
+            background: rgba(136, 216, 176, 0.3);
+        }
+
+        .passage-content .word.highlighted {
+            background: linear-gradient(120deg, #ffeaa7 0%, #fdcb6e 100%);
+            font-weight: 600;
+        }
+
+        .read-aloud-btn {
+            background: linear-gradient(135deg, #88d8b0 0%, #5cb85c 100%);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 5px 15px rgba(136, 216, 176, 0.4);
+        }
+
+        .read-aloud-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(136, 216, 176, 0.5);
+        }
+
+        .read-aloud-btn:active {
+            transform: translateY(0);
+        }
+
+        .read-aloud-btn:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+        }
+
+        .back-button {
+            display: block;
+            background: linear-gradient(135deg, #6c757d 0%, #495057 100%);
+            color: white;
+            text-decoration: none;
+            padding: 15px 35px;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            text-align: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(108, 117, 125, 0.4);
+            width: fit-content;
+            margin: 0 auto;
+        }
+
+        .back-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(108, 117, 125, 0.5);
+        }
+
+        .instruction {
+            background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
+            border-radius: 15px;
+            padding: 20px;
+            text-align: center;
+            margin-bottom: 30px;
+            border-left: 5px solid #2196f3;
+        }
+
+        .instruction p {
+            font-size: 1.1rem;
+            color: #1976d2;
+            font-weight: 500;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 25px;
+            }
+
+            .header h1 {
+                font-size: 2rem;
+            }
+
+            .logo-text {
+                font-size: 1.5rem;
+            }
+
+            .passage-card {
+                padding: 20px;
+            }
+
+            .passage-title {
+                font-size: 1.3rem;
+            }
+
+            .passage-content {
+                font-size: 1rem;
+            }
+
+            .passage-icon {
+                font-size: 2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 10px;
+            }
+
+            .container {
+                padding: 20px;
+                border-radius: 20px;
+            }
+
+            .header h1 {
+                font-size: 1.7rem;
+            }
+
+            .passage-title {
+                font-size: 1.2rem;
+            }
+
+            .passage-content {
+                font-size: 0.95rem;
+                line-height: 1.8;
+            }
+
+            .read-aloud-btn {
+                padding: 10px 20px;
+                font-size: 0.95rem;
+            }
+
+            .back-button {
+                padding: 12px 25px;
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="logo">
+                <img src="../cropped_circle_image.png" alt="Edulift Logo" class="logo-image">
+                <span class="logo-text">EDULIFT</span>
+            </div>
+            <h1>📚 Filipino Reading</h1>
+            <p>Basahin ang mga kuwento sa Filipino!</p>
+        </div>
+
+        <div class="instruction">
+            <p>🔊 I-click ang "Basahin" button para marinig ang kuwento!</p>
+        </div>
+
+        <div class="passages-container" id="passagesContainer">
+            <!-- Passages will be generated by JavaScript -->
+        </div>
+
+        <a href="index.html" class="back-button">← Back to Reading</a>
+    </div>
+
+    <script>
+        // Filipino reading passages
+        const filipinoPassages = [
+            {
+                id: 1,
+                title: 'Ang Aking Pamilya',
+                icon: '👨‍👩‍👧‍👦',
+                content: 'Ako si Maria. Mayroon akong masayang pamilya. Si Tatay ay mabait at masipag. Si Nanay ay mapagmahal at maalaga. Mayroon akong kapatid na si Juan. Mahilig kaming maglaro sa parke tuwing Linggo. Pinakamasaya ako kapag kasama ko ang aking pamilya.'
+            },
+            {
+                id: 2,
+                title: 'Ang Aking Alaga',
+                icon: '🐶',
+                content: 'May alaga akong aso. Ang pangalan niya ay Brownie. Kulay kayumanggi siya at napakabait. Mahilig siyang tumakbo at maglaro ng bola. Tuwing umaga, sumasama siya sa akin sa paglalakad. Sinusundan niya ako kahit saan. Si Brownie ang pinakamagandang regalong natanggap ko.'
+            },
+            {
+                id: 3,
+                title: 'Ang Aking Paaralan',
+                icon: '🏫',
+                content: 'Ang pangalan ng aking paaralan ay Paaralang Elementarya ng Masaya. Malaki at maganda ang aming paaralan. Maraming puno at bulaklak sa paligid. Ang aking guro ay si Gng. Santos. Siya ay mabait at masipag magturo. Marami akong natututuhan bawat araw. Mahal ko ang aking paaralan.'
+            },
+            {
+                id: 4,
+                title: 'Ang Aking Kaibigan',
+                icon: '👫',
+                content: 'Si Pedro ang aking matalik na kaibigan. Magkaklase kami mula kindergarten. Mahilig kaming maglaro ng sipa at taguan. Nagtutulungan kami sa aming mga takdang aralin. Kapag malungkot ako, pinapasaya niya ako. Kapag may problema siya, tinutulungan ko siya. Siya ang pinakamabuting kaibigan ko.'
+            },
+            {
+                id: 5,
+                title: 'Ang Aking Paboritong Pagkain',
+                icon: '🍲',
+                content: 'Ang aking paboritong pagkain ay adobo. Niluluto ito ni Nanay tuwing Linggo. Masarap ang amoy at lasa nito. May manok at baboy na niluto sa toyo at suka. Hinahain ito kasama ng mainit na kanin. Kumakain kaming buong pamilya nang sama-sama. Ang sarap ng luto ni Nanay!'
+            },
+            {
+                id: 6,
+                title: 'Ang Bagong Taon',
+                icon: '🎆',
+                content: 'Masayang ipinagdiwang namin ang Bagong Taon. May mga paputok sa labas ng bahay. Masaya ang mga tao at naghahanda ng masasarap na pagkain. Kumain kami ng pansit at lumpia. Sumayaw at kumanta kami hanggang hatinggabi. Sumigaw kami ng "Happy New Year!" Nagsimula kami ng bagong taon nang may pag-asa.'
+            },
+            {
+                id: 7,
+                title: 'Ang Munting Ibon',
+                icon: '🐦',
+                content: 'May nakita akong munting ibon sa hardin. Kulay dilaw ang balahibo nito. Tumitilaok ito nang malakas tuwing umaga. Naghahanap ito ng pagkain sa lupa. Gumagawa ito ng pugad sa puno. Pinapanood ko ito araw-araw. Natutuwa ako sa munting ibon na iyon.'
+            },
+            {
+                id: 8,
+                title: 'Ang Aking Laruang Kotse',
+                icon: '🚗',
+                content: 'Mayroon akong laruang kotse na kulay pula. Ibinigay ito sa akin ni Tatay noong Pasko. Tumatakbo ito kapag hinila ko pabalik. Mahilig ko itong ipakita sa aking mga kaibigan. Naglalaro kami ng karera sa aming sala. Ang saya-saya ko kapag kasama ang aking kotse. Aalagaan ko ito habang buhay.'
+            }
+        ];
+
+        // Generate passage cards
+        const passagesContainer = document.getElementById('passagesContainer');
+        let currentUtterance = null;
+        let currentHighlightInterval = null;
+
+        filipinoPassages.forEach(passage => {
+            const card = document.createElement('div');
+            card.className = 'passage-card';
+            card.dataset.id = passage.id;
+
+            // Wrap words in spans for highlighting
+            const words = passage.content.split(' ');
+            const wrappedContent = words.map((word, index) => 
+                `<span class="word" data-index="${index}">${word}</span>`
+            ).join(' ');
+
+            card.innerHTML = `
+                <div class="passage-header">
+                    <div class="passage-icon">${passage.icon}</div>
+                    <h2 class="passage-title">${passage.title}</h2>
+                </div>
+                <div class="passage-content" id="content-${passage.id}">
+                    ${wrappedContent}
+                </div>
+                <button class="read-aloud-btn" data-id="${passage.id}">
+                    🔊 Basahin
+                </button>
+            `;
+
+            passagesContainer.appendChild(card);
+        });
+
+        // Add event listeners to read aloud buttons
+        document.querySelectorAll('.read-aloud-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const passageId = parseInt(btn.dataset.id);
+                const passage = filipinoPassages.find(p => p.id === passageId);
+                const contentDiv = document.getElementById(`content-${passageId}`);
+                const words = contentDiv.querySelectorAll('.word');
+
+                if (btn.textContent.includes('Basahin')) {
+                    readPassage(passage, btn, words);
+                } else {
+                    stopReading(btn, words);
+                }
+            });
+        });
+
+        // Read passage with word highlighting
+        function readPassage(passage, btn, words) {
+            if (!('speechSynthesis' in window)) {
+                alert('Sorry, speech synthesis is not available in your browser.');
+                return;
+            }
+
+            // Stop any current speech
+            window.speechSynthesis.cancel();
+            clearInterval(currentHighlightInterval);
+
+            // Update button
+            btn.innerHTML = '⏹️ Huminto';
+
+            // Create utterance
+            const utterance = new SpeechSynthesisUtterance(passage.content);
+            utterance.lang = 'tl-PH';
+            utterance.rate = 0.75;
+            utterance.pitch = 1;
+
+            // Track word boundaries for highlighting
+            let wordIndex = 0;
+            const wordTimings = calculateWordTimings(passage.content);
+
+            utterance.onstart = () => {
+                wordIndex = 0;
+                highlightWord(words, 0);
+
+                currentHighlightInterval = setInterval(() => {
+                    wordIndex++;
+                    if (wordIndex < words.length) {
+                        highlightWord(words, wordIndex);
+                    }
+                }, 400); // Approximate timing per word
+            };
+
+            utterance.onend = () => {
+                stopReading(btn, words);
+            };
+
+            utterance.onerror = () => {
+                stopReading(btn, words);
+            };
+
+            currentUtterance = utterance;
+            window.speechSynthesis.speak(utterance);
+        }
+
+        // Stop reading
+        function stopReading(btn, words) {
+            window.speechSynthesis.cancel();
+            clearInterval(currentHighlightInterval);
+            btn.innerHTML = '🔊 Basahin';
+            words.forEach(word => word.classList.remove('highlighted'));
+        }
+
+        // Highlight current word
+        function highlightWord(words, index) {
+            words.forEach(word => word.classList.remove('highlighted'));
+            if (words[index]) {
+                words[index].classList.add('highlighted');
+                words[index].scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
+        }
+
+        // Calculate approximate word timings
+        function calculateWordTimings(text) {
+            const words = text.split(' ');
+            const baseTime = 400; // milliseconds per word
+            return words.map(() => baseTime);
+        }
+
+        // Stop speech when leaving page
+        window.addEventListener('beforeunload', () => {
+            window.speechSynthesis.cancel();
+            clearInterval(currentHighlightInterval);
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Objects & Tech - Visual Encyclopedia</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&display=swap">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="page-container category-page">
+        <!-- Header -->
+        <header class="page-header">
+            <a href="index.html" class="back-button">
+                <span class="back-icon">←</span>
+                <span class="back-text">Back to Encyclopedia</span>
+            </a>
+            <div class="header-title">
+                <span class="header-icon">🚗</span>
+                <h1>Objects & Tech</h1>
+            </div>
+            <div class="header-spacer"></div>
+        </header>
+
+        <!-- Sub-category Tabs -->
+        <nav class="subcategory-nav">
+            <button class="subcategory-tab active" data-filter="all">All</button>
+            <button class="subcategory-tab" data-filter="vehicles">🚙 Vehicles</button>
+            <button class="subcategory-tab" data-filter="electronics">📱 Electronics</button>
+            <button class="subcategory-tab" data-filter="toys">🧸 Toys</button>
+            <button class="subcategory-tab" data-filter="buildings">🏢 Buildings</button>
+            <button class="subcategory-tab" data-filter="money">💰 Money</button>
+        </nav>
+
+        <!-- Gallery Grid -->
+        <main class="gallery-container">
+            <!-- Vehicles -->
+            <div class="gallery-item" data-category="vehicles">
+                <div class="item-card">
+                    <div class="item-image">
+                        <img src="https://placehold.co/400x300/FF0000/8B0000?text=🚗+Car" alt="A red car">
+                        <button class="tts-button" data-text="Car" title="Listen">
+                            <span class="tts-icon">🔊</span>
+                        </button>
+                    </div>
+                    <div class="item-info">
+                        <h3 class="item-name">Car</h3>
+                        <p class="item-description">A vehicle with four wheels for traveling on roads</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="gallery-item" data-category="vehicles">
+                <div class="item-card">
+                    <div class="item-image">
+                        <img src="https://placehold.co/400x300/FFD700/B8860B?text=🚌+Bus" alt="A yellow school bus">
+                        <button class="tts-button" data-text="Bus" title="Listen">
+                            <span class="tts-icon">🔊</span>
+                        </button>
+                    </div>
+                    <div class="item-info">
+                        <h3 class="item-name">Bus</h3>
+                        <p class="item-description">A large vehicle that carries many passengers</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="gallery-item" data-category="vehicles">
+                <div class="item-card">
+                    <div class="item-image">
+                        <img src="https://placehold.co/400x300/4169E1/000080?text=🚂+Train" alt="A train on tracks">
+                        <button class="tts-button" data-text="Train" title="Listen">
+                            <span class="tts-icon">🔊</span>
+                        </button>
+                    </div>
+                    <div class="item-info">
+                        <h3 class="item-name">Train</h3>
+                        <p class="item-description">A vehicle on tracks that pulls connected cars</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="gallery-item" data-category="vehicles">
+                <div class="item-card">
+                    <div class="item-image">
+                        <img src="https://placehold.co/400x300/87CEEB/4682B4?text=✈️+Airplane" alt="An airplane flying">
+                        <button class="tts-button" data-text="Airplane" title="Listen">
+                            <span class="tts-icon">🔊</span>
+                        </button>
+                    </div>
+                    <div class="item-info">
+                        <h3 class="item-name">Airplane</h3>
+                        <p class="item-description">A vehicle that flies through the air carrying passengers</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="gallery-item" data-category="vehicles">
+                <div class="item-card">
+                    <div class="item-image">
+                        <img src="https://placehold.co/400x300/FF6347/8B0000?text=🚲+Bicycle" alt="A bicycle">
+                        <button class="tts-button" data-text="Bicycle" title="Listen">
+                            <span class="tts-icon">🔊</span>
+                        </button>
+                    </div>
+                    <div class="item-info">
+                        <h3 class="item-name">Bicycle</h3>
+                        <p class="item-description">A two-wheeled vehicle you pedal with your feet</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="gallery-item" data-category="vehicles">
+                <div class="item-card">
+                    <div class="item-image">
+                        <img src="https://placehold.co/400x300/FFFFFF/4682B4?text=🚢+Boat" alt="A boat on water">
+                        <button class="tts-button" data-text="Boat" title="Listen">
+                            <span class="tts-icon">🔊</span>
+                        </button>
+                    </div>
+                    <div class="item-info">
+                        <h3 class="item-name">Boat</h3>
+                        <p class="item-description">A vehicle that travels on water</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Electronics -->
+            <div class="gallery-item" data-category="electronics">
+                <div class="item-card">
+                    <div class="item-image">
+                        <img src="https://placehold.co/400x300/000000/FFFFFF?text=📱+Phone" alt="A smartphone">
+                        <button class="tts-button" data-text="Phone" title="Listen">
+                            <span class="tts-icon">🔊</span>
+                        </button>
+                    </div>
+                    <div class="item-info">
+                        <h3 class="item-name">Phone</h3>
+                        <p class="item-description">A device for talking to people far away</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="gallery-item" data-category="electronics">
+                <div class="item-card">
+                    <div class="item-image">
+                        <img src="https://placehold.co/400x300/C0C0C0/2F4F4F?text=💻+Computer" alt="A laptop computer">
+                        <button class="tts-button" data-text="Computer" title="Listen">
+                            <span class="tts-icon">🔊</span>
+                        </button>
+                    </div>
+                    <div class="item-info">
+                        <h3 class="item-name">Computer</h3>
+                        <p class="item-description">An electronic machine for work, games, and learning</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="gallery-item" data-category="electronics">
+                <div class="item-card">
+                    <div class="item-image">
+                        <img src="https://placehold.co/400x300/2F4F4F/000000?text=📺+TV" alt="A television">
+                        <button class="tts-button" data-text="TV" title="Listen">
+                            <span class="tts-icon">🔊</span>
+                        </button>
+                    </div>
+                    <div class="item-info">
+                        <h3 class="item-name">TV</h3>
+                        <p class="item-description">A screen that shows movies, shows, and news</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="gallery-item" data-category="electronics">
+                <div class="item-card">
+                    <div class="item-image">
+                        <img src="https://placehold.co/400x300/000000/C0C0C0?text=📷+Camera" alt="A digital camera">
+                        <button class="tts-button" data-text="Camera" title="Listen">
+                            <span class="tts-icon">🔊</span>
+                        </button>
+                    </div>
+                    <div class="item-info">
+                        <h3 class="item-name">Camera</h3>
+                        <p class="item-description">A device that takes photos and videos</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="gallery-item" data-category="electronics">
+                <div class="item-card">
+                    <div class="item-image">
+                        <img src="https://placehold.co/400x300/000000/FFFFFF?text=📱+Tablet" alt="A tablet device">
+                        <button class="tts-button" data-text="Tablet" title="Listen">
+                            <span class="tts-icon">🔊</span>
+                        </button>
+                    </div>
+                    <div class="item-info">
+                        <h3 class="item-name">Tablet</h3>
+                        <p class="item-description">A flat computer with a touch screen</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="gallery-item" data-category="electronics">
+                <div class="item-card">
+                    <div class="item-image">
+                        <img src="https://placehold.co/400x300/8B4513/D2691E?text=📻+Radio" alt="A radio">
+                        <button class="tts-button" data-text="Radio" title="Listen">
+                            <span class="tts-icon">🔊</span>
+                        </button>
+                    </div>
+                    <div class="item-info">
+                        <h3 class="item-name">Radio</h3>
+                        <p class="item-description">A device that plays music and news from the air</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Toys -->
+            <div class="gallery-item" data-category="toys">
+                <div class="item-card">
+                    <div class="item-image">
+                        <img src="https://placehold.co/400x300/FF0000/8B0000?text=⚽+Ball" alt="A colorful ball">
+                        <button class="tts-button" data-text="Ball" title="Listen">
+                            <span class="tts-icon">🔊</span>
+                        </button>
+                    </div>
+                    <div class="item-info">
+                        <h3 class="item-name">Ball</h3>
+                        <p class="item-description">A round toy for throwing, catching, and playing games</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="gallery-item" data-category="toys">
+                <div class="item-card">
+                    <div class="item-image">
+                        <img src="https://placehold.co/400x300/FFB6C1/C71585?text=🎀+Doll" alt="A doll">
+                        <button class="tts-button" data-text="Doll" title="Listen">
+                            <span class="tts-icon">🔊</span>
+                        </button>
+                    </div>
+                    <div class="item-info">
+                        <h3 class="item-name">Doll</h3>
+                        <p class="item-description">A toy shaped like a person for pretend play</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="gallery-item" data-category="toys">
+                <div class="item-card">
+                    <div class="item-image">
+                        <img src="https://placehold.co/400x300/FFD700/DAA520?text=🧱+Blocks" alt="Colorful building blocks">
+                        <button class="tts-button" data-text="Blocks" title="Listen">
+                            <span class="tts-icon">🔊</span>
+                        </button>
+                    </div>
+                    <div class="item-info">
+                        <h3 class="item-name">Blocks</h3>
+                        <p class="item-description">Colorful pieces for building towers and shapes</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="gallery-item" data-category="toys">
+                <div class="item-card">
+                    <div class="item-image">
+                        <img src="https://placehold.co/400x300/4169E1/000080?text=🧩+Puzzle" alt="A jigsaw puzzle">
+                        <button class="tts-button" data-text="Puzzle" title="Listen">
+                            <span class="tts-icon">🔊</span>
+                        </button>
+                    </div>
+                    <div class="item-info">
+                        <h3 class="item-name">Puzzle</h3>
+                        <p class="item-description">Pieces that fit together to make a picture</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="gallery-item" data-category="toys">
+                <div class="item-card">
+                    <div class="item-image">
+                        <img src="https://placehold.co/400x300/D2691E/8B4513?text=🧸+Teddy+Bear" alt="A fluffy teddy bear">
+                        <button class="tts-button" data-text="Teddy Bear" title="Listen">
+                            <span class="tts-icon">🔊</span>
+                        </button>
+                    </div>
+                    <div class="item-info">
+                        <h3 class="item-name">Teddy Bear</h3>
+                        <p class="item-description">A soft, cuddly stuffed bear toy</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="gallery-item" data-category="toys">
+                <div class="item-card">
+                    <div class="item-image">
+                        <img src="https://placehold.co/400x300/FF0000/8B0000?text=🚗+Car+Toy" alt="A toy car">
+                        <button class="tts-button" data-text="Car Toy" title="Listen">
+                            <span class="tts-icon">🔊</span>
+                        </button>
+                    </div>
+                    <div class="item-info">
+                        <h3 class="item-name">Car Toy</h3>
+                        <p class="item-description">A small model car for play and collecting</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Buildings -->
+            <div class="gallery-item" data-category="buildings">
+                <div class="item-card">
+                    <div class="item-image">
+                        <img src="https://placehold.co/400x300/FF6347/8B0000?text=🏫+School" alt="A school building">
+                        <button class="tts-button" data-text="School" title="Listen">
+                            <span class="tts-icon">🔊</span>
+                        </button>
+                    </div>
+                    <div class="item-info">
+                        <h3 class="item-name">School</h3>
+                        <p class="item-description">A place where students learn and teachers teach</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="gallery-item" data-category="buildings">
+                <div class="item-card">
+                    <div class="item-image">
+                        <img src="https://placehold.co/400x300/FFFFFF/FF0000?text=🏥+Hospital" alt="A hospital building">
+                        <button class="tts-button" data-text="Hospital" title="Listen">
+                            <span class="tts-icon">🔊</span>
+                        </button>
+                    </div>
+                    <div class="item-info">
+                        <h3 class="item-name">Hospital</h3>
+                        <p class="item-description">A building where doctors and nurses help sick people</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="gallery-item" data-category="buildings">
+                <div class="item-card">
+                    <div class="item-image">
+                        <img src="https://placehold.co/400x300/87CEEB/4169E1?text=🏪+Store" alt="A store building">
+                        <button class="tts-button" data-text="Store" title="Listen">
+                            <span class="tts-icon">🔊</span>
+                        </button>
+                    </div>
+                    <div class="item-info">
+                        <h3 class="item-name">Store</h3>
+                        <p class="item-description">A place where people buy things they need</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="gallery-item" data-category="buildings">
+                <div class="item-card">
+                    <div class="item-image">
+                        <img src="https://placehold.co/400x300/FFF5EE/DEB887?text=⛪+Church" alt="A church building">
+                        <button class="tts-button" data-text="Church" title="Listen">
+                            <span class="tts-icon">🔊</span>
+                        </button>
+                    </div>
+                    <div class="item-info">
+                        <h3 class="item-name">Church</h3>
+                        <p class="item-description">A building where people gather to pray and worship</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="gallery-item" data-category="buildings">
+                <div class="item-card">
+                    <div class="item-image">
+                        <img src="https://placehold.co/400x300/808080/2F4F4F?text=🌉+Bridge" alt="A bridge over water">
+                        <button class="tts-button" data-text="Bridge" title="Listen">
+                            <span class="tts-icon">🔊</span>
+                        </button>
+                    </div>
+                    <div class="item-info">
+                        <h3 class="item-name">Bridge</h3>
+                        <p class="item-description">A structure built over water or roads for crossing</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="gallery-item" data-category="buildings">
+                <div class="item-card">
+                    <div class="item-image">
+                        <img src="https://placehold.co/400x300/4682B4/191970?text=🗼+Tower" alt="A tall tower">
+                        <button class="tts-button" data-text="Tower" title="Listen">
+                            <span class="tts-icon">🔊</span>
+                        </button>
+                    </div>
+                    <div class="item-info">
+                        <h3 class="item-name">Tower</h3>
+                        <p class="item-description">A tall, narrow building that reaches high into the sky</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Money -->
+            <div class="gallery-item" data-category="money">
+                <div class="item-card">
+                    <div class="item-image">
+                        <img src="https://placehold.co/400x300/FFD700/B8860B?text=🪙+Coins" alt="Gold coins">
+                        <button class="tts-button" data-text="Coins" title="Listen">
+                            <span class="tts-icon">🔊</span>
+                        </button>
+                    </div>
+                    <div class="item-info">
+                        <h3 class="item-name">Coins</h3>
+                        <p class="item-description">Round metal pieces used as money</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="gallery-item" data-category="money">
+                <div class="item-card">
+                    <div class="item-image">
+                        <img src="https://placehold.co/400x300/90EE90/228B22?text=💵+Bills" alt="Paper money bills">
+                        <button class="tts-button" data-text="Bills" title="Listen">
+                            <span class="tts-icon">🔊</span>
+                        </button>
+                    </div>
+                    <div class="item-info">
+                        <h3 class="item-name">Bills</h3>
+                        <p class="item-description">Paper money in different values</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="gallery-item" data-category="money">
+                <div class="item-card">
+                    <div class="item-image">
+                        <img src="https://placehold.co/400x300/8B4513/654321?text=👛+Wallet" alt="A leather wallet">
+                        <button class="tts-button" data-text="Wallet" title="Listen">
+                            <span class="tts-icon">🔊</span>
+                        </button>
+                    </div>
+                    <div class="item-info">
+                        <h3 class="item-name">Wallet</h3>
+                        <p class="item-description">A small case for carrying money and cards</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="gallery-item" data-category="money">
+                <div class="item-card">
+                    <div class="item-image">
+                        <img src="https://placehold.co/400x300/4682B4/191970?text=🏦+Bank" alt="A bank building">
+                        <button class="tts-button" data-text="Bank" title="Listen">
+                            <span class="tts-icon">🔊</span>
+                        </button>
+                    </div>
+                    <div class="item-info">
+                        <h3 class="item-name">Bank</h3>
+                        <p class="item-description">A place where money is kept and managed safely</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="gallery-item" data-category="money">
+                <div class="item-card">
+                    <div class="item-image">
+                        <img src="https://placehold.co/400x300/FFB6C1/C71585?text=🐷+Piggy+Bank" alt="A piggy bank">
+                        <button class="tts-button" data-text="Piggy Bank" title="Listen">
+                            <span class="tts-icon">🔊</span>
+                        </button>
+                    </div>
+                    <div class="item-info">
+                        <h3 class="item-name">Piggy Bank</h3>
+                        <p class="item-description">A pig-shaped container for saving coins</p>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="page-footer">
+            <p>Explore more categories above! 🌍</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

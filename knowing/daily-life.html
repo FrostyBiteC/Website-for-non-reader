@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daily Life - Visual Encyclopedia</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&display=swap">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="page-container category-page">
+        <!-- Header -->
+        <header class="page-header">
+            <a href="index.html" class="back-button">
+                <span class="back-icon">←</span>
+                <span class="back-text">Back to Encyclopedia</span>
+            </a>
+            <div class="header-title">
+                <span class="header-icon">🏠</span>
+                <h1>Daily Life</h1>
+            </div>
+            <div class="header-spacer"></div>
+        </header>
+
+        <!-- Sub-category Tabs -->
+        <nav class="subcategory-nav">
+            <button class="subcategory-tab active" data-filter="all">All</button>
+            <button class="subcategory-tab" data-filter="food">🍎 Food</button>
+            <button class="subcategory-tab" data-filter="clothing">👕 Clothing</button>
+            <button class="subcategory-tab" data-filter="home">🏡 Home</button>
+            <button class="subcategory-tab" data-filter="tools">🔨 Tools</button>
+            <button class="subcategory-tab" data-filter="health">🏥 Health</button>
+        </nav>
+
+        <!-- Gallery Grid -->
+        <main class="gallery-container">
+            <!-- Food -->
+            <div class="gallery-item" data-category="food">
+                <div class="item-card">
+                    <div class="item-image">
+                        <img src="https://placehold.co/400x300/FF0000/006400?text=🍎+Apple" alt="A red apple, healthy fruit">
+                        <button class="tts-button" data-text="Apple" title="Listen">
+                            <span class="tts-icon">🔊</span>
+                        </button>
+                    </div>
+                    <div class="item-info">
+                        <h3 class="item-name">Apple</h3>
+                        <p class="item-description">A sweet, crunchy red fruit that grows on trees</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="gallery-item" data-category="food">
+                <div class="item-card">
+                    <div class="item-image">
+                        <img src="https://placehold.co/400x300/D2691E/8B4513?text=🍞+Bread" alt="A loaf of bread">
+                        <button class="tts-button" data-text="Bread" title="Listen">
+                            <span class="tts-icon">🔊</span>
+                        </button>
+                    </div>
+                    <div class="item-info">
+                        <h3 class="item-name">Bread</h3>
+                        <p class="item-description">Soft baked food made from flour, perfect for sandwiches</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="gallery-item" data-category="food">
+                <div class="item-card">
+                    <div class="item-image">
+                        <img src="https://placehold.co/400x300/FFFAF0/D3D3D3?text=🍚+Rice" alt="A bowl of white rice">
+                        <button class="tts-button" data-text="Rice" title="Listen">
+                            <span class="tts-icon">🔊</span>
+                        </button>
+                    </div>
+                    <div class="item-info">
+                        <h3 class="item-name">Rice</h3>
+                        <p class="item-description">Small white grains that are a main food for many people</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="gallery-item" data-category="food">
+                <div class="item-card">
+                    <div class="item-image">
+                        <img src="https://placehold.co/400x300/FFF8DC/4682B4?text=🥛+Milk" alt="A glass of milk">
+                        <button class="tts-button" data-text="Milk" title="Listen">
+                            <span class="tts-icon">🔊</span>
+                        </button>
+                    </div>
+                    <div class="item-info">
+                        <h3 class="item-name">Milk</h3>
+                        <p class="item-description">White drink from cows that makes bones strong</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="gallery-item" data-category="food">
+                <div class="item-card">
+                    <div class="item-image">
+                        <img src="https://placehold.co/400x300/90EE90/228B22?text=🥗+Vegetables" alt="Fresh colorful vegetables">
+                        <button class="tts-button" data-text="Vegetables" title="Listen">
+                            <span class="tts-icon">🔊</span>
+                        </button>
+                    </div>
+                    <div class="item-info">
+                        <h3 class="item-name">Vegetables</h3>
+                        <p class="item-description">Healthy plants we eat like carrots, broccoli, and peas</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="gallery-item" data-category="food">
+                <div class="item-card">
+                    <div class="item-image">
+                        <img src="https://placehold.co/400x300/CD5C5C/8B0000?text=🍖+Meat" alt="Cooked meat">
+                        <button class="tts-button" data-text="Meat" title="Listen">
+                            <span class="tts-icon">🔊</span>
+                        </button>
+                    </div>
+                    <div class="item-info">
+                        <h3 class="item-name">Meat</h3>
+                        <p class="item-description">Food from animals like chicken, beef, and pork</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Clothing -->
+            <div class="gallery-item" data-category="clothing">
+                <div class="item-card">
+                    <div class="item-image">
+                        <img src="https://placehold.co/400x300/4169E1/00008B?text=👕+Shirt" alt="A colorful t-shirt">
+                        <button class="tts-button" data-text="Shirt" title="Listen">
+                            <span class="tts-icon">🔊</span>
+                        </button>
+                    </div>
+                    <div class="item-info">
+                        <h3 class="item-name">Shirt</h3>
+                        <p class="item-description">Clothing worn on the upper body with sleeves</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="gallery-item" data-category="clothing">
+                <div class="item-card">
+                    <div class="item-image">
+                        <img src="https://placehold.co/400x300/2F4F4F/000000?text=👖+Pants" alt="A pair of pants">
+                        <button class="tts-button" data-text="Pants" title="Listen">
+                            <span class="tts-icon">🔊</span>
+                        </button>
+                    </div>
+                    <div class="item-info">
+                        <h3 class="item-name">Pants</h3>
+                        <p class="item-description">Clothing worn on the legs, covering from waist to ankles</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="gallery-item" data-category="clothing">
+                <div class="item-card">
+                    <div class="item-image">
+                        <img src="https://placehold.co/400x300/FF69B4/C71585?text=👗+Dress" alt="A beautiful dress">
+                        <button class="tts-button" data-text="Dress" title="Listen">
+                            <span class="tts-icon">🔊</span>
+                        </button>
+                    </div>
+                    <div class="item-info">
+                        <h3 class="item-name">Dress</h3>
+                        <p class="item-description">A one-piece garment that covers the body from shoulders down</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="gallery-item" data-category="clothing">
+                <div class="item-card">
+                    <div class="item-image">
+                        <img src="https://placehold.co/400x300/8B4513/654321?text=👟+Shoes" alt="A pair of shoes">
+                        <button class="tts-button" data-text="Shoes" title="Listen">
+                            <span class="tts-icon">🔊</span>
+                        </button>
+                    </div>
+                    <div class="item-info">
+                        <h3 class="item-name">Shoes</h3>
+                        <p class="item-description">Footwear that protects our feet when walking</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="gallery-item" data-category="clothing">
+                <div class="item-card">
+                    <div class="item-image">
+                        <img src="https://placehold.co/400x300/DC143C/8B0000?text=🎩+Hat" alt="A hat">
+                        <button class="tts-button" data-text="Hat" title="Listen">
+                            <span class="tts-icon">🔊</span>
+                        </button>
+                    </div>
+                    <div class="item-info">
+                        <h3 class="item-name">Hat</h3>
+                        <p class="item-description">Headwear that protects from sun or keeps warm</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="gallery-item" data-category="clothing">
+                <div class="item-card">
+                    <div class="item-image">
+                        <img src="https://placehold.co/400x300/4B0082/2E0854?text=🧥+Jacket" alt="A warm jacket">
+                        <button class="tts-button" data-text="Jacket" title="Listen">
+                            <span class="tts-icon">🔊</span>
+                        </button>
+                    </div>
+                    <div class="item-info">
+                        <h3 class="item-name">Jacket</h3>
+                        <p class="item-description">A warm outer garment worn over other clothes</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Home -->
+            <div class="gallery-item" data-category="home">
+                <div class="item-card">
+                    <div class="item-image">
+                        <img src="https://placehold.co/400x300/F4A460/8B4513?text=🏠+House" alt="A house building">
+                        <button class="tts-button" data-text="House" title="Listen">
+                            <span class="tts-icon">🔊</span>
+                        </button>
+                    </div>
+                    <div class="item-info">
+                        <h3 class="item-name">House</h3>
+                        <p class="item-description">A building where people live with their families</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="gallery-item" data-category="home">
+                <div class="item-card">
+                    <div class="item-image">
+                        <img src="https://placehold.co/400x300/4682B4/191970?text=🛏️+Bed" alt="A comfortable bed">
+                        <button class="tts-button" data-text="Bed" title="Listen">
+                            <span class="tts-icon">🔊</span>
+                        </button>
+                    </div>
+                    <div class="item-info">
+                        <h3 class="item-name">Bed</h3>
+                        <p class="item-description">Furniture for sleeping and resting at night</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="gallery-item" data-category="home">
+                <div class="item-card">
+                    <div class="item-image">
+                        <img src="https://placehold.co/400x300/8B4513/654321?text=🪑+Chair" alt="A wooden chair">
+                        <button class="tts-button" data-text="Chair" title="Listen">
+                            <span class="tts-icon">🔊</span>
+                        </button>
+                    </div>
+                    <div class="item-info">
+                        <h3 class="item-name">Chair</h3>
+                        <p class="item-description">Furniture for sitting, with a back and legs</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="gallery-item" data-category="home">
+                <div class="item-card">
+                    <div class="item-image">
+                        <img src="https://placehold.co/400x300/DEB887/8B7355?text=🪑+Table" alt="A table">
+                        <button class="tts-button" data-text="Table" title="Listen">
+                            <span class="tts-icon">🔊</span>
+                        </button>
+                    </div>
+                    <div class="item-info">
+                        <h3 class="item-name">Table</h3>
+                        <p class="item-description">Flat furniture for eating, working, or playing</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="gallery-item" data-category="home">
+                <div class="item-card">
+                    <div class="item-image">
+                        <img src="https://placehold.co/400x300/A0522D/8B4513?text=🚪+Door" alt="A wooden door">
+                        <button class="tts-button" data-text="Door" title="Listen">
+                            <span class="tts-icon">🔊</span>
+                        </button>
+                    </div>
+                    <div class="item-info">
+                        <h3 class="item-name">Door</h3>
+                        <p class="item-description">A movable barrier to enter and exit rooms</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="gallery-item" data-category="home">
+                <div class="item-card">
+                    <div class="item-image">
+                        <img src="https://placehold.co/400x300/87CEEB/4682B4?text=🪟+Window" alt="A window with glass">
+                        <button class="tts-button" data-text="Window" title="Listen">
+                            <span class="tts-icon">🔊</span>
+                        </button>
+                    </div>
+                    <div class="item-info">
+                        <h3 class="item-name">Window</h3>
+                        <p class="item-description">An opening with glass to let in light and see outside</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tools -->
+            <div class="gallery-item" data-category="tools">
+                <div class="item-card">
+                    <div class="item-image">
+                        <img src="https://placehold.co/400x300/808080/2F4F4F?text=🔨+Hammer" alt="A metal hammer">
+                        <button class="tts-button" data-text="Hammer" title="Listen">
+                            <span class="tts-icon">🔊</span>
+                        </button>
+                    </div>
+                    <div class="item-info">
+                        <h3 class="item-name">Hammer</h3>
+                        <p class="item-description">A tool with a heavy head for hitting nails into wood</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="gallery-item" data-category="tools">
+                <div class="item-card">
+                    <div class="item-image">
+                        <img src="https://placehold.co/400x300/DAA520/B8860B?text=🪛+Screwdriver" alt="A screwdriver">
+                        <button class="tts-button" data-text="Screwdriver" title="Listen">
+                            <span class="tts-icon">🔊</span>
+                        </button>
+                    </div>
+                    <div class="item-info">
+                        <h3 class="item-name">Screwdriver</h3>
+                        <p class="item-description">A tool for turning screws to fasten things together</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="gallery-item" data-category="tools">
+                <div class="item-card">
+                    <div class="item-image">
+                        <img src="https://placehold.co/400x300/C0C0C0/696969?text=🔧+Wrench" alt="A wrench tool">
+                        <button class="tts-button" data-text="Wrench" title="Listen">
+                            <span class="tts-icon">🔊</span>
+                        </button>
+                    </div>
+                    <div class="item-info">
+                        <h3 class="item-name">Wrench</h3>
+                        <p class="item-description">A tool for gripping and turning nuts and bolts</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="gallery-item" data-category="tools">
+                <div class="item-card">
+                    <div class="item-image">
+                        <img src="https://placehold.co/400x300/D2691E/8B4513?text=🪚+Saw" alt="A wood saw">
+                        <button class="tts-button" data-text="Saw" title="Listen">
+                            <span class="tts-icon">🔊</span>
+                        </button>
+                    </div>
+                    <div class="item-info">
+                        <h3 class="item-name">Saw</h3>
+                        <p class="item-description">A tool with a blade for cutting through wood</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="gallery-item" data-category="tools">
+                <div class="item-card">
+                    <div class="item-image">
+                        <img src="https://placehold.co/400x300/FF6347/8B0000?text=🔩+Drill" alt="A power drill">
+                        <button class="tts-button" data-text="Drill" title="Listen">
+                            <span class="tts-icon">🔊</span>
+                        </button>
+                    </div>
+                    <div class="item-info">
+                        <h3 class="item-name">Drill</h3>
+                        <p class="item-description">A power tool that makes holes in materials</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Health -->
+            <div class="gallery-item" data-category="health">
+                <div class="item-card">
+                    <div class="item-image">
+                        <img src="https://placehold.co/400x300/FFFFFF/4169E1?text=👨‍⚕️+Doctor" alt="A doctor in white coat">
+                        <button class="tts-button" data-text="Doctor" title="Listen">
+                            <span class="tts-icon">🔊</span>
+                        </button>
+                    </div>
+                    <div class="item-info">
+                        <h3 class="item-name">Doctor</h3>
+                        <p class="item-description">A person who helps sick people get better</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="gallery-item" data-category="health">
+                <div class="item-card">
+                    <div class="item-image">
+                        <img src="https://placehold.co/400x300/F0F8FF/FF6347?text=💊+Medicine" alt="Medicine pills">
+                        <button class="tts-button" data-text="Medicine" title="Listen">
+                            <span class="tts-icon">🔊</span>
+                        </button>
+                    </div>
+                    <div class="item-info">
+                        <h3 class="item-name">Medicine</h3>
+                        <p class="item-description">Substances that help cure sickness and pain</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="gallery-item" data-category="health">
+                <div class="item-card">
+                    <div class="item-image">
+                        <img src="https://placehold.co/400x300/FFF5EE/4682B4?text=🏥+Hospital" alt="A hospital building">
+                        <button class="tts-button" data-text="Hospital" title="Listen">
+                            <span class="tts-icon">🔊</span>
+                        </button>
+                    </div>
+                    <div class="item-info">
+                        <h3 class="item-name">Hospital</h3>
+                        <p class="item-description">A place where doctors and nurses care for sick people</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="gallery-item" data-category="health">
+                <div class="item-card">
+                    <div class="item-image">
+                        <img src="https://placehold.co/400x300/90EE90/228B22?text=🏃+Exercise" alt="People exercising">
+                        <button class="tts-button" data-text="Exercise" title="Listen">
+                            <span class="tts-icon">🔊</span>
+                        </button>
+                    </div>
+                    <div class="item-info">
+                        <h3 class="item-name">Exercise</h3>
+                        <p class="item-description">Physical activity that keeps your body strong and healthy</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="gallery-item" data-category="health">
+                <div class="item-card">
+                    <div class="item-image">
+                        <img src="https://placehold.co/400x300/98FB98/006400?text=🥗+Healthy+Food" alt="Healthy fruits and vegetables">
+                        <button class="tts-button" data-text="Healthy Food" title="Listen">
+                            <span class="tts-icon">🔊</span>
+                        </button>
+                    </div>
+                    <div class="item-info">
+                        <h3 class="item-name">Healthy Food</h3>
+                        <p class="item-description">Nutritious foods like fruits and vegetables for a strong body</p>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="page-footer">
+            <p>Explore more categories above! 🌟</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

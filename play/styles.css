@@ -565,6 +565,34 @@ body {
     position: fixed;
     bottom: 0;
     width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+/* Back Button */
+.back-button {
+    display: inline-block;
+    background: linear-gradient(135deg, #6c757d 0%, #495057 100%);
+    color: white;
+    text-decoration: none;
+    padding: 10px 25px;
+    border-radius: 50px;
+    font-size: 1rem;
+    font-weight: 600;
+    text-align: center;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(108, 117, 125, 0.4);
+}
+
+.back-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(108, 117, 125, 0.5);
+}
+
+.back-button:active {
+    transform: translateY(0);
 }
 
 /* Animations */
