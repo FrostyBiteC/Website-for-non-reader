@@ -112,7 +112,7 @@ body {
 
 /* Hero Section */
 .hero {
-    background: linear-gradient(135deg, #87e8de 0%, #a8edea 100%);
+    background: url('background/fun.png') center/cover no-repeat;
     min-height: 100vh;
     display: flex;
     align-items: center;
@@ -214,14 +214,14 @@ body {
         .cloud {
             position: absolute;
             opacity: 0.8;
-            animation: float 3s ease-in-out infinite;
+            animation: float 8s ease-in-out infinite;
         }
 
         .cloud-1 {
             width: 120px;
             height: 120px;
             top: 10%;
-            left: 10%;
+            left: 5%;
             animation-delay: 0s;
         }
 
@@ -230,15 +230,39 @@ body {
             height: 80px;
             top: 20%;
             right: 15%;
-            animation-delay: 1s;
+            animation-delay: 1.5s;
         }
 
         .cloud-3 {
             width: 100px;
             height: 100px;
-            bottom: 20%;
+            bottom: 25%;
             left: 20%;
-            animation-delay: 2s;
+            animation-delay: 3s;
+        }
+
+        .cloud-4 {
+            width: 90px;
+            height: 90px;
+            top: 15%;
+            right: 35%;
+            animation-delay: 0.8s;
+        }
+
+        .cloud-5 {
+            width: 110px;
+            height: 110px;
+            bottom: 30%;
+            right: 10%;
+            animation-delay: 2.2s;
+        }
+
+        .cloud-6 {
+            width: 85px;
+            height: 85px;
+            top: 30%;
+            left: 40%;
+            animation-delay: 1.2s;
         }
 
 .hero-illustration {
@@ -755,11 +779,20 @@ body {
 }
 
 @keyframes float {
-    0%, 100% {
-        transform: translateY(0);
+    0% {
+        transform: translate(0, 0);
+    }
+    25% {
+        transform: translate(15px, -15px);
     }
     50% {
-        transform: translateY(-20px);
+        transform: translate(30px, 0);
+    }
+    75% {
+        transform: translate(15px, 15px);
+    }
+    100% {
+        transform: translate(0, 0);
     }
 }
 
